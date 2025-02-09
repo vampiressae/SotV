@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07b34591e2a5b0143a276e96332046ad, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 0}
+  Name: Player
+  Description: 
+  Might:
+    _max: 100
+    _regen: 10
+  Inventory:
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 1
+    _info: {fileID: 11400000, guid: 3a8d71366111b9b46967c102aa872a2b, type: 2}
+  - _amount: 1
+    _info: {fileID: 11400000, guid: 3255a73c4e95ae64a8053867142c9fa3, type: 2}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  Equipment:
+  - _amount: 1
+    _info: {fileID: 11400000, guid: 3255a73c4e95ae64a8053867142c9fa3, type: 2}
+  - _amount: 2
+    _info: {fileID: 11400000, guid: 278affba89c154941b8b1ae0baaa286c, type: 2}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  Skills:
+  - _amount: 1
+    _info: {fileID: 11400000, guid: ae5f0b7ada4f5bd469e21ac0804d5584, type: 2}

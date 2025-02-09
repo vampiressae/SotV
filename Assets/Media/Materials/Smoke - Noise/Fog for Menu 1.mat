@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4664159246642293498
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fog for Menu 1
+  m_Shader: {fileID: -6465566751694194690, guid: b39968ee4540a9b4b95e03af7bc16bd2, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _SURFACE_TYPE_TRANSPARENT
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses:
+  - SHADOWCASTER
+  - DepthOnly
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Speed_Mask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_A:
+        m_Texture: {fileID: 2800000, guid: 1eecd5bd2c4ea5d4787c7cfff915beba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_B:
+        m_Texture: {fileID: 2800000, guid: 9c76d39093445724780761f1b392105c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_C:
+        m_Texture: {fileID: 2800000, guid: 1fec7d572c88a014eb5a0e0d5a8e2556, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_D:
+        m_Texture: {fileID: 2800000, guid: 1fec7d572c88a014eb5a0e0d5a8e2556, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_Mask:
+        m_Texture: {fileID: 2800000, guid: 1eecd5bd2c4ea5d4787c7cfff915beba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _Alpha_A: 0.5
+    - _Alpha_B: 1
+    - _Alpha_C: 0.5
+    - _Alpha_D: 0.3
+    - _Animation_Speed: 0.86
+    - _Aspec_Ratio: 0
+    - _Balance: 5
+    - _Blend: 0
+    - _CastShadows: 0
+    - _Color_Count: 38.3
+    - _Cull: 2
+    - _Density: -0.62
+    - _DstBlend: 10
+    - _Edge_Alpha: 1.75
+    - _Edge_Choker: 0.5
+    - _Edge_Contrast: 33.31
+    - _Edge_Definition: 6.1
+    - _Edge_Intensity: 0.014
+    - _Edge_Multiplier: 0.41
+    - _Edge_Opacity: 0
+    - _Edge_Opaque: 0.85
+    - _Edge_Power: 2.89
+    - _Edge_Ratio: 0
+    - _Horiontal_Influence: 6.7
+    - _Horiontal_Soft: -1.23
+    - _Horizontal_Alpha: 1.65
+    - _Horizontal_Blur: 1
+    - _Horizontal_Choke: 0.67
+    - _Horizontal_Color: -0.51
+    - _Horizontal_Gradient: 0
+    - _Horizontal_Middle: 1.12
+    - _Horizontal_Multiplier: 0.913
+    - _Horizontal_Smoothness: 1.8
+    - _Intensity: 0.79
+    - _Main_Speed: 0
+    - _Mix: 1.08
+    - _Opacity: 0.32
+    - _Ortho_Size: 5
+    - _Overall_Speed: 0.27
+    - _Parallax: 0.02
+    - _Pixel_Density: 200
+    - _Pixel_Ratio: 1
+    - _Pixel_Size: 51.7
+    - _Posterize_Alpha: 512
+    - _Posterize_Color: 512
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Speed: 0.2
+    - _SrcBlend: 5
+    - _Surface: 1
+    - _Textures_AB_C: 0.07
+    - _Textures_AB_CD: 0.32
+    - _Textures_A_B: 0.63
+    - _Textures_Blend: 0.61
+    - _Textures_C_D: 0.76
+    - _Tiling_Multiplier: 1
+    - _Time_Offset: 6.9
+    - _Total_Size: 0.6
+    - _Total_Speed: 0.75
+    - _Total_Tiling: 1.36
+    - _Vertical_Bleed: 1.42
+    - _Vertical_Gradient: 0.88
+    - _Vertical_Middle: 0.711
+    - _ZTest: 4
+    - _ZWrite: 0
+    - _ZWriteControl: 0
+    m_Colors:
+    - _Bottom_Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 0.79607844}
+    - _Edge_Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Middle_Color: {r: 1, g: 1, b: 1, a: 0.9529412}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _Remap_In: {r: 0, g: 1, b: 0, a: 0}
+    - _Remap_Out: {r: 0, g: 1, b: 0, a: 0}
+    - _Scale: {r: 1, g: 1, b: 0, a: 0}
+    - _Side_Color: {r: 0, g: 0, b: 0, a: 0.22745098}
+    - _Speed_A: {r: -0.05, g: 0, b: 0, a: 0}
+    - _Speed_B: {r: 0.1, g: 0, b: 0, a: 0}
+    - _Speed_C: {r: 0, g: -0.21, b: 0, a: 0}
+    - _Speed_D: {r: 0, g: 0.023, b: 0, a: 0}
+    - _Speed_Mask: {r: 0.04, g: 0, b: 0, a: 0}
+    - _Tiling_A: {r: 0.5, g: 1, b: 0, a: 0}
+    - _Tiling_B: {r: 0.5, g: 0.53, b: 0, a: 0}
+    - _Tiling_C: {r: 0.78, g: 0.66, b: 0, a: 0}
+    - _Tiling_D: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Tiling_Mask: {r: 0.47, g: 0.9, b: 0, a: 0}
+    - _Tint: {r: 0, g: 0, b: 0, a: 1}
+    - _Top_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

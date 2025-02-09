@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b679d085a5c385b4dab97822367c7f04, type: 3}
+  m_Name: Weapon Jaw
+  m_EditorClassIdentifier: 
+  Icon: {fileID: -87284464, guid: d058e618f20d518408f130b159a04ab4, type: 3}
+  Name: Rusty Sword
+  Description: 
+  Stack: 1
+  Might: 4
+  Rank: {fileID: 11400000, guid: ae61b9db564002443bd94b042df9bc7d, type: 2}
+  Tags:
+  - {fileID: 11400000, guid: 280fb10151e3b7a4a9fd79a45314e01b, type: 2}
+  - {fileID: 11400000, guid: 055aef7b77a87184cac578b11cd80408, type: 2}
+  - {fileID: 11400000, guid: 39e52911a609fe241b6bbeec04b6fe9c, type: 2}
+  _effects: []
+  _actions:
+  - Info: {fileID: 11400000, guid: 54b13c8b9d471be4d9a40d85ee8ab011, type: 2}
+    Value:
+      Min: 6
+      Max: 8
+    _might: 5
+  - Info: {fileID: 11400000, guid: 81d8d059f9304494cb570d9fb5fb036b, type: 2}
+    Value:
+      Min: 10
+      Max: 15
+    _might: 10
+  _extendedUIPrefab: {fileID: 7238660739354989741, guid: be90d278e44cb4243acb1a5e386abb93, type: 3}
+  _type: {fileID: 11400000, guid: 75c9656dadba88c47aa88fc9fc21cc69, type: 2}
+  _equippedMight: -1
+  _canEquipOnlyOne: 0

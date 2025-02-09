@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07b34591e2a5b0143a276e96332046ad, type: 3}
+  m_Name: Wolf
+  m_EditorClassIdentifier: 
+  Name: Wolf
+  Icon: {fileID: 0}
+  Might:
+    _max: 30
+    _regen: 10
+  Inventory: []
+  Equipment:
+  - _info: {fileID: 11400000, guid: 1e65f7ec98e21634d9978b8a60352823, type: 2}
+    _amount: 1

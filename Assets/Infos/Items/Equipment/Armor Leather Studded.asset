@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5b99f241f4afc47a8a8f4a7acb97d0, type: 3}
+  m_Name: Armor Leather Studded
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 492005, guid: d058e618f20d518408f130b159a04ab4, type: 3}
+  Name: Studded Leather Armor
+  Description: 
+  Stack: 1
+  Might: 1
+  Rank: {fileID: 11400000, guid: ae61b9db564002443bd94b042df9bc7d, type: 2}
+  Tags:
+  - {fileID: 11400000, guid: 280fb10151e3b7a4a9fd79a45314e01b, type: 2}
+  - {fileID: 11400000, guid: 29cfe64c96e496e4a845cf5b97c2ef11, type: 2}
+  - {fileID: 11400000, guid: 224447368e34f3c4dbcf8e39577e05cd, type: 2}
+  _effects:
+  - {fileID: 11400000, guid: 3e9174e115ea51744be64b617edbca3e, type: 2}
+  _equippedMight: 10
+  _canEquipOnlyOne: 1

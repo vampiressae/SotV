@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26577cca267f935498d1a5cfe74ac419, type: 3}
+  m_Name: Potion Might
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 1933297699, guid: d058e618f20d518408f130b159a04ab4, type: 3}
+  Name: Potion of Might
+  Description: 
+  Stack: 10
+  Might: 3
+  Rank: {fileID: 11400000, guid: 27e8dd064dd630842af48f139968a3fb, type: 2}
+  Tags:
+  - {fileID: 11400000, guid: 149cfa5205577a84cb412cb6ac06f658, type: 2}
+  - {fileID: 11400000, guid: 95f0433764a018140b7282926843d908, type: 2}
+  _effects: []
+  _actions:
+  - Info: {fileID: 11400000, guid: feeaa84ae21077b48b9dab2886be7f8f, type: 2}
+    Value:
+      Min: 8
+      Max: 10
+    _might: 3
+  _actionsUI: {fileID: 7238660739354989741, guid: be90d278e44cb4243acb1a5e386abb93, type: 3}
+  _equippedMight: -1
