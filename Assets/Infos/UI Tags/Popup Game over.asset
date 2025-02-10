@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e49f639ba9407b42a013ea44f6148d3, type: 3}
-  m_Name: Item FX Equip Might
+  m_Script: {fileID: 11500000, guid: 8351608fad7578b47915cfda0e183c42, type: 3}
+  m_Name: Popup Game over
   m_EditorClassIdentifier: 
-  _type: 2
-  _modifier: 2
-  _value: 0

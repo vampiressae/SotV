@@ -23,6 +23,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 29cfe64c96e496e4a845cf5b97c2ef11, type: 2}
   - {fileID: 11400000, guid: 224447368e34f3c4dbcf8e39577e05cd, type: 2}
   _effects:
-  - {fileID: 11400000, guid: 3e9174e115ea51744be64b617edbca3e, type: 2}
+  - {fileID: 4749255567782395901}
   _equippedMight: 10
   _canEquipOnlyOne: 1
+--- !u!114 &4749255567782395901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e49f639ba9407b42a013ea44f6148d3, type: 3}
+  m_Name: Item FX Equip Might(Clone)
+  m_EditorClassIdentifier: 
+  _type: 2
+  _modifier: 2
+  _value: -5
