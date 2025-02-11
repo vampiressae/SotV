@@ -78,16 +78,14 @@ namespace Items
         public override void TooltipInit(ActorHolder actor, TooltipForString tooltip)
         {
             base.TooltipInit(actor, tooltip);
-            tooltip.Title.text = Info.Name;
 
             if (Info.Rank) tooltip.Title.color = Info.Rank.Color;
 
             var descriptions = new List<string>();
             TooltipDescriptions(actor, ref descriptions);
-
             if (Info.EndTurn) descriptions.Add("<i>Ends Turn</i>");
 
-            tooltip.Text.text = string.Join("\n", descriptions);
+            tooltip.Init(Info.Name, string.Join("\n", descriptions), true);
         }
 
         protected virtual void TooltipDescriptions(ActorHolder actor, ref List<string> descriptions) { }
@@ -113,7 +111,7 @@ namespace Items
         {
             base.TooltipDescriptions(actor, ref descriptions);
             var might = FightController.Instance.RoundsPerTurn.GetMightValue(actor, Might);
-            descriptions.Add($"Cost: <b>{might}</b> Might ({_might})");
+            descriptions.Add($"{UnityUtils.LabelColor}Cost:</color> <b>{might}</b> Might {_might.ToInitialValueString()}");
         }
     }
 
@@ -127,7 +125,8 @@ namespace Items
         protected override void TooltipDescriptions(ActorHolder actor, ref List<string> descriptions)
         {
             base.TooltipDescriptions(actor, ref descriptions);
-            descriptions.Add($"{ValueName}: <b>{InfluencedValueRange(actor.Info)}</b> ({Value})");
+            var value = Value.ToString().ToInitialValueString();
+            descriptions.Add($"{UnityUtils.LabelColor}{ValueName}:</color> <b>{InfluencedValueRange(actor.Info)}</b> {value}");
         }
     }
 }

@@ -73,8 +73,15 @@ namespace Vamporium.UI
 
         protected virtual void Awake()
         {
+            if (Instance)
+            {
+                DestroyImmediate(gameObject);
+                return;
+            }
+
             Instance = this;
             RegisterHiddenAsPrevious = true;
+            DontDestroyOnLoad(this);
 
             _popups = new();
             _previousScreenTags = new();

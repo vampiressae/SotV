@@ -22,10 +22,10 @@ namespace Actor
 
         private Dictionary<object, int> _reserved = new();
         private Dictionary<object, int> _preview = new();
+
         private int _missing, _recoverable;
 
-        public int Max => _max;
-
+        [ReadOnlyInPlayMode] public int Max => GetModifiedValue(MightType.Max, _max);
         [ReadOnlyInPlayMode] public int Reserved => _reserved.Values.Sum();
         [ReadOnlyInPlayMode] public int Preview => _preview.Values.Sum();
         [ReadOnlyInPlayMode] public int Missing => _missing;
@@ -46,6 +46,7 @@ namespace Actor
             MightType.Missing => Missing,
             MightType.Recoverable => Recoverable,
             MightType.Available => Available,
+            MightType.Max => Max,
             _ => 0,
         };
 

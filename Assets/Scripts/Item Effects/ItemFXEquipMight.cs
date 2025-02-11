@@ -48,7 +48,7 @@ public class ItemFXEquipMight : ItemFXEquip
     public override void GetTooltip(ref List<string> list)
     {
         var modifier = _modifier == ModifierType.Multipler ? "%" : "";
-        list.Add($"<b>{_value.ToStringWithSign()}{modifier}</b> {TooltipName}");
+        list.Add(TooltipName.ToLabelAndValue(_value.ToStringWithSign() + modifier));
     }
 
     private string TooltipName => _type switch

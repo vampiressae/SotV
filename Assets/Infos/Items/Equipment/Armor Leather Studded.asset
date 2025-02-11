@@ -26,9 +26,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e49f639ba9407b42a013ea44f6148d3, type: 3}
   m_Name: 'Armor Leather Studded : Item FX Equip Might'
   m_EditorClassIdentifier: 
-  _type: 2
+  _type: 5
   _modifier: 2
-  _value: -5
+  _value: 100
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

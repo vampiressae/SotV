@@ -25,7 +25,7 @@ public class ItemFXEquipStat : ItemFXEquip
 
     public override void GetTooltip(ref List<string> list)
     {
-        //base.GetTooltip(ref list);
-        list.Add($"<b>{_amount.ToStringWithSign()}</b> {_info.Name}");
+        base.GetTooltip(ref list);
+        list.Add(_info.Name.ToLabelAndValue(_amount));
     }
 }
