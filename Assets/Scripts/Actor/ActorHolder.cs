@@ -17,6 +17,7 @@ namespace Actor
                 if (!_inited)
                 {
                     _info = Instantiate(_info);
+                    _info.Init();
                     _inited = true;
                 }
                 return _info;

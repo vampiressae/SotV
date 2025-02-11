@@ -24,9 +24,9 @@ MonoBehaviour:
   _effects: []
   _actions:
   - Info: {fileID: 11400000, guid: feeaa84ae21077b48b9dab2886be7f8f, type: 2}
+    _might: 3
     Value:
       Min: 8
       Max: 10
-    _might: 3
   _actionsUI: {fileID: 7238660739354989741, guid: be90d278e44cb4243acb1a5e386abb93, type: 3}
   _equippedMight: -1

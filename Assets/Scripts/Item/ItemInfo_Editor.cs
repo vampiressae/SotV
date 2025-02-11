@@ -18,6 +18,7 @@ namespace Items
             if (effect == null) return;
 
             var add = Instantiate(effect);
+            add.name = name + " : " + effect.name;
             _effects.Add(add);
             UnityEditor.AssetDatabase.AddObjectToAsset(add, this);
         }

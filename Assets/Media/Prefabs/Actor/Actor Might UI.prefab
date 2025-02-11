@@ -514,6 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fader: {fileID: 1757199164985503100}
+  _rtForWidth: {fileID: 3310370401694253149}
   _reservedHolder: {fileID: 5815942474247787702}
   _availableHolder: {fileID: 5119779834405471409}
   _recoverableHolder: {fileID: 1495487735525449317}

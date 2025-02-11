@@ -1,5 +1,5 @@
-using Inventory;
 using Items;
+using Inventory;
 
 public abstract class ItemFXEquip : ItemEffect
 {

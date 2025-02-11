@@ -1,6 +1,8 @@
 using Items;
 using Entity;
 using Actor;
+using UnityEngine;
+using Sirenix.Utilities;
 
 public enum ActionTarget { None = 0, Any = 10, AllyAny = 110, AllySelf = 120, AllyOther = 130, EnemyAny = 210, EnemyLand = 220, EnemyAir = 230 }
 
@@ -9,6 +11,8 @@ public abstract class ActionInfo : ScriptableWithNameAndSprite
     public bool EndTurn;
     public ItemRank Rank;
     public ActionTarget Target;
+    [Space]
+    public StatInfo[] InfluencingStats;
 
     public virtual bool CanAct(Item item, ActorHolder source, EntityHolder target)
     {
@@ -32,6 +36,13 @@ public abstract class ActionInfo : ScriptableWithNameAndSprite
     public virtual void Act(Item item, ActorHolder source, EntityHolder target)
     {
         if (EndTurn) FightController.Instance.EndTurnWithDelay();
+    }
+
+    public IntRange InfluencedValueRange(EntityInfo entity, IntRange intRange)
+    {
+        var multiplier = 0;
+        InfluencingStats?.ForEach(stat => multiplier += entity.GetStatValue(stat));
+        return intRange + intRange * multiplier;
     }
 
 #if UNITY_EDITOR

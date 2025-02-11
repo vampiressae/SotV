@@ -15,9 +15,9 @@ MonoBehaviour:
   Icon: {fileID: 0}
   Name: Player
   Description: 
-  Might:
-    _max: 100
-    _regen: 10
+  Stats:
+  - _amount: 1
+    _info: {fileID: 11400000, guid: 1492911b1fc49c948a6c779b1a7eb0a6, type: 2}
   Inventory:
   - _amount: 0
     _info: {fileID: 0}
@@ -53,3 +53,6 @@ MonoBehaviour:
   Skills:
   - _amount: 1
     _info: {fileID: 11400000, guid: ae5f0b7ada4f5bd469e21ac0804d5584, type: 2}
+  Might:
+    _max: 100
+    _regen: 10

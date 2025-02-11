@@ -9,7 +9,7 @@ namespace Actor
     [Serializable]
     public class ActorMight
     {
-        public enum MightType { None, Reserved, Preview, Missing, Recoverable, Regen, Available }
+        public enum MightType { None, Reserved, Preview, Missing, Recoverable, Regen, Available, Max }
 
         public event Action OnAnyValueChanged;
         public event Action<int> OnReservedChanged;

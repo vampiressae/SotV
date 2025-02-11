@@ -12,7 +12,7 @@ public class WeaponAction : ActionWithInfoValueMight<WeaponAttackInfo>
         if (!base.ActIt(item, source, target, useMight)) return false;
         if (target is not ActorHolder actor) return false;
 
-        actor.Info.Might.AddMissingValue(Value.RandomUnity);
+        actor.Info.Might.AddMissingValue(InfluencedValueRange(source.Info).RandomUnity);
         return true;
     }
 }

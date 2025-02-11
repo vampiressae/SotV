@@ -1,14 +1,17 @@
 using UnityEngine;
 using VamporiumState.GO;
 using Actor;
+using Vamporium.UI;
 
 [DefaultExecutionOrder(-999)]
 public class FightController : MonoBehaviour
 {
     public static FightController Instance;
 
+    [SerializeField] private UITag _screenUI;
     [SerializeField] private ActorHolder _player, _enemy;
     [SerializeField] private RoundsPerTurnValue _roundsPerTurn;
+    [SerializeField] private UITag _uiClickBlock;
 
     private StateMachine _stateMachine;
 
@@ -20,9 +23,12 @@ public class FightController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
         _stateMachine = GetComponent<StateMachine>();
         _roundsPerTurn.Value = 0;
     }
+
+    private void Start() => UIManager.Show(_screenUI);
 
     private void OnDestroy()
     {
@@ -33,11 +39,13 @@ public class FightController : MonoBehaviour
     
     public void EndTurnWithDelay()
     {
+        UIManager.Show(_uiClickBlock);
         Invoke(nameof(EndTurn), 1);
     }
     
     public void EndTurn()
     {
+        UIManager.Hide(_uiClickBlock);
         _roundsPerTurn.Value = 0;
 
         if (_stateMachine.Current is FightStateTurnMe)

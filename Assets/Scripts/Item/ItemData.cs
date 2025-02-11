@@ -46,9 +46,15 @@ namespace Items
 
         public override void Swap(Item with)
         {
+            InvokeOnItemDataChanging();
+            with.InvokeOnItemDataChanging();
+
             var temp = new ItemData(this);
             Copy(with);
             with.Copy(temp);
+
+            InvokeOnItemDataChanged();
+            with.InvokeOnItemDataChanged();
         }
     }
 }

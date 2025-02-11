@@ -83,9 +83,9 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Alpha_A: 0.5
-    - _Alpha_B: 1
-    - _Alpha_C: 0.5
+    - _Alpha_A: 0.741
+    - _Alpha_B: 0.697
+    - _Alpha_C: 0.587
     - _Alpha_D: 0.3
     - _Animation_Speed: 0.86
     - _Aspec_Ratio: 0
@@ -137,7 +137,7 @@ Material:
     - _Textures_AB_CD: 0.32
     - _Textures_A_B: 0.63
     - _Textures_Blend: 0.61
-    - _Textures_C_D: 0.76
+    - _Textures_C_D: 0.136
     - _Tiling_Multiplier: 1
     - _Time_Offset: 6.9
     - _Total_Size: 0.6
@@ -154,8 +154,8 @@ Material:
     - _Edge_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Middle_Color: {r: 1, g: 1, b: 1, a: 0.9529412}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _Remap_In: {r: 0, g: 1, b: 0, a: 0}
-    - _Remap_Out: {r: 0, g: 1, b: 0, a: 0}
+    - _Remap_In: {r: 0.03, g: 1.48, b: 0, a: 0}
+    - _Remap_Out: {r: 0.13, g: 0.82, b: 0, a: 0}
     - _Scale: {r: 1, g: 1, b: 0, a: 0}
     - _Side_Color: {r: 0, g: 0, b: 0, a: 0.22745098}
     - _Speed_A: {r: -0.05, g: 0, b: 0, a: 0}
@@ -168,7 +168,7 @@ Material:
     - _Tiling_C: {r: 0.78, g: 0.66, b: 0, a: 0}
     - _Tiling_D: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _Tiling_Mask: {r: 0.47, g: 0.9, b: 0, a: 0}
-    - _Tint: {r: 0, g: 0, b: 0, a: 1}
+    - _Tint: {r: 1, g: 1, b: 1, a: 1}
     - _Top_Color: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

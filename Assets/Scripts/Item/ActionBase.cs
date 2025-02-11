@@ -122,10 +122,12 @@ namespace Items
         [HorizontalGroup("2", 155), InlineProperty, LabelWidth(40)] public IntRange Value;
         protected abstract string ValueName { get; }
 
+        public IntRange InfluencedValueRange(EntityInfo entity) => Info.InfluencedValueRange(entity, Value);
+
         protected override void TooltipDescriptions(ActorHolder actor, ref List<string> descriptions)
         {
             base.TooltipDescriptions(actor, ref descriptions);
-            descriptions.Add($"{ValueName}: <b>{Value}</b>");
+            descriptions.Add($"{ValueName}: <b>{InfluencedValueRange(actor.Info)}</b> ({Value})");
         }
     }
 }

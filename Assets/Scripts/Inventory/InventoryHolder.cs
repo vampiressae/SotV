@@ -30,15 +30,8 @@ namespace Inventory
             }
         }
 
-        private void OnItemDataChanging(ItemData data) { if (data.Info) data.Info.Effects_RemovedToInventory(this, data); }
+        private void OnItemDataChanging(ItemData data) { if (data.Info) data.Info.Effects_RemovedFromInventory(this, data); }
         private void OnItemDataChanged(ItemData data) { if (data.Info) data.Info.Effects_AddedToInventory(this, data); }
-
-        public void Swap(ItemData what, ItemData with)
-        {
-            var temp = new ItemData(what);
-            what.Copy(with);
-            with.Copy(temp);
-        }
 
         public virtual int GetMightCost()
         {

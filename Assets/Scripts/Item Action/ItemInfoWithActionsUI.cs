@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Items
@@ -9,7 +10,11 @@ namespace Items
         private IHasAction _infoWithAction;
         private ItemInfoWithActionUI[] _uis;
 
-        private void Start() => transform.SetParent(transform.parent.parent.parent);
+        private IEnumerator Start()
+        {
+            yield return null;
+            transform.SetParent(transform.parent.parent.parent);
+        }
 
         public void Init(IHasAction info, ItemUI ui)
         {

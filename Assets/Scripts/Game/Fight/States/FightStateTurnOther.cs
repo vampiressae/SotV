@@ -1,12 +1,14 @@
 using Actor;
 using System.Collections;
 using UnityEngine;
+using Vamporium.UI;
 using VamporiumState.GO;
 
 public class FightStateTurnOther : FightStateTurn
 {
     [SerializeField] private ActorHolder _player, _enemy;
     [SerializeField] AIControllerForFight _ai;
+    [SerializeField] private UITag _uiFightEnemy;
 
     protected override string ActorName => "Enemy Turn";
 
@@ -16,12 +18,14 @@ public class FightStateTurnOther : FightStateTurn
         _isPlayerTurn.Value = false;
 
         StartCoroutine(Act());
+        UIManager.Show(_uiFightEnemy);
     }
 
     public override void Exit(StateMachine machine)
     {
         base.Exit(machine);
         StopAllCoroutines();
+        UIManager.Hide(_uiFightEnemy);
     }
 
     private IEnumerator Act()

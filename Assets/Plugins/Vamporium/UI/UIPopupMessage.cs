@@ -28,6 +28,7 @@ public class UIPopupMessage : UIPopup
     [SerializeField] private TMP_Text _title, _body;
     [SerializeField] private Image _image;
     [Space]
+    [SerializeField] private Transform _dividerPrefab;
     [SerializeField] private UIPopupMessageButton _buttonPrefab;
     [SerializeField] private Transform _buttonParent;
     [Space]
@@ -50,12 +51,12 @@ public class UIPopupMessage : UIPopup
         if (hasTitle) _title.text = title;
         else _title.gameObject.SetActive(false);
 
-        foreach (Transform t in _buttonParent) Destroy(t.gameObject);
+        //foreach (Transform t in _buttonParent) Destroy(t.gameObject);
         _buttonParent.gameObject.SetActive(false);
         _layoutGroup.padding.bottom = _bottomPadding;
 
         _body.text = body;
-        _image.gameObject.SetActive(false);
+        if (_image) _image.gameObject.SetActive(false);
 
         ClearInstantiatedElements();
         StartCoroutine(SetLayout());
@@ -84,8 +85,11 @@ public class UIPopupMessage : UIPopup
 
     public UIPopupMessage SetSprite(Sprite sprite)
     {
-        _image.sprite = sprite;
-        _image.gameObject.SetActive(sprite);
+        if (_image)
+        {
+            _image.sprite = sprite;
+            _image.gameObject.SetActive(sprite);
+        }
         return this;
     }
 
@@ -98,6 +102,9 @@ public class UIPopupMessage : UIPopup
 
         for (int i = 0; i < buttons.Length; i++)
         {
+            if (i > 0 && _dividerPrefab)
+                Instantiate(_dividerPrefab, _buttonParent);
+
             var button = Instantiate(_buttonPrefab, _buttonParent);
             button.transform.localScale = Vector3.one;
 
@@ -117,10 +124,10 @@ public class UIPopupMessage : UIPopup
     }
 
     public UIPopupMessage SetButtonsYesNo(Action yesAction, Action noAction = null)
-        => SetButtons(new Button("UI_YES", yesAction), new Button("UI_NO", noAction));
+        => SetButtons(new Button("Yes", yesAction), new Button("No", noAction));
 
     public UIPopupMessage SetButtonClose(Action closeAction = null)
-        => SetButtons(new Button("UI_CLOSE", closeAction));
+        => SetButtons(new Button("Close", closeAction));
 
     private void DeactivateAllButtons()
     {

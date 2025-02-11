@@ -11,6 +11,7 @@ namespace Actor
     public class ActorMightUITooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private CanvasGroup _fader;
+        [SerializeField] private RectTransform _rtForWidth;
 
         [SerializeField] private LayoutElement _reservedHolder, _availableHolder, _recoverableHolder, _missingHolder;
         [SerializeField] private TMP_Text _reserved, _available, _recoverable, _missing;
@@ -58,11 +59,19 @@ namespace Actor
         private void Refresh()
         {
             for (int i = 0; i < _texts.Length; i++)
-                _texts[i].text = $"{_labels[i]}: <color=white>{_might.GetValueByType(_values[i])}</color>";
+            {
+                var value = _might.GetValueByType(_values[i]);
+                _texts[i].text = $"{(value > 8 ? _labels[i] + ": " : "")}<color=white>{value}</color>";
+            }
+
+            var width = _rtForWidth.rect.width;
+            var max = (float)_might.Max; //to divide with float
+            var missing = Mathf.Clamp(_might.Missing / max, 0, 1);
+            var recover = Mathf.Clamp(_might.Recoverable / max, 0, 1);
 
             _reservedHolder.preferredWidth = _ui.Reserved.rectTransform.rect.width;
-            _recoverableHolder.preferredWidth = _ui.Rerecoverable.rectTransform.rect.width;
-            _missingHolder.preferredWidth = _ui.Missing.rectTransform.rect.width;
+            _recoverableHolder.preferredWidth = recover * width;
+            _missingHolder.preferredWidth = missing * width;
 
             _reserved.gameObject.SetActive(_reservedHolder.preferredWidth > 1);
             _recoverable.gameObject.SetActive(_recoverableHolder.preferredWidth > 1);

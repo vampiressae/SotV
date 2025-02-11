@@ -42,11 +42,12 @@ namespace Actor
             var max = (float)_might.Max; //to divide with float
             var missing = Mathf.Clamp(_might.Missing / max, 0, 1);
             var recover = Mathf.Clamp(_might.Recoverable / max, 0, 1);
+            var preview = Mathf.Clamp(1 - missing - recover - _might.Preview / max, 0, 1);
 
             _reserved.rectTransform.DOAnchorMax(new(_might.Reserved / max, 1), _duration).SetEase(Ease.OutSine);
             _missing.rectTransform.DOAnchorMin(new(1 - missing, 0), _duration).SetEase(Ease.OutSine);
             _recoverable.rectTransform.DOAnchorMin(new(1 - missing - recover, 0), _duration).SetEase(Ease.OutSine);
-            _preview.rectTransform.DOAnchorMin(new(1 - missing - recover - _might.Preview / max, 0), _duration).SetEase(Ease.OutSine);
+            _preview.rectTransform.DOAnchorMin(new(preview, 0), _duration).SetEase(Ease.OutSine);
         }
 
         private void Kill()

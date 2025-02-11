@@ -15,7 +15,7 @@ public class TransferStatAction : ActionWithInfoValueMight<TransformStatInfo>
 
         Debug.Log("Transferring " + Value + " for " + _might);
 
-        actor.Info.Might.RemoveMissingValue(Value.RandomUnity);
+        actor.Info.Might.RemoveMissingValue(InfluencedValueRange(source.Info).RandomUnity);
         return true;
     }
 }

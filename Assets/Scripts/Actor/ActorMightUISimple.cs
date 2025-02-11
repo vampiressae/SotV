@@ -6,16 +6,20 @@ namespace Actor
 {
     public class ActorMightUISimple : MonoBehaviour
     {
-        [SerializeField] private ActorHolder _actor;
         [SerializeField] private Image _fill;
         [SerializeField] private float _duration = 0.1f;
 
+        private ActorHolder _actor;
         private ActorMight _might;
 
         private void Awake() => _fill.fillAmount = 0;
         private void OnDisable() => Kill();
 
-        private void Start() => Init(_actor.Info.Might);
+        private void Start()
+        {
+            _actor = FightController.Instance.Enemy;
+            Init(_actor.Info.Might);
+        }
 
         public void Init(ActorMight might)
         {

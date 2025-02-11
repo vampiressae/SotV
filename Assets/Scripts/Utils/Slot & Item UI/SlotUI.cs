@@ -11,7 +11,7 @@ public abstract class SlotUI : MonoBehaviour, ITooltipString
     public bool IsEmpty => RawData.IsEmpty;
 
     public virtual string Title => RawData.RawInfo ? RawData.RawInfo.Name : string.Empty;
-    public virtual string Description => RawData.RawInfo ? RawData.RawInfo.Description : string.Empty;
+    public virtual string Description => RawData.RawInfo ? RawData.RawInfo.GetTooltip() : string.Empty;
     public virtual bool Divider => !string.IsNullOrEmpty(Description);
 
     protected void Init(Item data)

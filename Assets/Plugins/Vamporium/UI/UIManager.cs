@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
+using UnityEditor.Build.Content;
 
 namespace Vamporium.UI
 {
+    [DefaultExecutionOrder(-1000)]
     public class UIManager : MonoBehaviour
     {
         public static event Action<UIBase> OnShowUI, OnHideUI;
@@ -60,7 +62,8 @@ namespace Vamporium.UI
         protected UIScreen _currentScreen;
         protected Dictionary<UITag, UIPopup> _popups;
 
-        [Space][ShowInInspector, HideInEditorMode]
+        [Space]
+        [ShowInInspector, HideInEditorMode]
         protected Stack<UITag> _previousScreenTags;
 
         public UIScreen CurrentScreen => _currentScreen;
@@ -77,7 +80,7 @@ namespace Vamporium.UI
             _previousScreenTags = new();
 
             foreach (Transform t in _screenParent) Destroy(t.gameObject);
-            foreach(Transform t in _popupParent) Destroy(t.gameObject);
+            foreach (Transform t in _popupParent) Destroy(t.gameObject);
             if (_loadingPopup) ShowUI(_loadingPopup, 0);
         }
 
@@ -137,7 +140,7 @@ namespace Vamporium.UI
             if (popup)
             {
                 if (_popups.TryGetValue(tag, out var existing)) return existing;
-                parent = _popupParent;
+                parent = tag == _loadingPopup ? _popupParent.parent : _popupParent;
             }
 
             var ui = Instantiate(prefab, parent);

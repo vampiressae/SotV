@@ -25,20 +25,25 @@ MonoBehaviour:
   _effects: []
   _actions:
   - Info: {fileID: 11400000, guid: d0b04737c09d40743be7425419a4d867, type: 2}
+    _might: 5
     Value:
       Min: 5
       Max: 7
-    _might: 5
   - Info: {fileID: 11400000, guid: 8414f067ff2f6ba4f9ed3a665200c080, type: 2}
+    _might: 10
     Value:
       Min: 10
       Max: 13
-    _might: 10
   - Info: {fileID: 11400000, guid: f21e4edf258c2f94ba97fa8ffd26897e, type: 2}
+    _might: 25
     Value:
       Min: 15
       Max: 20
-    _might: 25
+  - Info: {fileID: 11400000, guid: 3604afe3e882bf647a08b19549e6d89d, type: 2}
+    _might: 15
+    Value:
+      Min: 15
+      Max: 20
   _actionsUI: {fileID: 7238660739354989741, guid: be90d278e44cb4243acb1a5e386abb93, type: 3}
   _type: {fileID: 11400000, guid: 75c9656dadba88c47aa88fc9fc21cc69, type: 2}
   _equippedMight: 10

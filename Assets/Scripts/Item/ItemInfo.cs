@@ -16,20 +16,29 @@ namespace Items
         [GUIColor(0.8f, 1, 1)]
         public ItemTag[] Tags;
 
-        //public virtual void HandleExtendedUI(ItemUI ui) { }
-
-        public virtual string GetTooltip() => Name;
-
         [GUIColor(1, 0.8f, 1)]
         [ListDrawerSettings(HideAddButton = true, CustomRemoveElementFunction = "RemoveItemEffect")]
         [SerializeField, InlineEditor] private List<ItemEffect> _effects = new();
 
+        protected override void GetTooltip(ref List<string> list)
+        {
+            base.GetTooltip(ref list);
+            for (int i = 0; i < _effects.Count; i++)
+                _effects[i].GetTooltip(ref list);
+        }
+
         int IItemHasStack.Stack => Stack;
 
-        public void Effects_AddedToInventory(InventoryHolder inventory, ItemData data) 
+        public void Effects_AddedToInventory(InventoryHolder inventory, ItemData data)
             => _effects.ForEach(fx => fx.AddedToInventory(inventory, data));
 
-        public void Effects_RemovedToInventory(InventoryHolder inventory, ItemData data) 
+        public void Effects_RemovedFromInventory(InventoryHolder inventory, ItemData data)
             => _effects.ForEach(fx => fx.RemovedFromInventory(inventory, data));
+
+        public void Effects_AddedToEquipment(EquipmentHolder equipment, ItemData data)
+            => _effects.ForEach(fx => fx.AddedToInventory(equipment, data));
+
+        public void Effects_RemovedFromEquipment(EquipmentHolder equipment, ItemData data)
+            => _effects.ForEach(fx => fx.RemovedFromInventory(equipment, data));
     }
 }
