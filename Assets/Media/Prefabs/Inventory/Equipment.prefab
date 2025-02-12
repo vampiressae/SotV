@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.26666668}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.019607844}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 10
     m_Right: 10
-    m_Top: 28
+    m_Top: 10
     m_Bottom: 10
   m_ChildAlignment: 0
   m_StartCorner: 0
@@ -305,12 +305,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2163035935601809378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ff5b897c1450f34b8e6694f12acda8f, type: 3}
+  m_Script: {fileID: 11500000, guid: df991e8358675154fbe20645b0889578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Actor: {fileID: 0}
-  Slots: 5
-  Items: []
+  _playerInfoValue: {fileID: 11400000, guid: 5b30453a4238fc44a8bb8649128ca054, type: 2}
 --- !u!114 &2278102314883788073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,4 +325,4 @@ MonoBehaviour:
   _itemPrefab: {fileID: 1193205217460468462, guid: 7edd4e451bafa6844b22639e39b5d880, type: 3}
   _slotPrefab: {fileID: 8247627251778876073, guid: 26f784fd46bb8b04e87644a6587a27d9, type: 3}
   _slotParent: {fileID: 9157098721922059466}
-  Blocked: 1
+  Blocked: 0

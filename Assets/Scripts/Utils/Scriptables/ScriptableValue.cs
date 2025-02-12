@@ -13,7 +13,7 @@ public abstract class ScriptableValue<T> : ScriptableValue
 
     [SerializeField] private T _value;
 
-    public T Value
+    public virtual T Value
     {
         get => _value;
         set

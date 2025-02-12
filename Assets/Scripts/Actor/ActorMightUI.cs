@@ -19,12 +19,13 @@ namespace Actor
 
         public ActorMight Might => _might;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _images = new Image[] { _reserved, _missing, _preview, _recoverable };
             for (int i = 0; i < _images.Length; i++)
                 _images[i].gameObject.SetActive(true);
         }
+
         private void OnDisable() => Kill();
 
         public void Init(ActorMight might)

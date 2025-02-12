@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Inventory;
@@ -9,8 +8,9 @@ namespace Actor
     public class ActorHolder : EntityHolder
     {
         [Space]
-        [SerializeField] private ActorInfo _info;
-        public ActorInfo Info
+        [SerializeField, ShowIf("ShowInfoInInspector")] private ActorInfo _info;
+
+        public virtual ActorInfo Info
         {
             get
             {
@@ -23,6 +23,9 @@ namespace Actor
                 return _info;
             }
         }
+
+        public bool IsAlive => _inited && Info && Info.Might.Alive;
+        public bool IsDead => !_inited || Info == null || Info.Might.Dead;
 
         [ShowInInspector, HideInEditorMode] private InventoryHolder _inventory, _equipment;
         [ShowInInspector, HideInEditorMode] private ActorMightUI _mightUI;
@@ -38,12 +41,12 @@ namespace Actor
 
         public void InitInventories(InventoryHolder inventory, InventoryHolder equipment)
         {
-            _inventory = inventory;
-            _equipment = equipment;
+            //_inventory = inventory;
+            //_equipment = equipment;
 
-            _inventory.OnAnyChanged += InventoryOnAnyChanged;
-            _equipment.OnAnyChanged += EquipmentOnAnyChanged;
-            AnyInventoryHolderChanged();
+            //_inventory.OnAnyChanged += InventoryOnAnyChanged;
+            //_equipment.OnAnyChanged += EquipmentOnAnyChanged;
+            //AnyInventoryHolderChanged();
         }
 
         private void InventoryOnAnyChanged() => AnyInventoryHolderChanged();
@@ -57,5 +60,9 @@ namespace Actor
             if (_equipment) cost += _equipment.GetMightCost();
             Info.Might.AddReservedValue(this, cost);
         }
+
+#if UNITY_EDITOR
+        protected virtual bool ShowInfoInInspector => true;
+#endif
     }
 }

@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8351608fad7578b47915cfda0e183c42, type: 3}
-  m_Name: Popup Game Over
+  m_Script: {fileID: 11500000, guid: 9b4de55e27239d540ba7fa33a77f74a9, type: 3}
+  m_Name: Wolf Pelt
   m_EditorClassIdentifier: 
+  Name: Wood
+  Icon: {fileID: 21300000, guid: 4c304bc4fd08fe745a83ae7588544bdf, type: 3}
+  Stack: 10

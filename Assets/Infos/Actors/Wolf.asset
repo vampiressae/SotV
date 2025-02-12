@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b34591e2a5b0143a276e96332046ad, type: 3}
   m_Name: Wolf
   m_EditorClassIdentifier: 
-  Name: Wolf
   Icon: {fileID: 0}
+  Name: Wolf
+  Description: 
+  _stats: []
+  Inventory:
+  - _amount: 2
+    _info: {fileID: 11400000, guid: 603064951630fa742bd68bc20ed2b376, type: 2}
+  - _amount: 1
+    _info: {fileID: 11400000, guid: 3a8d71366111b9b46967c102aa872a2b, type: 2}
+  Equipment:
+  - _amount: 1
+    _info: {fileID: 11400000, guid: 1e65f7ec98e21634d9978b8a60352823, type: 2}
+  Skills: []
   Might:
     _max: 30
     _regen: 10
-  Inventory: []
-  Equipment:
-  - _info: {fileID: 11400000, guid: 1e65f7ec98e21634d9978b8a60352823, type: 2}
-    _amount: 1

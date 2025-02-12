@@ -1,7 +1,12 @@
+using Actor;
+using Items;
+using System.Collections.Generic;
+
 namespace Inventory
 {
     public class EquipmentHolder : InventoryHolder
     {
+        protected override List<ItemData> GetItems() => Actor.Info.Equipment;
         public override int GetMightCost()
         {
             // will send the equipped cost

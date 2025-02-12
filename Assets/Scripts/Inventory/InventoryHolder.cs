@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Items;
 using Actor;
+using Sirenix.OdinInspector;
 
 namespace Inventory
 {
@@ -10,14 +11,16 @@ namespace Inventory
     {
         public event Action OnAnyChanged;
 
-        public ActorHolder Actor;
-        public int Slots = 10;
-        public List<ItemData> Items = new();
+        [ShowInInspector, ReadOnly] public ActorHolder Actor { get; private set; }
+        [ShowInInspector, ReadOnly] public int Slots { get; private set; }
+        [ShowInInspector, ReadOnly] public List<ItemData> Items { get; private set; }
 
-        public void Init(List<ItemData> items, ActorHolder actor = null)
+        protected virtual List<ItemData> GetItems() => Actor.Info.Inventory;
+
+        public void Init(ActorHolder actor)
         {
             Actor = actor;
-            Items = items;
+            Items = GetItems();
             Slots = Items.Count;
             foreach (var data in Items)
             {

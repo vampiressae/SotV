@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8351608fad7578b47915cfda0e183c42, type: 3}
-  m_Name: Popup Game Over
+  m_Script: {fileID: 11500000, guid: f866c249713c2d248bb183d19ca9a785, type: 3}
+  m_Name: Player Info Value
   m_EditorClassIdentifier: 
+  _defaultPlayer: {fileID: 11400000, guid: 4c668b914ab1b7b4080ca44a5c8a60ce, type: 2}

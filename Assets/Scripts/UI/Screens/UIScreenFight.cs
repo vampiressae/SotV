@@ -13,10 +13,10 @@ public class UIScreenFight : MonoBehaviour
     {
         var player = FightController.Instance.Player;
 
-        _might.Init(player.Info.Might);
-        _inventory.Init(player.Info.Inventory, player);
-        _equipment.Init(player.Info.Equipment, player);
-        _skills.Init(player.Info.Skills, player);
+       // _might.Init(player.Info.Might);
+        //_inventory.Init(player.Info.Inventory, player);
+        //_equipment.Init(player.Info.Equipment, player);
+        //_skills.Init(player.Info.Skills, player);
 
         player.InitInventories(_inventory, _equipment);
     }

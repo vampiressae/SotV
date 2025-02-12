@@ -15,9 +15,7 @@ MonoBehaviour:
   Icon: {fileID: 0}
   Name: Player
   Description: 
-  Stats:
-  - _amount: 1
-    _info: {fileID: 11400000, guid: 1492911b1fc49c948a6c779b1a7eb0a6, type: 2}
+  _stats: []
   Inventory:
   - _amount: 0
     _info: {fileID: 0}
@@ -25,6 +23,26 @@ MonoBehaviour:
     _info: {fileID: 11400000, guid: 3a8d71366111b9b46967c102aa872a2b, type: 2}
   - _amount: 1
     _info: {fileID: 11400000, guid: 3255a73c4e95ae64a8053867142c9fa3, type: 2}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
+  - _amount: 0
+    _info: {fileID: 0}
   - _amount: 0
     _info: {fileID: 0}
   - _amount: 0

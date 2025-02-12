@@ -495,8 +495,10 @@ MonoBehaviour:
   - {fileID: 1642622111932126319, guid: 3cd50914a2a20514fba09c02941da37b, type: 3}
   - {fileID: 1894935617932029224, guid: ce6a32cd78410fe42a4edd55460813bb, type: 3}
   - {fileID: 3630445973639836020, guid: 50e3b5b648ddb4d43b790aa80e05de33, type: 3}
+  - {fileID: 5711581225656596959, guid: 0ee9de213dd62cc4293b57e8164b132e, type: 3}
   - {fileID: 4781418389862144561, guid: cca8cb7620bfbe344a412c70d5662fba, type: 3}
   - {fileID: 1642622111932126319, guid: b088e8d01e403ac44a1ce4c8df9f52c8, type: 3}
+  - {fileID: 1542542048917544913, guid: 1ed3d348573a4824cbabbb299f4a59b1, type: 3}
 --- !u!1001 &6180820582468906943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -636,6 +638,14 @@ PrefabInstance:
     - target: {fileID: 6495501549436649323, guid: ce6a32cd78410fe42a4edd55460813bb, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -97.04001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516123573739818217, guid: ce6a32cd78410fe42a4edd55460813bb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516123573739818217, guid: ce6a32cd78410fe42a4edd55460813bb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7495922450734915573, guid: ce6a32cd78410fe42a4edd55460813bb, type: 3}
       propertyPath: m_Name

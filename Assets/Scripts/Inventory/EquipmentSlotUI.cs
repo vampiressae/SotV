@@ -20,7 +20,7 @@ namespace Inventory
         protected override void OnItemUIRefresh()
         {
             base.OnItemUIRefresh();
-            //if (EquipmentUI.Blocked)
+            if (EquipmentUI.Blocked)
                 if (Data.Info is IHasAction hasAction)
                     hasAction.HandleExtendedUI(RawItemUI);
         }

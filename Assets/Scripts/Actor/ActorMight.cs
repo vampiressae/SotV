@@ -31,6 +31,9 @@ namespace Actor
         [ReadOnlyInPlayMode] public int Missing => _missing;
         [ReadOnlyInPlayMode] public int Recoverable => _recoverable;
 
+        public bool Alive => Available > 0;
+        public bool Dead => !Alive;
+
         [ReadOnlyInPlayMode] public int Available => Max - Reserved - Missing - Recoverable;
 
         [ReadOnlyInPlayMode] private readonly Dictionary<MightType, Dictionary<object, int>> _multipliers = new();

@@ -1,14 +1,17 @@
 
-using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Sirenix.OdinInspector;
+using Items;
 
 namespace Entity
 {
     public class EntityInfo : ScriptableWithNameAndSprite
     {
         [SerializeField, HideInPlayMode] private List<StatData> _stats;
+
+        public List<ItemData> Inventory;
 
         [ShowInInspector, HideInEditorMode]
         public List<StatData> Stats { get; private set; }

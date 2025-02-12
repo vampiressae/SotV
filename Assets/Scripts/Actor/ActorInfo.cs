@@ -13,7 +13,7 @@ namespace Actor
     {
         public event Action OnMightChanged;
 
-        public List<ItemData> Inventory, Equipment;
+        public List<ItemData> Equipment;
         public List<SkillData> Skills;
 
         [InlineProperty, HideLabel, BoxGroup("Might")] public ActorMight Might;
