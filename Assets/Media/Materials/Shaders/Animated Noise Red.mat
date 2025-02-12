@@ -45,15 +45,15 @@ Material:
     - _Noise_Contrast: 0.45
     - _Noise_Density: 50
     - _Noise_Ratio: 0.05
-    - _Noise_Strength: 1.21
+    - _Noise_Strength: 2.03
     - _Outline_Width: 0.47
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - _Base_Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Noise_Dark: {r: 0, g: 0, b: 0, a: 1}
+    - _Noise_Dark: {r: 1, g: 0, b: 0, a: 1}
     - _Noise_Direction: {r: 0, g: -0.05, b: 0, a: 0}
-    - _Noise_Light: {r: 1.4980394, g: 0, b: 0, a: 1}
+    - _Noise_Light: {r: 0, g: 0, b: 0, a: 1}
     - _Outline_Color: {r: 1, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -421,8 +421,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": -421.6000061035156,
-            "y": -83.99998474121094
+            "x": -518.3999633789063,
+            "y": -64.80000305175781
         },
         "m_Blocks": [
             {
@@ -438,8 +438,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": -421.6000061035156,
-            "y": 116.0
+            "x": -518.3999633789063,
+            "y": 135.1999969482422
         },
         "m_Blocks": [
             {
@@ -814,7 +814,7 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1297.5999755859375,
+            "x": -957.5999755859375,
             "y": 413.5999755859375,
             "width": 56.0,
             "height": 24.0
@@ -921,12 +921,6 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     }
-}
-
-{
-    "m_SGVersion": 2,
-    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalUnlitSubTarget",
-    "m_ObjectId": "474d4370270349eb80be5aff85f27eb8"
 }
 
 {
@@ -1791,6 +1785,12 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalSpriteUnlitSubTarget",
+    "m_ObjectId": "99162170cab44e9e8aca0db31237ce63"
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "9bac86ba5cb04799b12eff9c998498e8",
     "m_Id": 0,
@@ -2574,7 +2574,7 @@
     "m_ObjectId": "e08047fd3a14443e92c9e2d06aa8e982",
     "m_Datas": [],
     "m_ActiveSubTarget": {
-        "m_Id": "474d4370270349eb80be5aff85f27eb8"
+        "m_Id": "99162170cab44e9e8aca0db31237ce63"
     },
     "m_AllowMaterialOverride": false,
     "m_SurfaceType": 0,

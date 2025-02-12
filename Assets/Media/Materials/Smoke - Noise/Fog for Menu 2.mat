@@ -134,7 +134,7 @@ Material:
     - _SrcBlend: 5
     - _Surface: 1
     - _Textures_AB_C: 0.07
-    - _Textures_AB_CD: 0
+    - _Textures_AB_CD: 0.092
     - _Textures_A_B: 0.5
     - _Textures_Blend: 0.61
     - _Textures_C_D: 0.5
@@ -163,8 +163,8 @@ Material:
     - _Speed_C: {r: 0, g: -0.21, b: 0, a: 0}
     - _Speed_D: {r: 0, g: 0.023, b: 0, a: 0}
     - _Speed_Mask: {r: 0.04, g: 0, b: 0, a: 0}
-    - _Tiling_A: {r: 0.5, g: 1, b: 0, a: 0}
-    - _Tiling_B: {r: 0.5, g: 0.53, b: 0, a: 0}
+    - _Tiling_A: {r: 0.3, g: 1, b: 0, a: 0}
+    - _Tiling_B: {r: 0.3, g: 0.53, b: 0, a: 0}
     - _Tiling_C: {r: 0.78, g: 0.66, b: 0, a: 0}
     - _Tiling_D: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _Tiling_Mask: {r: 0.47, g: 0.9, b: 0, a: 0}

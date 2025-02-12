@@ -13,8 +13,6 @@ public class CameraControl : MonoBehaviour
 
     private void Update()
     {
-
-
         _camera.transform.LookAt(_t.position);
     }
 }
