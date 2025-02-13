@@ -77,3 +77,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1854abf782f09546b2b21d80a47ca98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _activate: 1
+  _trigger: {fileID: 11400000, guid: 1cbdd406aaad1814db96c16e6d307caf, type: 2}
+  _tooltipPrefab: {fileID: 3654876760491939277, guid: a28a95cbca5574e40aac4e3dab1b715a, type: 3}
+  _divider: 0
+  _title: 
+  _text: 

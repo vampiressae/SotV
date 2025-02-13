@@ -26,5 +26,8 @@ namespace Skills
             if (Data.Info is IHasAction hasAction)
                 hasAction.HandleExtendedUI(RawItemUI);
         }
+
+        protected override void Init(TooltipForString tooltip)
+            => RawData.TooltipInit(_actor, tooltip);
     }
 }

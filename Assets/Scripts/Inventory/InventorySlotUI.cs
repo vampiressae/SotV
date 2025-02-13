@@ -24,5 +24,8 @@ namespace Inventory
             base.Uninit();
             _inventoryUI = null;
         }
+
+        protected override void Init(TooltipForString tooltip) 
+            => RawData.TooltipInit(_inventoryUI.Inventory.Actor, tooltip);
     }
 }

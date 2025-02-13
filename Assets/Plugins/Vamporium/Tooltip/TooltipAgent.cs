@@ -22,7 +22,7 @@ public abstract class TooltipAgent<TTooltip> : MonoBehaviour, IPointerEnterHandl
     public virtual void OnPointerExit(PointerEventData e) => Exit();
     public virtual void OnPointerDown(PointerEventData e) => Down();
     public virtual void OnPointerUp(PointerEventData e) => Up();
-    protected virtual bool IsEmpty => false;
+    public virtual bool IsEmpty => false;
 
     protected abstract void Init(TTooltip tooltip);
 

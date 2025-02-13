@@ -9,7 +9,7 @@ public class TooltipAgentForStringInterface : TooltipAgent<TooltipForString>
 {
     private ITooltipString _iTooltip;
 
-    protected override bool IsEmpty => string.IsNullOrEmpty(_iTooltip.Title) && string.IsNullOrEmpty(_iTooltip.Description);
+    public override bool IsEmpty => string.IsNullOrEmpty(_iTooltip.Title) && string.IsNullOrEmpty(_iTooltip.Description);
 
     private void Awake() => _iTooltip = GetComponent<ITooltipString>();
 

@@ -30,19 +30,8 @@ public class FightController : MonoBehaviour
         _roundsPerTurn.Value = 0;
     }
 
-    private void Start()
-    {
-        UIManager.Show(_screenUI);
-        _player.Info.Might.OnAnyValueChanged += OnAnyMightChanged;
-        _enemy.Info.Might.OnAnyValueChanged += OnAnyMightChanged;
-    }
-
-    private void OnDestroy()
-    {
-        Instance = null;
-        _player.Info.Might.OnAnyValueChanged -= OnAnyMightChanged;
-        _enemy.Info.Might.OnAnyValueChanged-= OnAnyMightChanged;
-    }
+    private void Start() => UIManager.Show(_screenUI);
+    private void OnDestroy() => Instance = null;
 
     public void EndRound() => _roundsPerTurn.Value++;
 
@@ -74,11 +63,5 @@ public class FightController : MonoBehaviour
         if (_enemy.IsAlive) return false;
         UIManager.Show(_uiVictory, delay:2);
         return true;
-    }
-
-    private void OnAnyMightChanged()
-    {
-        if (_enemy.IsAlive) return;
-        UIManager.Show(_uiVictory, delay: 2);
     }
 }

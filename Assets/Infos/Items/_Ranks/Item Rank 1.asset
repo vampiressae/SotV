@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ea577e55ef8f8458df56eb7f5a7534, type: 3}
   m_Name: Item Rank 1
   m_EditorClassIdentifier: 
-  Name: Uncommon
   Icon: {fileID: 0}
+  Name: Uncommon
+  Description: 
   Color: {r: 1, g: 1, b: 1, a: 1}
   Material: {fileID: 2100000, guid: 1891c7a16a87c6e408193378d69f2064, type: 2}
+  Gradient: {fileID: 11400000, guid: 27c24958cd355b54f8365f3b2d061db0, type: 2}

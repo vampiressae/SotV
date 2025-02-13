@@ -6,8 +6,9 @@ using Actor;
 
 namespace Items
 {
-    public class ItemInfoWithActionUI : TooltipAgentForString
+    public class ItemInfoWithActionUI : TooltipAgent<TooltipForString>
     {
+        //TooltipAgentForString
         [Space]
         [SerializeField] private Image _icon;
         [SerializeField] private Image _frame;
@@ -48,11 +49,8 @@ namespace Items
             Refresh();
         }
 
-        protected override void Init(TooltipForString tooltip)
-        {
-            base.Init(tooltip);
-            _action.TooltipInit(_actor, tooltip);
-        }
+        protected override void Init(TooltipForString tooltip) 
+            => _action.TooltipInit(_actor, tooltip);
 
         public void Uninit()
         {

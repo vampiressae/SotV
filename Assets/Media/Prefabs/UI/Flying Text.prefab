@@ -375,3 +375,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _positiveColor: {fileID: 11400000, guid: 27c24958cd355b54f8365f3b2d061db0, type: 2}
+  _negativeColor: {fileID: 11400000, guid: 866ce70f6ff3748469ee2e2d0e03f7ad, type: 2}

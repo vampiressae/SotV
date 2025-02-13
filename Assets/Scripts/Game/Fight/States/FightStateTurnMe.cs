@@ -1,4 +1,5 @@
-﻿using VamporiumState.GO;
+﻿using System;
+using VamporiumState.GO;
 
 public class FightStateTurnMe : FightStateTurn
 {

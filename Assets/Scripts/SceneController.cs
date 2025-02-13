@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Vamporium.UI;
@@ -17,6 +18,8 @@ public class SceneController : MonoBehaviour
     private string _desired;
     private Scene _current;
     private float _started;
+
+    public Scene Current => _current;
 
     private void Awake()
     {
@@ -39,6 +42,7 @@ public class SceneController : MonoBehaviour
         {
             UIManager.Show(_loadingUI);
             yield return new WaitForSeconds(UIManager.Instance.FadeDuration);
+            UIManager.HidePopups();
         }
 
         if (_current.IsValid())
@@ -52,6 +56,7 @@ public class SceneController : MonoBehaviour
         OnSceneUnloaded -= RetryLoadScene;
         OnSceneLoading?.Invoke(_desired);
 
+        SceneManager.sceneLoaded += SceneLoaded;
         var loadScene = SceneManager.LoadSceneAsync(_desired, LoadSceneMode.Additive);
         loadScene.allowSceneActivation = false;
 
@@ -68,11 +73,15 @@ public class SceneController : MonoBehaviour
 
         var wait = UIManager.Instance.FadeDuration;
         wait += Mathf.Max(_minLoading - (Time.time - _started), 0f);
+
         yield return new WaitForSeconds(wait);
 
         UIManager.Hide(_loadingUI);
         OnSceneLoaded?.Invoke(_current.name);
+        SceneManager.sceneLoaded -= SceneLoaded;
     }
+
+    private void SceneLoaded(Scene scene, LoadSceneMode _) => _current = scene;
 
     private IEnumerator UnloadCurrentSceneAsync(bool auto)
     {

@@ -165,6 +165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isPlayerTurn: {fileID: 11400000, guid: 1b08c6aa779898742a4268dcee3582d3, type: 2}
   _popupTag: {fileID: 11400000, guid: cab2b550bed9a324a89ea150acf7b864, type: 2}
+  _victoryTag: {fileID: 0}
+  _defeatTag: {fileID: 0}
   _player: {fileID: 558116315}
   _enemy: {fileID: 2146974307}
   _ai: {fileID: 881557621}
@@ -696,6 +698,7 @@ MonoBehaviour:
   - {fileID: 314406149}
   - {fileID: 1615805110}
   - {fileID: 69846809}
+  - {fileID: 1455380541}
 --- !u!4 &780685520
 Transform:
   m_ObjectHideFlags: 0
@@ -712,6 +715,7 @@ Transform:
   - {fileID: 314406150}
   - {fileID: 1615805111}
   - {fileID: 69846808}
+  - {fileID: 1455380542}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &780685522
@@ -726,7 +730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b478db3f6a809db4586608f244631baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInfoValue: {fileID: 0}
   _player: {fileID: 558116315}
   _enemy: {fileID: 2146974307}
   _roundsPerTurn: {fileID: 11400000, guid: 5a2c280cb1a79bb47acf031ea7c7fee8, type: 2}
@@ -864,6 +867,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1455380540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1455380542}
+  - component: {fileID: 1455380541}
+  m_Layer: 0
+  m_Name: End
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1455380541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455380540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b1ba1a8b41f7ee449b0fabf93b95632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _victoryTag: {fileID: 11400000, guid: b4d48cb01b783e048a497a28e6780e06, type: 2}
+  _containerTag: {fileID: 11400000, guid: b97183adef62a124f8914e0a1b55eccd, type: 2}
+--- !u!4 &1455380542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455380540}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 780685520}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1504533026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,6 +1076,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isPlayerTurn: {fileID: 11400000, guid: 1b08c6aa779898742a4268dcee3582d3, type: 2}
   _popupTag: {fileID: 11400000, guid: cab2b550bed9a324a89ea150acf7b864, type: 2}
+  _victoryTag: {fileID: 11400000, guid: b4d48cb01b783e048a497a28e6780e06, type: 2}
+  _defeatTag: {fileID: 11400000, guid: 57f8f8577ba71b04987b0e3ce47ceef9, type: 2}
 --- !u!4 &1615805111
 Transform:
   m_ObjectHideFlags: 0

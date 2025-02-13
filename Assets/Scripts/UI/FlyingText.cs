@@ -11,6 +11,28 @@ public class FlyingText : MonoBehaviour
     [SerializeField] private Vector2 _movement;
     [SerializeField] private Ease _ease;
     [SerializeField] private AnimationCurve _rendererFade, _textFade;
+    [Space]
+    [SerializeField] private TMP_ColorGradient _positiveColor;
+    [SerializeField] private TMP_ColorGradient _negativeColor;
+
+    public TMP_Text Text => _text;
+    public SpriteRenderer Sprite => _renderer;
+
+    public void Init(Sprite sprite, Color spriteColor, int value, Color textColor)
+    {
+        Init(sprite, spriteColor, value.ToString(), textColor);
+        if (value >= 0) SetTextGradient(_positiveColor);
+        else if (value < 0) SetTextGradient(_negativeColor);
+    }
+
+    public void SetTextGradient(TMP_ColorGradient gradient)
+    {
+        if (gradient == null) return;
+
+        _text.color = Color.white;
+        _text.enableVertexGradient = true;
+        _text.colorGradientPreset = gradient;
+    }
 
     public void Init(Sprite sprite, Color spriteColor, string text, Color textColor)
     {

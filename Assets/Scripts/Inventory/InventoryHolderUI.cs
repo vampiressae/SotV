@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Inventory
 {
@@ -9,7 +10,7 @@ namespace Inventory
         [SerializeField] private InventoryItemUI _itemPrefab;
         [SerializeField] private InventorySlotUI _slotPrefab;
         [SerializeField] private Transform _slotParent;
-        
+        [SerializeField] private bool _shrinkToMin;
         public bool Blocked;
 
         public InventoryHolder Inventory => _inventory;
@@ -28,6 +29,10 @@ namespace Inventory
             }
 
             _uis.ForEach(ui => ui.OnDataChanged());
+
+            if (_shrinkToMin && _inventory.Slots < 10)
+                if (TryGetComponent<GridLayoutGroup>(out var layout))
+                    layout.constraint = GridLayoutGroup.Constraint.Flexible;
         }
     }
 }

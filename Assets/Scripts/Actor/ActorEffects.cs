@@ -30,7 +30,7 @@ namespace Actor
             transform.localScale = Vector3.one * 1.08f;
             transform.DOScale(1, 0.1f);
 
-            FlyingTextController.Show(_actor, (-delta).ToStringWithSign());
+            FlyingTextController.Show(_actor, -delta);
         }
 
         private void OnItemActionActed(ActorHolder source, EntityHolder target, Item item, ActionBase action)
@@ -39,7 +39,10 @@ namespace Actor
 
             _actor.transform.DOPunchPosition(new(0, 0.2f, 0), 0.2f, 0, 0);
             if (action is ActionWithInfo awi)
-                FlyingTextController.Show(_actor, awi.InfoRaw.Name);
+            {
+                var text = FlyingTextController.Show(_actor, awi.InfoRaw.Name);
+                if (text && action.Rank) action.Rank.SetText(text.Text);
+            }
         }
     }
 }

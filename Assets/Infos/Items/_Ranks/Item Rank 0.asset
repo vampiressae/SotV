@@ -17,3 +17,4 @@ MonoBehaviour:
   Description: 
   Color: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
   Material: {fileID: 2100000, guid: 1eb2895a18336f6468cc000b1788759d, type: 2}
+  Gradient: {fileID: 11400000, guid: 2f78ff9cc1077df4a9c6ed840ac01009, type: 2}

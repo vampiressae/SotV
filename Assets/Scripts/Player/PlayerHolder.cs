@@ -7,8 +7,6 @@ namespace Actor
     {
         [Space]
         [SerializeField] private PlayerInfoValue _playerInfoValue;
-        [SerializeField] private InventoryHolder _inventoryHolder;
-        [SerializeField] private EquipmentHolder _equipmentHolder;
 
         public override ActorInfo Info => _playerInfoValue.Player;
 

@@ -27,7 +27,7 @@ public class TooltipForString : Tooltip
 
         _title.gameObject.SetActive(true);
         _text.gameObject.SetActive(!string.IsNullOrEmpty(text));
-        _divider.SetActive(divider);
+        _divider.SetActive(divider && !string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(text));
         return this;
     }
 }

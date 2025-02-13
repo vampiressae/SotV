@@ -1,8 +1,8 @@
+using UnityEngine;
+using Sirenix.Utilities;
 using Items;
 using Entity;
 using Actor;
-using UnityEngine;
-using Sirenix.Utilities;
 
 public enum ActionTarget { None = 0, Any = 10, AllyAny = 110, AllySelf = 120, AllyOther = 130, EnemyAny = 210, EnemyLand = 220, EnemyAir = 230 }
 
@@ -44,6 +44,8 @@ public abstract class ActionInfo : ScriptableWithNameAndSprite
         InfluencingStats?.ForEach(stat => multiplier += entity.GetStatValue(stat));
         return intRange + intRange * multiplier;
     }
+
+
 
 #if UNITY_EDITOR
     protected override void OnValidate()

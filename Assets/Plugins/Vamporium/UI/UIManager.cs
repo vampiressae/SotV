@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
-using UnityEditor.Build.Content;
 
 namespace Vamporium.UI
 {
@@ -22,7 +21,7 @@ namespace Vamporium.UI
         public static UIBase Show(UITag tag, float duration = -1, float delay = 0) => Instance.ShowUI(tag, duration, delay);
         public static UIBase Hide(UITag tag, float duration = -1, float delay = 0) => Instance.HideUI(tag, duration, delay);
 
-        public static void HidePopups() => Instance.HidePopupUIs();
+        public static void HidePopups(bool includeLoadingPopup = false) => Instance.HidePopupUIs(includeLoadingPopup);
         public static UIPopupMessage ShowMessage(float duration = -1) => Instance.ShowUIMessage(duration);
 
         public static UIBase ShowPreviousScreen(float duration = -1, float delay = 0)
@@ -207,10 +206,12 @@ namespace Vamporium.UI
             return ShowUI(_messagePopup, duration) as UIPopupMessage;
         }
 
-        private void HidePopupUIs()
+        private void HidePopupUIs(bool includeLoadingPopup = false)
         {
             var popups = _popups.Keys.ToArray();
-            popups.ForEach(p => HideUI(p));
+            foreach (var popup in popups)
+                if (includeLoadingPopup || popup != _loadingPopup)
+                    Hide(popup);
         }
 
         public void TogglePopupUI(UITag tag)

@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Actor;
 
 public abstract class Item
 {
@@ -26,6 +27,8 @@ public abstract class Item
     public abstract void InvokeOnItemDataChanging();
     public abstract void InvokeOnItemDataChanged();
     public void InvokeOnChanged() => OnChanged?.Invoke();
+
+    public virtual void TooltipInit(ActorHolder actor, TooltipForString tooltip) { }
 }
 
 public abstract class Item<T> : Item where T : ScriptableWithNameAndSprite

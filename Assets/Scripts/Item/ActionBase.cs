@@ -79,13 +79,12 @@ namespace Items
         {
             base.TooltipInit(actor, tooltip);
 
-            if (Info.Rank) tooltip.Title.color = Info.Rank.Color;
-
             var descriptions = new List<string>();
             TooltipDescriptions(actor, ref descriptions);
             if (Info.EndTurn) descriptions.Add("<i>Ends Turn</i>");
 
             tooltip.Init(Info.Name, string.Join("\n", descriptions), true);
+            if (Info.Rank) Info.Rank.SetText(tooltip.Title);
         }
 
         protected virtual void TooltipDescriptions(ActorHolder actor, ref List<string> descriptions) { }
@@ -111,7 +110,7 @@ namespace Items
         {
             base.TooltipDescriptions(actor, ref descriptions);
             var might = FightController.Instance.RoundsPerTurn.GetMightValue(actor, Might);
-            descriptions.Add($"{UnityUtils.LabelColor}Cost:</color> <b>{might}</b> Might {_might.ToInitialValueString()}");
+            descriptions.Add($"{UnityUtils.LabelColor}Cost:</color> <b>{might}</b> Might {_might.ToInitialValueString(false)}");
         }
     }
 

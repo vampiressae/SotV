@@ -1,6 +1,5 @@
 using UnityEngine;
 using DG.Tweening;
-using Vamporium.UI;
 
 public class UIPopupFightVictory : MonoBehaviour
 {
@@ -13,18 +12,12 @@ public class UIPopupFightVictory : MonoBehaviour
     [SerializeField] private Ease _ease;
 
     private void Start() => Invoke(nameof(StartAnimation), 2);
-    private void OnDestroy() => CancelInvoke(nameof(StartAnimation));
-
-    private void StartAnimation()
+    private void OnDestroy()
     {
-        _victoryText.DOScale(_maxScale, _duration)
-            .SetEase(_ease)
-            .onComplete += Complete;
+        CancelInvoke(nameof(StartAnimation));
+        _victoryText.DOKill();
     }
 
-    private void Complete()
-    {
-        UIManager.Hide(_victoryUI);
-        UIManager.Show(_containerUI);
-    }
+    private void StartAnimation() 
+        => _victoryText.DOScale(_maxScale, _duration).SetEase(_ease);
 }

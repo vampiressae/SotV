@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4de55e27239d540ba7fa33a77f74a9, type: 3}
   m_Name: Wolf Pelt
   m_EditorClassIdentifier: 
-  Name: Wood
   Icon: {fileID: 21300000, guid: 4c304bc4fd08fe745a83ae7588544bdf, type: 3}
+  Name: Wolf Pelt
+  Description: 
   Stack: 10
+  Might: 1
+  Rank: {fileID: 0}
+  Tags: []
+  _effects: []

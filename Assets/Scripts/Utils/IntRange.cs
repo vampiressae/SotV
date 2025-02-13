@@ -1,8 +1,6 @@
-using Sirenix.OdinInspector;
-using Sirenix.Utilities;
 using System;
-using System.Numerics;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [System.Serializable]
 public struct IntRange
@@ -49,5 +47,7 @@ public struct IntRange
         return what;
     }
 
+    public override bool Equals(object obj) => obj is IntRange range && Min == range.Min && Max == range.Max;
+    public override int GetHashCode() => HashCode.Combine(Min, Max);
     public override string ToString() => $"{Min}-{Max}";
 }

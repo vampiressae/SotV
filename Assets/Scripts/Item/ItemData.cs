@@ -1,3 +1,4 @@
+using Actor;
 using System;
 
 namespace Items
@@ -55,6 +56,12 @@ namespace Items
 
             InvokeOnItemDataChanged();
             with.InvokeOnItemDataChanged();
+        }
+
+        public override void TooltipInit(ActorHolder actor, TooltipForString tooltip)
+        {
+            base.TooltipInit(actor, tooltip);
+            Info.TooltipInit(actor, tooltip);
         }
     }
 }

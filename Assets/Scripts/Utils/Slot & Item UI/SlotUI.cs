@@ -1,17 +1,16 @@
 ﻿using System;
-using UnityEngine;
 
-public abstract class SlotUI : MonoBehaviour, ITooltipString
+public abstract class SlotUI : TooltipAgent<TooltipForString>, ITooltipString
 {
     public event Action OnChanged;
 
     public abstract Item RawData { get; set; }
     public abstract ItemUI RawItemUI { get; }
 
-    public bool IsEmpty => RawData.IsEmpty;
+    public override bool IsEmpty => RawData == null || RawData.IsEmpty;
 
-    public virtual string Title => RawData.RawInfo ? RawData.RawInfo.Name : string.Empty;
-    public virtual string Description => RawData.RawInfo ? RawData.RawInfo.GetTooltip() : string.Empty;
+    public virtual string Title => !IsEmpty && RawData.RawInfo ? RawData.RawInfo.Name : string.Empty;
+    public virtual string Description => !IsEmpty && RawData.RawInfo ? RawData.RawInfo.GetTooltip() : string.Empty;
     public virtual bool Divider => !string.IsNullOrEmpty(Description);
 
     protected void Init(Item data)

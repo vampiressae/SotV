@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Inventory;
+using Actor;
 
 namespace Items
 {
@@ -40,5 +41,28 @@ namespace Items
 
         public void Effects_RemovedFromEquipment(EquipmentHolder equipment, ItemData data)
             => _effects.ForEach(fx => fx.RemovedFromInventory(equipment, data));
+
+        public virtual void TooltipInit(ActorHolder actor, TooltipForString tooltip)
+        {
+            var descriptions = new List<string>();
+            TooltipDescriptions(actor, ref descriptions);
+
+            tooltip.Init(Name, string.Join("\n", descriptions), true);
+            if (Rank) Rank.SetText(tooltip.Title);
+        }
+
+        protected virtual void TooltipDescriptions(ActorHolder actor, ref List<string> descriptions) => descriptions.Add(Description);
+
+#if UNITY_EDITOR
+        protected override void OnValidate() 
+        {
+            base.OnValidate();
+            if (Rank == null)
+            {
+                Rank = EditorUtils.LoadAssetsSafeFirst<ItemRank>("Item Rank 0");
+                UnityEditor.EditorUtility.SetDirty(Rank);
+            }
+        }
+#endif
     }
 }

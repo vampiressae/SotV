@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ea577e55ef8f8458df56eb7f5a7534, type: 3}
   m_Name: Item Rank 2
   m_EditorClassIdentifier: 
-  Name: Rare
   Icon: {fileID: 0}
-  Color: {r: 1, g: 0.9568628, b: 0.5019608, a: 1}
+  Name: Rare
+  Description: 
+  Color: {r: 0.9622642, g: 0.88404685, b: 0.45571372, a: 1}
   Material: {fileID: 2100000, guid: bdde17f05a8066c4bba2190ab16712e8, type: 2}
+  Gradient: {fileID: 11400000, guid: 6acb79cdfada369478b246dc0495c721, type: 2}
