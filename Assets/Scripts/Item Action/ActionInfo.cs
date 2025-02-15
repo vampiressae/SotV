@@ -4,13 +4,14 @@ using Items;
 using Entity;
 using Actor;
 
-public enum ActionTarget { None = 0, Any = 10, AllyAny = 110, AllySelf = 120, AllyOther = 130, EnemyAny = 210, EnemyLand = 220, EnemyAir = 230 }
-
 public abstract class ActionInfo : ScriptableWithNameAndSprite
 {
+    [System.Flags] public enum Property { None, HideInTooltipSummary }
+
     public bool EndTurn;
     public ItemRank Rank;
     public ActionTarget Target;
+    public Property Properties;
     [Space]
     public StatInfo[] InfluencingStats;
 
@@ -40,12 +41,10 @@ public abstract class ActionInfo : ScriptableWithNameAndSprite
 
     public IntRange InfluencedValueRange(EntityInfo entity, IntRange intRange)
     {
-        var multiplier = 0;
-        InfluencingStats?.ForEach(stat => multiplier += entity.GetStatValue(stat));
-        return intRange + intRange * multiplier;
+        var multiplier = 0f;
+        InfluencingStats?.ForEach(stat => multiplier += entity.GetInfluencedStatValue(stat));
+        return intRange + Mathf.FloorToInt(multiplier);
     }
-
-
 
 #if UNITY_EDITOR
     protected override void OnValidate()

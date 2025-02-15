@@ -1,11 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Actor;
+using Skills;
 
 namespace Items
 {
     public abstract class ItemInfoWithAction : ItemInfo
     {
+        [Space]
+        [SerializeField] private SkillInfo _useSkill;
+        [SerializeField] private ItemInfoWithActionsUI _actionsUI;
+
+        public SkillInfo UseSkill => _useSkill;
+        public ItemInfoWithActionsUI ActionsUI => _actionsUI;
         public abstract ActionBase[] ItemActionsRaw { get; }
+
+        protected override void TooltipActionsSummary(ActorHolder actor, ref List<string> descriptions)
+        {
+            var count = 
+                _useSkill == null ? ItemActionsRaw.Length :
+                actor.Info.GetSkill(_useSkill, out var skill) ? skill.Amount : 0;
+
+            for (int i = 0; i < Mathf.Min(ItemActionsRaw.Length, count + 1); i++)
+                ItemActionsRaw[i].TooltipSummary(actor, ref descriptions);
+        }
 
 #if UNITY_EDITOR
         protected override void OnValidate()
@@ -24,15 +43,12 @@ namespace Items
     {
         [GUIColor(1, 0.9f, 0.8f)]
         [SerializeField] private T[] _actions;
-        [Space]
-        [SerializeField] private ItemInfoWithActionsUI _actionsUI;
 
         public override ActionBase[] ItemActionsRaw => _actions;
 
-        public ItemInfoWithActionsUI ActionsUI => _actionsUI;
         public ActionBase[] Actions => _actions;
 
         public void HandleExtendedUI(ItemUI itemUI)
-            => this.HandleExtendedUI(itemUI, _actionsUI);
+            => this.HandleExtendedUI(itemUI, ActionsUI);
     }
 }

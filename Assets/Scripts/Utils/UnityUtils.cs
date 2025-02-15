@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public static class UnityUtils
 {
@@ -20,13 +21,14 @@ public static class UnityUtils
         => label.ToLabelAndValue(sign ? value.ToStringWithSign() : value.ToString());
 
     public static string ToLabelAndValue(this string label, string value)
-        => $"{value} {LabelColor}{label}</color>";
+        => $"{value.ToValueString()} {label}</color>";
 
     public static string ToInitialValueString(this int value, bool sign = true)
-        => (sign ? value.ToStringWithSign() : value.ToString()).ToInitialValueString();
+        => (sign ? value.ToStringWithSign() : value.ToString());
 
-    public static string ToInitialValueString(this string value)
-        => $"{LabelColor}({value})</color>";
-
-    public static string LabelColor => "<color=#ffffff55>";
+    public static string ToValueString(this IntRange value) => ValueColorOpen + value + ValueColorClose;
+    public static string ToValueString(this int value) => ValueColorOpen + value + ValueColorClose;
+    public static string ToValueString(this string text) => ValueColorOpen + text + ValueColorClose;
+    public static string ValueColorOpen => "<color=#ffffffff><b>";
+    public static string ValueColorClose => "</b></color>";
 }

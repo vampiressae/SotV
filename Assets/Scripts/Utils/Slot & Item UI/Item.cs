@@ -11,7 +11,7 @@ public abstract class Item
 
     public abstract bool IsEmpty { get; }
     public abstract bool IsFull { get; }
-    public abstract ScriptableWithNameAndSprite RawInfo { get; set; }
+    public abstract ScriptableWithNameAndSpriteAndTooltip RawInfo { get; set; }
 
     public int Amount => _amount;
 
@@ -28,15 +28,16 @@ public abstract class Item
     public abstract void InvokeOnItemDataChanged();
     public void InvokeOnChanged() => OnChanged?.Invoke();
 
-    public virtual void TooltipInit(ActorHolder actor, TooltipForString tooltip) { }
+    public virtual void TooltipInit(ActorHolder actor, TooltipForString tooltip, bool actionSummary) 
+        => RawInfo.TooltipInit(actor, tooltip, actionSummary);
 }
 
-public abstract class Item<T> : Item where T : ScriptableWithNameAndSprite
+public abstract class Item<T> : Item where T : ScriptableWithNameAndSpriteAndTooltip
 {
     [SerializeField, HideLabel, HorizontalGroup] protected T _info;
     public T Info { get => _info; set => SetInfo(value); }
 
-    public override ScriptableWithNameAndSprite RawInfo { get => Info; set => _info = value as T; }
+    public override ScriptableWithNameAndSpriteAndTooltip RawInfo { get => Info; set => _info = value as T; }
 
     private void SetInfo(T info)
     {

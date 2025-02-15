@@ -13,6 +13,8 @@ namespace Entity
         public StatInfo Info => _info;
         public object Source { get; private set; }
 
+        public float InfluencedAmount => Amount * Info.Influence;
+
         public StatData(StatInfo info) => _info = info;
         public StatData(StatInfo info, int amount) : this(info) => _amount = amount;
         public StatData(object source, StatInfo info, int amount) : this(info, amount) => Source = source;

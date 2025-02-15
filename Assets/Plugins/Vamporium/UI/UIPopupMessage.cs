@@ -32,9 +32,6 @@ public class UIPopupMessage : UIPopup
     [SerializeField] private UIPopupMessageButton _buttonPrefab;
     [SerializeField] private Transform _buttonParent;
     [Space]
-    [SerializeField] private VerticalLayoutGroup _layoutGroup;
-    [SerializeField] private int _bottomPadding = 30;
-    [Space]
     [SerializeField] private LayoutElement _textLayout;
     [SerializeField] private int _maxWidth = 800, _maxHeight = 500;
 
@@ -53,7 +50,6 @@ public class UIPopupMessage : UIPopup
 
         //foreach (Transform t in _buttonParent) Destroy(t.gameObject);
         _buttonParent.gameObject.SetActive(false);
-        _layoutGroup.padding.bottom = _bottomPadding;
 
         _body.text = body;
         if (_image) _image.gameObject.SetActive(false);
@@ -98,7 +94,6 @@ public class UIPopupMessage : UIPopup
         if (buttons.IsNullOrEmpty()) return this;
 
         _buttonParent.gameObject.SetActive(true);
-        _layoutGroup.padding.bottom = 0;
 
         for (int i = 0; i < buttons.Length; i++)
         {

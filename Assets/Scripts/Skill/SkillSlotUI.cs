@@ -1,6 +1,6 @@
 using UnityEngine;
-using Entity;
 using Items;
+using Entity;
 using Actor;
 
 namespace Skills
@@ -12,12 +12,14 @@ namespace Skills
         public EntityHolder Entity => _actor;
         protected override ItemUI<SkillData, SkillInfo> Prefab => _itemPrefab;
 
+        private SkillsUI _skillsUI;
         private ActorHolder _actor;
 
-        public void Init(SkillData data, ActorHolder actor)
+        public void Init(SkillsUI skillsUI, SkillData data, ActorHolder actor)
         {
+            _skillsUI = skillsUI;
             _actor = actor;
-            base.Init(data);
+            Init(data);
         }
 
         protected override void OnItemUIRefresh()
@@ -28,6 +30,6 @@ namespace Skills
         }
 
         protected override void Init(TooltipForString tooltip)
-            => RawData.TooltipInit(_actor, tooltip);
+            => RawData.TooltipInit(_actor, tooltip, _skillsUI.ShowActions);
     }
 }

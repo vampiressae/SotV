@@ -40,7 +40,7 @@ namespace Actor
             _actor.transform.DOPunchPosition(new(0, 0.2f, 0), 0.2f, 0, 0);
             if (action is ActionWithInfo awi)
             {
-                var text = FlyingTextController.Show(_actor, awi.InfoRaw.Name);
+                var text = FlyingTextController.Show(_actor, awi.RawInfo.Name);
                 if (text && action.Rank) action.Rank.SetText(text.Text);
             }
         }

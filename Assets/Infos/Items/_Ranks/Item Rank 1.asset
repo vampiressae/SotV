@@ -15,6 +15,6 @@ MonoBehaviour:
   Icon: {fileID: 0}
   Name: Uncommon
   Description: 
-  Color: {r: 1, g: 1, b: 1, a: 1}
+  Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   Material: {fileID: 2100000, guid: 1891c7a16a87c6e408193378d69f2064, type: 2}
   Gradient: {fileID: 11400000, guid: 27c24958cd355b54f8365f3b2d061db0, type: 2}

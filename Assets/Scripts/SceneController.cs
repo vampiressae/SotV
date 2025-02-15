@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Vamporium.UI;
@@ -24,6 +23,7 @@ public class SceneController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void LoadScene(string scene)
@@ -57,6 +57,7 @@ public class SceneController : MonoBehaviour
         OnSceneLoading?.Invoke(_desired);
 
         SceneManager.sceneLoaded += SceneLoaded;
+
         var loadScene = SceneManager.LoadSceneAsync(_desired, LoadSceneMode.Additive);
         loadScene.allowSceneActivation = false;
 

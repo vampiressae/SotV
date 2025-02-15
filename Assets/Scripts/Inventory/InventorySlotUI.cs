@@ -25,7 +25,10 @@ namespace Inventory
             _inventoryUI = null;
         }
 
-        protected override void Init(TooltipForString tooltip) 
-            => RawData.TooltipInit(_inventoryUI.Inventory.Actor, tooltip);
+        protected override void Init(TooltipForString tooltip)
+        {
+            var summary = InventoryUI is not EquipmentHolderUI equipment || !equipment.Blocked;
+            RawData.TooltipInit(_inventoryUI.Inventory.Actor, tooltip, summary);
+        }
     }
 }

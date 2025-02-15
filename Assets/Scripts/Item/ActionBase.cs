@@ -47,20 +47,35 @@ namespace Items
         protected abstract bool ActIt(Item item, ActorHolder source, EntityHolder target, bool useMight);
 
         public virtual void TooltipInit(ActorHolder actor, TooltipForString tooltip) { }
+        public virtual void TooltipDescriptions(ActorHolder actor, ref List<string> descriptions) { }
+        public virtual void TooltipSummary(ActorHolder actor, ref List<string> descriptions) { }
 
 #if UNITY_EDITOR
         public virtual void OnValidate(ItemInfo item) { }
 #endif
     }
+
     public abstract class ActionWithInfo : ActionBase
     {
-        public abstract ActionInfo InfoRaw { get; }
+        public abstract ActionInfo RawInfo { get; }
+
+        public override void TooltipSummary(ActorHolder actor, ref List<string> descriptions)
+        {
+            base.TooltipSummary(actor, ref descriptions);
+            if (RawInfo.Properties.HasFlag(ActionInfo.Property.HideInTooltipSummary)) return;
+
+            var color = $"<color=#{ColorUtility.ToHtmlStringRGBA(RawInfo.Rank.Color)}>";
+            var details = TooltipSummaryDetails(actor, $"• {color}{RawInfo.Name}</color>");
+            descriptions.Add(details);
+        }
+
+        public virtual string TooltipSummaryDetails(ActorHolder actor, string tooltip) => tooltip;
     }
 
     public abstract class ActionWithInfo<T> : ActionWithInfo where T : ActionInfo
     {
         [HorizontalGroup("1"), LabelText("Key"), LabelWidth(40)] public T Info;
-        public override ActionInfo InfoRaw => Info;
+        public override ActionInfo RawInfo => Info;
         public override Sprite Icon => Info.Icon;
         public override ItemRank Rank => Info.Rank;
 
@@ -81,13 +96,11 @@ namespace Items
 
             var descriptions = new List<string>();
             TooltipDescriptions(actor, ref descriptions);
-            if (Info.EndTurn) descriptions.Add("<i>Ends Turn</i>");
+            if (Info.EndTurn) descriptions.Add("<i>Ends Turn</i>".ToValueString());
 
             tooltip.Init(Info.Name, string.Join("\n", descriptions), true);
             if (Info.Rank) Info.Rank.SetText(tooltip.Title);
         }
-
-        protected virtual void TooltipDescriptions(ActorHolder actor, ref List<string> descriptions) { }
     }
 
     public abstract class ActionWithInfoMight<T> : ActionWithInfo<T> where T : ActionInfo
@@ -106,11 +119,11 @@ namespace Items
             return true;
         }
 
-        protected override void TooltipDescriptions(ActorHolder actor, ref List<string> descriptions)
+        public override void TooltipDescriptions(ActorHolder actor, ref List<string> descriptions)
         {
             base.TooltipDescriptions(actor, ref descriptions);
             var might = FightController.Instance.RoundsPerTurn.GetMightValue(actor, Might);
-            descriptions.Add($"{UnityUtils.LabelColor}Cost:</color> <b>{might}</b> Might {_might.ToInitialValueString(false)}");
+            descriptions.Add($"Cost: {might.ToValueString()} Might ({_might.ToInitialValueString(false)})");
         }
     }
 
@@ -121,11 +134,10 @@ namespace Items
 
         public IntRange InfluencedValueRange(EntityInfo entity) => Info.InfluencedValueRange(entity, Value);
 
-        protected override void TooltipDescriptions(ActorHolder actor, ref List<string> descriptions)
+        public override void TooltipDescriptions(ActorHolder actor, ref List<string> descriptions)
         {
             base.TooltipDescriptions(actor, ref descriptions);
-            var value = Value.ToString().ToInitialValueString();
-            descriptions.Add($"{UnityUtils.LabelColor}{ValueName}:</color> <b>{InfluencedValueRange(actor.Info)}</b> {value}");
+            descriptions.Add($"{ValueName}: {InfluencedValueRange(actor.Info).ToValueString()} ({Value})");
         }
     }
 }

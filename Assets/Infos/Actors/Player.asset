@@ -71,6 +71,8 @@ MonoBehaviour:
   Skills:
   - _amount: 1
     _info: {fileID: 11400000, guid: ae5f0b7ada4f5bd469e21ac0804d5584, type: 2}
+  - _amount: 2
+    _info: {fileID: 11400000, guid: 0aad9117da527754689c143163367387, type: 2}
   Might:
     _max: 100
     _regen: 10

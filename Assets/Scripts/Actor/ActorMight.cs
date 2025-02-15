@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Actor
 {
@@ -111,7 +110,7 @@ namespace Actor
             OnAnyValueChanged?.Invoke();
         }
 
-        public void Regen() => RemoveRecoverableValue(_regen);
+        public void Regen(bool full = false) => RemoveRecoverableValue(full ? _recoverable : _regen);
 
         public void AddMultiplier(MightType type, object source, int value) => AddToDictionary(_multipliers, type, source, value);
         public void RemoveMultiplier(MightType type, object source) => RemoveFromDictionary(_multipliers, type, source);

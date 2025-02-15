@@ -1,7 +1,7 @@
 using UnityEngine;
 using VamporiumState.GO;
-using Actor;
 using Vamporium.UI;
+using Actor;
 
 [DefaultExecutionOrder(-999)]
 public class FightController : MonoBehaviour
@@ -25,12 +25,17 @@ public class FightController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
+        _player.Info.Might.Regen(true);
         _stateMachine = GetComponent<StateMachine>();
         _roundsPerTurn.Value = 0;
     }
 
-    private void Start() => UIManager.Show(_screenUI);
+    private void Start()
+    {
+        UIManager.Instance.ReloadScreenIfSameAsOld = true;
+        UIManager.Show(_screenUI);
+    }
+
     private void OnDestroy() => Instance = null;
 
     public void EndRound() => _roundsPerTurn.Value++;

@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -16,7 +15,10 @@ namespace Entity
         [ShowInInspector, HideInEditorMode]
         public List<StatData> Stats { get; private set; }
 
-        public void Init() => Stats = new(_stats);
+        public virtual void Init()
+        {
+            Stats = new(_stats);
+        }
 
         private bool GetStatData(StatInfo info, out StatData data)
         {
@@ -25,6 +27,7 @@ namespace Entity
         }
 
         public int GetStatValue(StatInfo info) => GetStatData(info, out var data) ? data.Amount : 0;
+        public float GetInfluencedStatValue(StatInfo info) => GetStatData(info, out var data) ? data.Amount * info.Influence : 0;
 
         public void AddStatValue(StatInfo info, int value)
         {

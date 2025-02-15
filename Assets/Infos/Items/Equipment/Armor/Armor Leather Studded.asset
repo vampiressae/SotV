@@ -46,6 +46,7 @@ MonoBehaviour:
   Description: 
   Stack: 1
   Might: 1
+  EquippedMight: -1
   Rank: {fileID: 11400000, guid: ae61b9db564002443bd94b042df9bc7d, type: 2}
   Tags:
   - {fileID: 11400000, guid: 280fb10151e3b7a4a9fd79a45314e01b, type: 2}
@@ -54,5 +55,5 @@ MonoBehaviour:
   _effects:
   - {fileID: -3181231115814390770}
   - {fileID: -7659415772938324524}
-  _equippedMight: 10
   _canEquipOnlyOne: 1
+  _canEquipKey: {fileID: 11400000, guid: 224447368e34f3c4dbcf8e39577e05cd, type: 2}

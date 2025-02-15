@@ -23,7 +23,7 @@ public abstract class ItemUI : MonoBehaviour
     }
 }
 
-public abstract class ItemUI<TItem, TInfo> : ItemUI where TItem : Item<TInfo> where TInfo : ScriptableWithNameAndSprite
+public abstract class ItemUI<TItem, TInfo> : ItemUI where TItem : Item<TInfo> where TInfo : ScriptableWithNameAndSpriteAndTooltip
 {
     protected SlotUI<TItem, TInfo> _slotUI;
 

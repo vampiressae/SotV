@@ -43,8 +43,6 @@ namespace Items
         public override void InvokeOnItemDataChanging() => OnItemDataChanging?.Invoke(this);
         public override void InvokeOnItemDataChanged() => OnItemDataChanged?.Invoke(this);
 
-        public override string ToString() => $"{(IsEmpty ? "EMPTY" : $"{Info.name} x {Amount}" + (IsFull ? "(Full)" : ""))}";
-
         public override void Swap(Item with)
         {
             InvokeOnItemDataChanging();
@@ -58,10 +56,6 @@ namespace Items
             with.InvokeOnItemDataChanged();
         }
 
-        public override void TooltipInit(ActorHolder actor, TooltipForString tooltip)
-        {
-            base.TooltipInit(actor, tooltip);
-            Info.TooltipInit(actor, tooltip);
-        }
+        public override string ToString() => $"{(IsEmpty ? "EMPTY" : $"{Info.name} x {Amount}" + (IsFull ? "(Full)" : ""))}";
     }
 }

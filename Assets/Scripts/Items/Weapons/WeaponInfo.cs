@@ -7,9 +7,9 @@ public class WeaponInfo : ItemInfoWithAction<WeaponAction>, IEquipmentItem
 {
     [Title("Weapon", TitleAlignment = TitleAlignments.Centered)]
     [SerializeField, HideLabel] private WeaponTypeInfo _type;
-    [SerializeField] private int _equippedMight = -1;
-    [SerializeField] private bool _canEquipOnlyOne;
+    [SerializeField, ToggleLeft] private bool _canEquipOnlyOne;
 
     public bool CanEquipOnlyOne => _canEquipOnlyOne;
-    public int EquippedMight => _equippedMight;
+
+    public ScriptableObject CanEquipKey => _type;
 }

@@ -69,6 +69,7 @@ namespace Vamporium.UI
         public UITag PreviousScreenTag => _previousScreenTags.Peek();
         public float FadeDuration => _fadeDuration;
         public bool RegisterHiddenAsPrevious { get; set; }
+        public bool ReloadScreenIfSameAsOld { get; set; }
 
         protected virtual void Awake()
         {
@@ -135,11 +136,13 @@ namespace Vamporium.UI
                 parent = _screenParent;
                 if (_currentScreen)
                 {
-                    if (_currentScreen.Tag == tag) return _currentScreen;
+                    if (_currentScreen.Tag == tag && !ReloadScreenIfSameAsOld) return _currentScreen;
                     _currentScreen.HideByManager(duration, delay);
 
                     if (!RegisterHiddenAsPrevious) RegisterHiddenAsPrevious = true;
                     else _previousScreenTags.Push(_currentScreen.Tag);
+
+                    ReloadScreenIfSameAsOld = false;
                 }
             }
 

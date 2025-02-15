@@ -1,6 +1,3 @@
-using Actor;
-using UnityEngine;
-
 namespace Skills
 {
     [System.Serializable]

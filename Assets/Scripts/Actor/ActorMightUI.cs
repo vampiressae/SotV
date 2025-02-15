@@ -13,11 +13,10 @@ namespace Actor
         public Image Missing => _missing;
         public Image Preview => _preview;
         public Image Rerecoverable => _recoverable;
+        public ActorMight Might => _might;
 
         private ActorMight _might;
         private Image[] _images;
-
-        public ActorMight Might => _might;
 
         protected virtual void Awake()
         {
@@ -26,7 +25,7 @@ namespace Actor
                 _images[i].gameObject.SetActive(true);
         }
 
-        private void OnDisable() => Kill();
+        private void OnDestroy() => Uninit();
 
         public void Init(ActorMight might)
         {
@@ -35,7 +34,11 @@ namespace Actor
             Refresh();
         }
 
-        public void Uninit() => _might.OnAnyValueChanged -= Refresh;
+        public void Uninit()
+        {
+            _might.OnAnyValueChanged -= Refresh;
+            Kill();
+        }
 
         private void Refresh()
         {

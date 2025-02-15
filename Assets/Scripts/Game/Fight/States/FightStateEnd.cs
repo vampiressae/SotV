@@ -12,12 +12,14 @@ public class FightStateEnd : State
     public override void Enter(StateMachine machine)
     {
         base.Enter(machine);
-        Invoke(nameof(ShowSpoils), 2.1f);
+        Invoke(nameof(ShowSpoils), 4);
     }
 
     public void ShowSpoils()
     {
-        var popup = UIManager.Show(_containerTag, delay: 2);
+        UIManager.Hide(_victoryTag, 1);
+
+        var popup = UIManager.Show(_containerTag);
         var spoils = new List<ItemData>();
 
         spoils.AddRange(FightController.Instance.Enemy.Info.Inventory);

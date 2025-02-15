@@ -27,7 +27,7 @@ namespace Items
         private bool _dragged;
         private bool _available;
 
-        private bool Targetless => _action is ActionWithInfo awi && awi.InfoRaw.Target == ActionTarget.None;
+        private bool Targetless => _action is ActionWithInfo awi && awi.RawInfo.Target == ActionTarget.None;
         private int ScaledMight => _actor ? _rounds.GetMightValue(_actor, _action.Might) : _action.Might;
 
         private void OnDestroy() => Uninit();

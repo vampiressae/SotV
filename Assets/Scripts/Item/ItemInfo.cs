@@ -6,12 +6,14 @@ using Actor;
 
 namespace Items
 {
+    [LabelWidth(70)]
     [CreateAssetMenu(menuName = "Items/Info")]
-    public partial class ItemInfo : ScriptableWithNameAndSprite, IItemHasStack
+    public partial class ItemInfo : ScriptableWithNameAndSpriteAndTooltip, IItemHasStack
     {
         [Space]
         public int Stack = 1;
-        public int Might = 1;
+        [HorizontalGroup("might")] public int Might = 1;
+        [HorizontalGroup("might"), LabelText(" Equipped")] public int EquippedMight = -1;
         public ItemRank Rank;
         [Space]
         [GUIColor(0.8f, 1, 1)]
@@ -42,19 +44,21 @@ namespace Items
         public void Effects_RemovedFromEquipment(EquipmentHolder equipment, ItemData data)
             => _effects.ForEach(fx => fx.RemovedFromInventory(equipment, data));
 
-        public virtual void TooltipInit(ActorHolder actor, TooltipForString tooltip)
+        public override void TooltipInit(ActorHolder actor, TooltipForString tooltip, bool actionSummary)
         {
-            var descriptions = new List<string>();
-            TooltipDescriptions(actor, ref descriptions);
-
-            tooltip.Init(Name, string.Join("\n", descriptions), true);
+            base.TooltipInit(actor, tooltip, actionSummary);
             if (Rank) Rank.SetText(tooltip.Title);
         }
 
-        protected virtual void TooltipDescriptions(ActorHolder actor, ref List<string> descriptions) => descriptions.Add(Description);
+        protected override void TooltipDescriptions(ActorHolder actor,  ref List<string> descriptions)
+        {
+            base.TooltipDescriptions(actor, ref descriptions);
+            foreach (var effect in _effects)
+                effect.GetTooltip(ref descriptions);
+        }
 
 #if UNITY_EDITOR
-        protected override void OnValidate() 
+        protected override void OnValidate()
         {
             base.OnValidate();
             if (Rank == null)

@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -15}
+  m_AnchoredPosition: {x: 0, y: 15}
   m_SizeDelta: {x: 0, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8022930532167283389
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 75, y: 100}
+  m_CellSize: {x: 60, y: 80}
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 1
   m_ConstraintCount: 1
@@ -325,4 +325,5 @@ MonoBehaviour:
   _itemPrefab: {fileID: 1193205217460468462, guid: 7edd4e451bafa6844b22639e39b5d880, type: 3}
   _slotPrefab: {fileID: 8247627251778876073, guid: 26f784fd46bb8b04e87644a6587a27d9, type: 3}
   _slotParent: {fileID: 9157098721922059466}
+  _shrinkToMin: 0
   Blocked: 0

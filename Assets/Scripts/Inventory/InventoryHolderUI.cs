@@ -34,5 +34,11 @@ namespace Inventory
                 if (TryGetComponent<GridLayoutGroup>(out var layout))
                     layout.constraint = GridLayoutGroup.Constraint.Flexible;
         }
+
+        private void OnDestroy()
+        {
+            for (int i = 0; i < _uis.Count; i++)
+                _uis[i].Uninit();
+        }
     }
 }

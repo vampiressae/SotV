@@ -21,6 +21,7 @@ namespace Inventory
         {
             Actor = actor;
             Init(GetItems());
+            InitActorHolder();
         }
 
         public void Init(List<ItemData> items)
@@ -38,17 +39,10 @@ namespace Inventory
             }
         }
 
+        protected virtual void InitActorHolder() => Actor.InitInventory(this);
+
         private void OnItemDataChanging(ItemData data) { if (data.Info) data.Info.Effects_RemovedFromInventory(this, data); }
         private void OnItemDataChanged(ItemData data) { if (data.Info) data.Info.Effects_AddedToInventory(this, data); }
-
-        public virtual int GetMightCost()
-        {
-            var cost = 0;
-            foreach (var item in Items)
-                if (!item.IsEmpty)
-                    cost += item.Info.Might * item.Amount;
-            return cost;
-        }
 
         private void AnyChanged() => OnAnyChanged?.Invoke();
     }

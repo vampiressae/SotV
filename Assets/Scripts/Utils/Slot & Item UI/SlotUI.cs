@@ -33,7 +33,7 @@ public abstract class SlotUI : TooltipAgent<TooltipForString>, ITooltipString
     public void InvokeOnChanged() => OnChanged.Invoke();
 }
 
-public abstract class SlotUI<TItem, TInfo> : SlotUI where TItem : Item<TInfo> where TInfo : ScriptableWithNameAndSprite
+public abstract class SlotUI<TItem, TInfo> : SlotUI where TItem : Item<TInfo> where TInfo : ScriptableWithNameAndSpriteAndTooltip
 {
     public override Item RawData { get => Data; set => Data = value as TItem; }
     public override ItemUI RawItemUI => _ui;

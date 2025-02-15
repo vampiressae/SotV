@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06dcbafcacb4a7d41842073c7403383f, type: 3}
-  m_Name: Strength
+  m_Script: {fileID: 11500000, guid: 0b162e50b2c86554fb5b69c558b274b9, type: 3}
+  m_Name: Skill Weapon Sword
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
-  Name: Strength
+  Icon: {fileID: 2099008355, guid: d058e618f20d518408f130b159a04ab4, type: 3}
+  Name: Sword
   Description: 
-  Max: 0
-  Influence: 2
+  _actions: []
+  _actionsUI: {fileID: 7238660739354989741, guid: be90d278e44cb4243acb1a5e386abb93, type: 3}

@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb0d62e6bb25ed4b893cf91a4630d32, type: 3}
-  m_Name: Transfer Stat Might
+  m_Name: Transfer Stat Drink
   m_EditorClassIdentifier: Assembly-CSharp::TransformStatMight
   Icon: {fileID: 21300000, guid: e32d9b6ec48fb08418ae3f3ba2f3b8b3, type: 3}
-  Name: Replenish Might
+  Name: Drink
   Description: 
   EndTurn: 0
   Rank: {fileID: 11400000, guid: ae61b9db564002443bd94b042df9bc7d, type: 2}
   Target: 110
+  Properties: 1
+  InfluencingStats: []

@@ -139,4 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2fa7883e6d358245a29850a792de1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _activate: 1
+  _trigger: {fileID: 11400000, guid: 1cbdd406aaad1814db96c16e6d307caf, type: 2}
+  _tooltipPrefab: {fileID: 3654876760491939277, guid: a28a95cbca5574e40aac4e3dab1b715a, type: 3}
   _itemPrefab: {fileID: 1273208751381263871, guid: 3b427dc55eacbab4fbdd4d3ca3893cf0, type: 3}

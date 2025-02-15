@@ -15,4 +15,7 @@ public class WeaponAction : ActionWithInfoValueMight<WeaponAttackInfo>
         actor.Info.Might.AddMissingValue(InfluencedValueRange(source.Info).RandomUnity);
         return true;
     }
+
+    public override string TooltipSummaryDetails(ActorHolder actor, string tooltip) 
+        => $"{base.TooltipSummaryDetails(actor, tooltip)} - {InfluencedValueRange(actor.Info)} : {Might}";
 }
