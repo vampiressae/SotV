@@ -17,7 +17,7 @@ namespace Actor
 
         private void Start()
         {
-            _actor = FightController.Instance.Enemy;
+            _actor = FightController.Instance.Enemies[0];
             Init(_actor.Info.Might);
         }
 

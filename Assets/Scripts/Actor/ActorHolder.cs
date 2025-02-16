@@ -9,6 +9,7 @@ namespace Actor
     {
         [Space]
         [SerializeField, ShowIf("ShowInfoInInspector")] private ActorInfo _info;
+        [SerializeField] private SpriteRenderer _renderer;
         [Space]
         [ShowInInspector, HideInEditorMode] private InventoryHolder _inventory, _equipment;
 
@@ -32,6 +33,12 @@ namespace Actor
         private bool _inited;
 
         private void OnDestroy() => Uninit();
+
+        public void Init(ActorInfo info)
+        {
+            _info = info;
+            _renderer.sprite = _info.Sprite;
+        }
 
         public void InitInventory(InventoryHolder inventory)
         {

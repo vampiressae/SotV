@@ -1,10 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Items;
 using Skills;
 using Entity;
-using System.Linq;
 
 namespace Actor
 {
@@ -13,6 +13,7 @@ namespace Actor
     {
         public List<ItemData> Equipment;
         public List<SkillData> Skills;
+        public Sprite Sprite;
 
         [InlineProperty, HideLabel, BoxGroup("Might")] public ActorMight Might;
 

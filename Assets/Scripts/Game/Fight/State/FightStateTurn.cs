@@ -1,5 +1,4 @@
-using Items;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Vamporium.UI;
 using VamporiumState.GO;
@@ -16,8 +15,8 @@ public abstract class FightStateTurn : FightState
     {
         base.Enter(machine);
 
-        FightController.Instance.Enemy.Info.Might.OnAnyValueChanged += OnAnyMightChanged;
-        FightController.Instance.Enemy.Info.Might.OnAnyValueChanged += OnAnyMightChanged;
+        FightController.Instance.Player.Info.Might.OnAnyValueChanged += OnAnyMightChanged;
+        FightController.Instance.Enemies[0].Info.Might.OnAnyValueChanged += OnAnyMightChanged;
 
         if (UIManager.Show(_popupTag).TryGetComponent<UIPopupFightTurn>(out var ui))
             ui.Init(ActorName);
@@ -27,7 +26,7 @@ public abstract class FightStateTurn : FightState
     {
         base.Exit(machine);
         FightController.Instance.Player.Info.Might.OnAnyValueChanged -= OnAnyMightChanged;
-        FightController.Instance.Enemy.Info.Might.OnAnyValueChanged -= OnAnyMightChanged;
+        FightController.Instance.Enemies[0].Info.Might.OnAnyValueChanged -= OnAnyMightChanged;
     }
 
     private void OnAnyMightChanged()
@@ -38,7 +37,7 @@ public abstract class FightStateTurn : FightState
 
     private bool EndInVictory()
     {
-        if (FightController.Instance.Enemy.IsAlive) return false;
+        if (FightController.Instance.Enemies.Where(enemy => enemy.IsAlive).Count() > 0) return false;
         UIManager.Show(_victoryTag, delay: 2);
         return true;
     }

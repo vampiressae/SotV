@@ -28,7 +28,7 @@ public abstract class ActionInfo : ScriptableWithNameAndSprite
             case ActionTarget.EnemyAny:
             case ActionTarget.EnemyLand:
             case ActionTarget.EnemyAir:
-                return target == FightController.Instance.Enemy;
+                return target == FightController.Instance.Enemies;
 
             default: return true;
         }

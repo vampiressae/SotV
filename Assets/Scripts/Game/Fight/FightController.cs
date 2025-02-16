@@ -2,13 +2,20 @@ using UnityEngine;
 using VamporiumState.GO;
 using Vamporium.UI;
 using Actor;
+using System.Collections.Generic;
+using System.Linq;
 
 [DefaultExecutionOrder(-999)]
 public class FightController : MonoBehaviour
 {
     public static FightController Instance;
 
-    [SerializeField] private ActorHolder _player, _enemy;
+    [SerializeField] private ActorHolder _player;
+    [SerializeField] private List<ActorHolder> _enemies;
+    [Space]
+    [SerializeField] private ActorList _actorList;
+    [SerializeField] private ActorHolder _actorPrefab;
+    [SerializeField] private Transform _enemyParent;
     [SerializeField] private RoundsPerTurnValue _roundsPerTurn;
     [Space]
     [SerializeField] private UITag _screenUI;
@@ -19,7 +26,7 @@ public class FightController : MonoBehaviour
 
     public StateMachine StateMachine => _stateMachine;
     public ActorHolder Player => _player;
-    public ActorHolder Enemy => _enemy;
+    public IReadOnlyList<ActorHolder> Enemies => _enemies;
     public RoundsPerTurnValue RoundsPerTurn => _roundsPerTurn;
 
     private void Awake()
@@ -28,6 +35,17 @@ public class FightController : MonoBehaviour
         _player.Info.Might.Regen(true);
         _stateMachine = GetComponent<StateMachine>();
         _roundsPerTurn.Value = 0;
+
+        for (int i = 0; i < _enemies?.Count; i++)
+            Destroy(_enemies[i].gameObject);
+
+        _enemies.Clear();
+        foreach (var info in _actorList.Actors)
+        {
+            var holder = Instantiate(_actorPrefab, _enemyParent);
+            holder.Init(info);
+            _enemies.Add(holder);
+        }
     }
 
     private void Start()
@@ -65,7 +83,7 @@ public class FightController : MonoBehaviour
 
     private bool EndFight()
     {
-        if (_enemy.IsAlive) return false;
+        if (Enemies.Where(enemy => enemy.IsAlive).Count() > 0) return false;
         UIManager.Show(_uiVictory, delay:2);
         return true;
     }

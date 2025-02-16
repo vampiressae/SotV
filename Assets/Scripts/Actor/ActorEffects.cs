@@ -11,14 +11,14 @@ namespace Actor
 
         private void Awake() => _actor = GetComponent<ActorHolder>();
 
-        private void OnEnable()
+        private void Start()
         {
             _actor.Info.Might.OnMissingChanged += OnMissingChanged;
 
             ActionBase.OnActed += OnItemActionActed;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             _actor.Info.Might.OnMissingChanged -= OnMissingChanged;
 
