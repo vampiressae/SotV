@@ -8,8 +8,11 @@ namespace Entity
         [SerializeField] private Vector2 _flyingTextPosition;
         [SerializeField] private float _flyingTextRadius = 5;
 
-        public Vector2 Position => _flyingTextPosition + (Vector2)transform.position;
+        public Vector2 Position => Offset + transform.position;
         public float Radius => _flyingTextRadius;
+
+        private Vector3 Offset => new Vector2(_flyingTextPosition.x * Direction, _flyingTextPosition.y);
+        private int Direction => transform.lossyScale.x < 0 ? -1 : 1;
 
         private void OnMouseEnter()
         {
@@ -26,7 +29,7 @@ namespace Entity
         protected virtual void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(transform.position + (Vector3)_flyingTextPosition, _flyingTextRadius);
+            Gizmos.DrawWireSphere(Position, _flyingTextRadius);
         }
 #endif
     }

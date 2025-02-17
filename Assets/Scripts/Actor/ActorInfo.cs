@@ -9,7 +9,7 @@ using Entity;
 namespace Actor
 {
     [CreateAssetMenu(menuName = "Entity/Actor Info")]
-    public class ActorInfo : EntityInfo
+    public sealed class ActorInfo : EntityInfo
     {
         public List<ItemData> Equipment;
         public List<SkillData> Skills;

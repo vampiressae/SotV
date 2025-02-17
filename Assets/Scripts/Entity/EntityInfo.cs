@@ -10,6 +10,7 @@ namespace Entity
     {
         [SerializeField, HideInPlayMode] private List<StatData> _stats;
 
+        [SerializeField, HideLabel] private ItemDataWithChanceList _inventorList;
         public List<ItemData> Inventory;
 
         [ShowInInspector, HideInEditorMode]
@@ -18,6 +19,7 @@ namespace Entity
         public virtual void Init()
         {
             Stats = new(_stats);
+            InitRandomInventory();
         }
 
         private bool GetStatData(StatInfo info, out StatData data)
@@ -55,6 +57,27 @@ namespace Entity
             var old = Stats.Where(stat => stat.Source == source && stat.Info == info).FirstOrDefault();
             if (old == null) return;
             Stats.Remove(old);
+        }
+
+        public void InitRandomInventory()
+        {
+            if (_inventorList == null) return;
+
+            var random = Random.value;
+            var list = new List<ItemData>();
+
+            foreach (var item in _inventorList.Items)
+            {
+                if (item.Chance > random) continue;
+                list.Add(new(item.Info, item.Amount.RandomUnity));
+            }
+
+            var rnd = new System.Random();
+            list.Sort((x, y) => rnd.Next(-1, 1));
+
+            var array = list.ToArray();
+            array = array[0.._inventorList.Max.RandomUnity];
+            Inventory.Add(array);
         }
     }
 }

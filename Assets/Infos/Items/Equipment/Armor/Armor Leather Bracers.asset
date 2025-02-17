@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7659415772938324524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb6b34256db06764281b79b61374773e, type: 3}
-  m_Name: 'Armor Leather Studded : Item FX Equip Stat'
-  m_EditorClassIdentifier: 
-  _amount: 1
-  _info: {fileID: 11400000, guid: 1492911b1fc49c948a6c779b1a7eb0a6, type: 2}
 --- !u!114 &-3181231115814390770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,8 +13,8 @@ MonoBehaviour:
   m_Name: 'Armor Leather Studded : Item FX Equip Might'
   m_EditorClassIdentifier: 
   _type: 2
-  _modifier: 1
-  _value: -10
+  _modifier: 2
+  _value: -5
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,10 +25,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b5b99f241f4afc47a8a8f4a7acb97d0, type: 3}
-  m_Name: Armor Leather Studded
+  m_Name: Armor Leather Bracers
   m_EditorClassIdentifier: 
-  Icon: {fileID: 492005, guid: d058e618f20d518408f130b159a04ab4, type: 3}
-  Name: Studded Leather Armor
+  Icon: {fileID: 670203482, guid: d058e618f20d518408f130b159a04ab4, type: 3}
+  Name: Bronze Bracers
   Description: 
   Stack: 1
   Might: 1
@@ -51,9 +37,8 @@ MonoBehaviour:
   Tags:
   - {fileID: 11400000, guid: 280fb10151e3b7a4a9fd79a45314e01b, type: 2}
   - {fileID: 11400000, guid: 29cfe64c96e496e4a845cf5b97c2ef11, type: 2}
-  - {fileID: 11400000, guid: 224447368e34f3c4dbcf8e39577e05cd, type: 2}
+  - {fileID: 11400000, guid: b4c7f692753227c47a21948763ee948f, type: 2}
   _effects:
   - {fileID: -3181231115814390770}
-  - {fileID: -7659415772938324524}
   _canEquipOnlyOne: 1
   _canEquipKey: {fileID: 11400000, guid: 224447368e34f3c4dbcf8e39577e05cd, type: 2}

@@ -1,10 +1,10 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using VamporiumState.GO;
 using Vamporium.UI;
 using Actor;
-using System.Collections.Generic;
-using System.Linq;
-using Sirenix.OdinInspector;
 
 [DefaultExecutionOrder(-999)]
 public class FightController : MonoBehaviour
@@ -43,23 +43,24 @@ public class FightController : MonoBehaviour
 
         if (_allies == null) _allies = new();
         else _allies.ForEach(ally => Destroy(ally.gameObject));
-        SpawnActors(_alliesParent, new ActorInfo[] { _playerInfo }, _allies);
+        SpawnActors(_alliesParent, new ActorInfo[] { _playerInfoValue.Player }, _allies, true);
 
         if (_enemies == null) _enemies = new();
         else _enemies.ForEach(enemy => Destroy(enemy.gameObject));
-        SpawnActors(_enemyParent, _actorList.Actors.ToArray(), _enemies);
+        SpawnActors(_enemyParent, _actorList.Actors.ToArray(), _enemies, false);
 
-        _playerInfoValue.SetHolder(Player);
+        _playerInfoValue.SetHolder(_allies[0]);
         Player.Info.Might.Regen(true);
     }
 
-    private void SpawnActors(ActorHolderParent parent, ActorInfo[] infos, List<ActorHolder> holders)
+    private void SpawnActors(ActorHolderParent parent, ActorInfo[] infos, List<ActorHolder> holders, bool firstIsPlayer)
     {
         holders.Clear();
         for (int i = 0; i < infos.Length; i++)
         {
             var holder = Instantiate(_actorPrefab, parent.GetParent(i));
-            holder.Init(infos[i]);
+            var info = firstIsPlayer ? infos[i] : Instantiate(infos[i]);
+            holder.Init(info);
             holders.Add(holder);
         }
     }

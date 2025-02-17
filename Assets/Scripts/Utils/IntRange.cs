@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[System.Serializable]
+[Serializable]
 public struct IntRange
 {
     [HorizontalGroup(50), HideLabel] public int Min;

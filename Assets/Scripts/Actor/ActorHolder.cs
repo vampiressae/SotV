@@ -15,24 +15,9 @@ namespace Actor
         [Space]
         [ShowInInspector, HideInEditorMode] private InventoryHolder _inventory, _equipment;
 
-        public virtual ActorInfo Info
-        {
-            get
-            {
-                if (!_inited)
-                {
-                    _info = Instantiate(_info);
-                    _info.Init();
-                    _inited = true;
-                }
-                return _info;
-            }
-        }
-
+        public virtual ActorInfo Info => _info;
         public bool IsAlive => Info && Info.Might.Alive;
         public bool IsDead => Info == null || Info.Might.Dead;
-
-        private bool _inited;
 
         private void OnDestroy() => Uninit();
 

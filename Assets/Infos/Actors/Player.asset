@@ -64,8 +64,8 @@ MonoBehaviour:
     _info: {fileID: 11400000, guid: 278affba89c154941b8b1ae0baaa286c, type: 2}
   - _amount: 1
     _info: {fileID: 11400000, guid: 3fb8e87e8d41f9a4d92b9207a5be6195, type: 2}
-  - _amount: 0
-    _info: {fileID: 0}
+  - _amount: 1
+    _info: {fileID: 11400000, guid: df55166edb0993b4b98df36d15d1178b, type: 2}
   - _amount: 0
     _info: {fileID: 0}
   Skills:

@@ -77,7 +77,10 @@ namespace Actor
 
         public void AddMissingValue(int value)
         {
+            if (value == 0) return;
             value = GetModifiedValue(MightType.Missing, value);
+
+            if (value < 1) value = 0;
             _missing += value;
 
             OnMissingChanged?.Invoke(value);

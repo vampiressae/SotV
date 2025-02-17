@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using TMPro;
 using DG.Tweening;
+using TMPro;
+
 using static Actor.ActorMight;
 
 namespace Actor

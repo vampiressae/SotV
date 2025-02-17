@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hoveredEntity: {fileID: 11400000, guid: b6fb8693624bb3a4ba491cea9c608fcc, type: 2}
-  _flyingTextPosition: {x: -2, y: 1}
+  _flyingTextPosition: {x: 2, y: 2}
   _flyingTextRadius: 1
   _info: {fileID: 0}
   _renderer: {fileID: 2251694008239544960}

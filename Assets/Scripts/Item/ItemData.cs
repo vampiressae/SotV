@@ -1,4 +1,3 @@
-using Actor;
 using System;
 
 namespace Items
@@ -11,6 +10,12 @@ namespace Items
 
         public override bool IsEmpty => Info == null || Amount < 1;
         public override bool IsFull => Info && Amount >= Info.Stack;
+
+        public ItemData(ItemInfo info, int amount)
+        {
+            _info = info;
+            _amount = amount;
+        }
 
         public ItemData(ItemData data)
         {
