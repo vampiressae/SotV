@@ -20,6 +20,7 @@ namespace Items
         [SerializeField] private RoundsPerTurnValue _rounds;
         [SerializeField] private IndicatorEventTrigger _mouseUpEvent;
         [SerializeField] private EntityValue _hoveredEntity;
+        [SerializeField] private ActionBaseInfo _actionBaseInfo;
 
         private ItemUI _ui;
         private ActionBase _action;
@@ -87,13 +88,17 @@ namespace Items
             _trigger.UnsetCurrent();
             _trigger.InvokeOnTooltipShown();
             _canvas.overrideSorting = _moveUI.enabled = _dragged = true;
+            _actionBaseInfo.Value = _action;
         }
 
         protected override void Up()
         {
             /* skip base.Up() */
-            if (!Targetless) return;
-            Act(_actor, _actor);
+
+            if (_actionBaseInfo.Value == _action)
+                _actionBaseInfo.Value = null;
+
+            if (Targetless) Act(_actor, _actor);
         }
 
         private void OnMouseUpTrigger()

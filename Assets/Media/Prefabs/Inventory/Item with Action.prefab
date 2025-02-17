@@ -170,9 +170,6 @@ MonoBehaviour:
   _activate: 1
   _trigger: {fileID: 11400000, guid: 1cbdd406aaad1814db96c16e6d307caf, type: 2}
   _tooltipPrefab: {fileID: 3654876760491939277, guid: a28a95cbca5574e40aac4e3dab1b715a, type: 3}
-  _divider: 0
-  _title: 
-  _text: 
   _icon: {fileID: 3952262662929460567}
   _frame: {fileID: 4238807437536671163}
   _unavailable: {fileID: 7716606037871193613}
@@ -181,6 +178,7 @@ MonoBehaviour:
   _rounds: {fileID: 11400000, guid: 5a2c280cb1a79bb47acf031ea7c7fee8, type: 2}
   _mouseUpEvent: {fileID: 11400000, guid: c8265045ad92d2946979ebaab56a107b, type: 2}
   _hoveredEntity: {fileID: 11400000, guid: b6fb8693624bb3a4ba491cea9c608fcc, type: 2}
+  _actionBaseInfo: {fileID: 11400000, guid: 7d6c8c0262ad9e4469ee51fee43f5f8d, type: 2}
 --- !u!1 &4951582827717520527
 GameObject:
   m_ObjectHideFlags: 0

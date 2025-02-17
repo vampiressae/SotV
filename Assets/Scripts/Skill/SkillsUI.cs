@@ -36,6 +36,5 @@ namespace Skills
             }
             _uis.ForEach(ui => ui.OnDataChanged());
         }
-
     }
 }

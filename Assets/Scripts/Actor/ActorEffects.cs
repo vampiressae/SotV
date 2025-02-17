@@ -7,6 +7,9 @@ namespace Actor
 {
     public class ActorEffects : MonoBehaviour
     {
+        [SerializeField] private SpriteRenderer _renderer;
+        [SerializeField] private Collider2D _collider;
+
         private ActorHolder _actor;
 
         private void Awake() => _actor = GetComponent<ActorHolder>();
@@ -14,14 +17,12 @@ namespace Actor
         private void Start()
         {
             _actor.Info.Might.OnMissingChanged += OnMissingChanged;
-
             ActionBase.OnActed += OnItemActionActed;
         }
 
         private void OnDestroy()
         {
             _actor.Info.Might.OnMissingChanged -= OnMissingChanged;
-
             ActionBase.OnActed -= OnItemActionActed;
         }
 
@@ -31,6 +32,8 @@ namespace Actor
             transform.DOScale(1, 0.1f);
 
             FlyingTextController.Show(_actor, -delta);
+
+            if (_actor.IsDead) Die();
         }
 
         private void OnItemActionActed(ActorHolder source, EntityHolder target, Item item, ActionBase action)
@@ -43,6 +46,17 @@ namespace Actor
                 var text = FlyingTextController.Show(_actor, awi.RawInfo.Name);
                 if (text && action.Rank) action.Rank.SetText(text.Text);
             }
+        }
+
+        private void Die()
+        {
+            _collider.enabled = false;
+            _renderer.DOColor(new(1, 0, 0, 0), 0.5f).SetDelay(0.3f).onComplete += DieComplete;
+        }
+
+        private void DieComplete()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

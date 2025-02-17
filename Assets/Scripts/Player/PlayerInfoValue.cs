@@ -9,7 +9,7 @@ namespace Actor
         [SerializeField] private ActorInfo _defaultPlayer;
 
         [ShowInInspector, HideInEditorMode] private ActorInfo _player;
-        [ShowInInspector, HideInEditorMode] public PlayerHolder Holder { get; private set; }
+        [ShowInInspector, HideInEditorMode] public ActorHolder Holder { get; private set; }
 
         public ActorInfo Player => GetPlayer();
 
@@ -23,6 +23,6 @@ namespace Actor
             return _player;
         }
 
-        public void SetHolder(PlayerHolder holder) => Holder = holder;
+        public void SetHolder(ActorHolder holder) => Holder = holder;
     }
 }

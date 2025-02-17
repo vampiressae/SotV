@@ -6,7 +6,7 @@ public class PlayerMightUI : ActorMightUI
     [Space]
     [SerializeField] protected PlayerInfoValue _playerInfoValue;
 
-    protected override void Awake()
+    protected void Start()
     {
         Init(_playerInfoValue.Player.Might);
         base.Awake();

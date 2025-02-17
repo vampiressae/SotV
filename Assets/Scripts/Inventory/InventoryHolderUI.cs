@@ -32,7 +32,7 @@ namespace Inventory
 
             if (_shrinkToMin && _inventory.Slots < 10)
                 if (TryGetComponent<GridLayoutGroup>(out var layout))
-                    layout.constraint = GridLayoutGroup.Constraint.Flexible;
+                    layout.constraintCount = _inventory.Slots;
         }
 
         private void OnDestroy()

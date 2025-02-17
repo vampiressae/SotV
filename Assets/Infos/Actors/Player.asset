@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b34591e2a5b0143a276e96332046ad, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 40fd371fd8f39bc499c8bf744e43d7cd, type: 3}
   Name: Player
   Description: 
   _stats: []
@@ -73,6 +73,7 @@ MonoBehaviour:
     _info: {fileID: 11400000, guid: ae5f0b7ada4f5bd469e21ac0804d5584, type: 2}
   - _amount: 2
     _info: {fileID: 11400000, guid: 0aad9117da527754689c143163367387, type: 2}
+  Sprite: {fileID: 21300000, guid: 40fd371fd8f39bc499c8bf744e43d7cd, type: 3}
   Might:
     _max: 100
     _regen: 10

@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public abstract class ScriptableValue<T> : ScriptableValue
 
     [SerializeField] private T _value;
 
+    [ShowInInspector, HideInEditorMode, ReadOnly]
     public virtual T Value
     {
         get => _value;

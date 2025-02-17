@@ -1,6 +1,6 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public static class UnityUtils
 {
@@ -31,4 +31,20 @@ public static class UnityUtils
     public static string ToValueString(this string text) => ValueColorOpen + text + ValueColorClose;
     public static string ValueColorOpen => "<color=#ffffffff><b>";
     public static string ValueColorClose => "</b></color>";
+
+    public static void FromSprite(this PolygonCollider2D polygonCollider2D, Sprite sprite, float tolerance = 0.05f)
+    {
+        List<Vector2> points = new List<Vector2>();
+        List<Vector2> simplifiedPoints = new List<Vector2>();
+
+        polygonCollider2D.pathCount = sprite.GetPhysicsShapeCount();
+        for (int i = 0; i < polygonCollider2D.pathCount; i++)
+        {
+            sprite.GetPhysicsShape(i, points);
+            LineUtility.Simplify(points, tolerance, simplifiedPoints);
+            polygonCollider2D.SetPath(i, simplifiedPoints);
+        }
+    }
+
+
 }

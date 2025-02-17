@@ -3,6 +3,7 @@ using Sirenix.Utilities;
 using Items;
 using Entity;
 using Actor;
+using System.Linq;
 
 public abstract class ActionInfo : ScriptableWithNameAndSprite
 {
@@ -28,7 +29,7 @@ public abstract class ActionInfo : ScriptableWithNameAndSprite
             case ActionTarget.EnemyAny:
             case ActionTarget.EnemyLand:
             case ActionTarget.EnemyAir:
-                return target == FightController.Instance.Enemies;
+                return FightController.Instance.Enemies.Contains(target);
 
             default: return true;
         }

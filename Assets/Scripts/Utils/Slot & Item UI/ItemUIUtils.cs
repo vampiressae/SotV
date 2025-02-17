@@ -1,7 +1,7 @@
 using UnityEngine;
 using Items;
 
-public static class ItemUtils
+public static class ItemUIUtils
 {
     public static void HandleExtendedUI(this IHasAction item, ItemUI ui, ItemInfoWithActionsUI prefab)
     {

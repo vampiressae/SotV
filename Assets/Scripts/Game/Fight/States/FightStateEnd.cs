@@ -24,7 +24,7 @@ public class FightStateEnd : State
         var spoils = new List<ItemData>();
 
         foreach (var enemy in enemies)
-            spoils.AddRange(enemy.Info.Inventory);
+            spoils.Add(enemy.Info.Inventory);
 
         popup.GetComponent<UIPopupContainer>().Init("Spoils", spoils);
     }

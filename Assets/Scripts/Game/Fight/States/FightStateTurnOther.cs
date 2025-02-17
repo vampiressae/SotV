@@ -6,7 +6,6 @@ using VamporiumState.GO;
 
 public class FightStateTurnOther : FightStateTurn
 {
-    [SerializeField] private ActorHolder _player, _enemy;
     [SerializeField] AIControllerForFight _ai;
     [SerializeField] private UITag _uiFightEnemy;
 
@@ -30,10 +29,19 @@ public class FightStateTurnOther : FightStateTurn
 
     private IEnumerator Act()
     {
+        var wait = new WaitForSeconds(1);
+        var player = FightController.Instance.Player;
+        var enemies = FightController.Instance.Enemies;
+
         yield return new WaitForSeconds(2);
 
-        var ok = _ai.SimpleAttack(_enemy, _player);
-        if (ok) yield return new WaitForSeconds(1);
+        foreach (var enemy in enemies)
+        {
+            if (enemy.IsDead) continue;
+
+            var ok = _ai.SimpleAttack(enemy, player);
+            if (ok) yield return wait;
+        }
 
         FightController.Instance.EndTurn();
     }
