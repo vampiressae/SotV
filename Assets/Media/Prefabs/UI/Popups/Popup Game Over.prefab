@@ -78,6 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08139d7388b96754e966fa39a6ae2af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _victoryText: {fileID: 5313602215866356314}
+  _maxScale: 1.5
+  _duration: 2
+  _ease: 12
+  _delay: 2
 --- !u!1 &7068419213376462801
 GameObject:
   m_ObjectHideFlags: 0

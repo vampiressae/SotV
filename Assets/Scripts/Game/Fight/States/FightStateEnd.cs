@@ -7,12 +7,13 @@ using Items;
 public class FightStateEnd : State
 {
     [SerializeField] private UITag _victoryTag;
+    [SerializeField] private UITag _defeatTag;
     [SerializeField] private UITag _containerTag;
 
-    public override void Enter(StateMachine machine)
+    public void SetEnd(bool win)
     {
-        base.Enter(machine);
-        Invoke(nameof(ShowSpoils), 4);
+        UIManager.Show(win ? _victoryTag : _defeatTag, delay: 2);
+        if (win) Invoke(nameof(ShowSpoils), 4);
     }
 
     public void ShowSpoils()

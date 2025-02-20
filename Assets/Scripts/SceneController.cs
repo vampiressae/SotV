@@ -26,6 +26,8 @@ public class SceneController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start() => LoadScene("Main");
+
     public void LoadScene(string scene)
     {
         _desired = scene;
@@ -88,8 +90,9 @@ public class SceneController : MonoBehaviour
     {
         if (!auto)
         {
+            UIManager.Show(_loadingUI);
             yield return new WaitForSeconds(UIManager.Instance.FadeDuration);
-            UIManager.Hide(_loadingUI);
+            UIManager.HidePopups();
         }
 
         var currentSceneName = _current.name;
@@ -102,6 +105,8 @@ public class SceneController : MonoBehaviour
             if (unloadScene.progress >= 0.9f) break;
             yield return null;
         }
+
+        if (!auto) UIManager.Hide(_loadingUI);
 
         OnSceneUnloaded?.Invoke(currentSceneName);
     }

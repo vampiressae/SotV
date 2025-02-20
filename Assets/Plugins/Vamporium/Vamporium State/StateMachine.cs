@@ -49,14 +49,15 @@ namespace VamporiumState
             ChangeState(_states[current]);
         }
 
-        public void ChangeState<TState>() where TState : T
+        public TState ChangeState<TState>() where TState : T
         {
             foreach (var state in _states)
             {
-                if (state is not TState) continue;
+                if (state is not TState tState) continue;
                 ChangeState(state);
-                break;
+                return tState;
             }
+            return default;
         }
 
         public void ChangeState(T state)

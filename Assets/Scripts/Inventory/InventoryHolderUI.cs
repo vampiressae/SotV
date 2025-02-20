@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ namespace Inventory
         public InventoryHolder Inventory => _inventory;
         public InventoryItemUI ItemPrefab => _itemPrefab;
 
+        [ShowInInspector, HideInEditorMode, ReadOnly]
         private readonly List<InventorySlotUI> _uis = new();
 
         private void Start()

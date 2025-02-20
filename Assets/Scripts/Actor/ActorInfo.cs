@@ -34,8 +34,16 @@ namespace Actor
 
         public bool GetSkill(SkillInfo info, out SkillData skill)
         {
-            skill = Skills.Where(s=>s.Info == info).FirstOrDefault();
+            skill = Skills.Where(s => s.Info == info).FirstOrDefault();
             return skill != null;
+        }
+
+        protected override List<ItemData> InitInventory()
+        {
+            var list = base.InitInventory();
+            if (FightController.Instance.Player.Info != this)
+                _inventory.Add(Equipment, item => !item.Info.Hidden);
+            return list;
         }
     }
 }

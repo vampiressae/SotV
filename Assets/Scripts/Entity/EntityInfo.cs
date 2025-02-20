@@ -14,7 +14,7 @@ namespace Entity
         [BoxGroup("Inventories"), SerializeField, LabelText("Inventory")] public List<ItemData> _inventoryStart;
         [ShowInInspector, HideInEditorMode] public List<StatData> Stats { get; private set; }
 
-        private List<ItemData> _inventory;
+        protected List<ItemData> _inventory;
         public List<ItemData> Inventory => _inventory ??= InitInventory();
 
         public virtual void Init()
@@ -59,7 +59,7 @@ namespace Entity
             Stats.Remove(old);
         }
 
-        private List<ItemData> InitInventory()
+        protected virtual List<ItemData> InitInventory()
         {
             _inventory = new() { _inventoryStart };
             if (_inventorList) _inventorList.PickWithChance(_inventory);

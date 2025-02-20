@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System.Linq;
 using UnityEngine;
 using Vamporium.UI;
@@ -5,9 +6,9 @@ using VamporiumState.GO;
 
 public abstract class FightStateTurn : FightState
 {
+    private enum EndMode { None, Victory, GameOver }
+
     [SerializeField] private UITag _popupTag;
-    [SerializeField] private UITag _victoryTag;
-    [SerializeField] private UITag _defeatTag;
 
     protected abstract string ActorName { get; }
 
@@ -31,21 +32,17 @@ public abstract class FightStateTurn : FightState
 
     private void OnAnyMightChanged()
     {
-        if (EndInVictory() || EndInDefeat())
-            FightController.Instance.StateMachine.ChangeState<FightStateEnd>();
+        var end = EndInVictory();
+        if (end == EndMode.None) end = EndInDefeat();
+        if (end == EndMode.None) return;
+
+        FightController.Instance.StateMachine.ChangeState<FightStateEnd>()
+            .SetEnd(end == EndMode.Victory);
     }
 
-    private bool EndInVictory()
-    {
-        if (FightController.Instance.Enemies.Where(enemy => enemy.IsAlive).Count() > 0) return false;
-        UIManager.Show(_victoryTag, delay: 2);
-        return true;
-    }
+    private EndMode EndInVictory()
+        => FightController.Instance.Enemies.Where(enemy => enemy.IsAlive).Count() > 0 ? EndMode.None : EndMode.Victory;
 
-    private bool EndInDefeat()
-    {
-        if (FightController.Instance.Player.IsAlive) return false;
-        UIManager.Show(_defeatTag, delay: 2);
-        return true;
-    }
+    private EndMode EndInDefeat()
+        => FightController.Instance.Player.IsAlive ? EndMode.None : EndMode.GameOver;
 }

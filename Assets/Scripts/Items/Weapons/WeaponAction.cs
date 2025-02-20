@@ -17,5 +17,5 @@ public class WeaponAction : ActionWithInfoValueMight<WeaponAttackInfo>
     }
 
     public override string TooltipSummaryDetails(ActorHolder actor, string tooltip) 
-        => $"{base.TooltipSummaryDetails(actor, tooltip)} - {InfluencedValueRange(actor.Info)} : {Might}";
+        => $"{base.TooltipSummaryDetails(actor, tooltip)} - {(actor ? InfluencedValueRange(actor.Info) : 0)} : {Might}";
 }

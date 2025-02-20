@@ -165,8 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isPlayerTurn: {fileID: 11400000, guid: 1b08c6aa779898742a4268dcee3582d3, type: 2}
   _popupTag: {fileID: 11400000, guid: cab2b550bed9a324a89ea150acf7b864, type: 2}
-  _victoryTag: {fileID: 0}
-  _defeatTag: {fileID: 0}
   _ai: {fileID: 881557621}
   _uiFightEnemy: {fileID: 11400000, guid: d85bb0d0f7c09eb47924828ba0c0268d, type: 2}
 --- !u!1 &204767515
@@ -868,6 +866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _victoryTag: {fileID: 11400000, guid: b4d48cb01b783e048a497a28e6780e06, type: 2}
+  _defeatTag: {fileID: 11400000, guid: 57f8f8577ba71b04987b0e3ce47ceef9, type: 2}
   _containerTag: {fileID: 11400000, guid: b97183adef62a124f8914e0a1b55eccd, type: 2}
 --- !u!4 &1455380542
 Transform:
@@ -1094,8 +1093,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isPlayerTurn: {fileID: 11400000, guid: 1b08c6aa779898742a4268dcee3582d3, type: 2}
   _popupTag: {fileID: 11400000, guid: cab2b550bed9a324a89ea150acf7b864, type: 2}
-  _victoryTag: {fileID: 11400000, guid: b4d48cb01b783e048a497a28e6780e06, type: 2}
-  _defeatTag: {fileID: 11400000, guid: 57f8f8577ba71b04987b0e3ce47ceef9, type: 2}
 --- !u!4 &1615805111
 Transform:
   m_ObjectHideFlags: 0

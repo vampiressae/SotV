@@ -14,7 +14,8 @@ namespace Items
         public int Stack = 1;
         [HorizontalGroup("might")] public int Might = 1;
         [HorizontalGroup("might"), LabelText(" Equipped")] public int EquippedMight = -1;
-        public ItemRank Rank;
+        [HorizontalGroup("rank")] public ItemRank Rank;
+        [HorizontalGroup("rank", 60), LabelWidth(44)] public bool Hidden;
         [Space]
         [GUIColor(0.8f, 1, 1)]
         public ItemTag[] Tags;

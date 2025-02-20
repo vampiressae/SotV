@@ -483,7 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startDelay: 0.3
-  _startingScreen: {fileID: 11400000, guid: 0c4b68627c077164bbed2c595ae33823, type: 2}
+  _startingScreen: {fileID: 0}
   _loadingPopup: {fileID: 11400000, guid: b9419c2ac449c5b469bb98ed00b3aa56, type: 2}
   _messagePopup: {fileID: 11400000, guid: c7946c252d01c8a48a2c83074e4ab714, type: 2}
   _screenParent: {fileID: 8947420655727942825}
