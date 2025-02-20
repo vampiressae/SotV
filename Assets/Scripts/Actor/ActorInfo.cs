@@ -11,9 +11,9 @@ namespace Actor
     [CreateAssetMenu(menuName = "Entity/Actor Info")]
     public sealed class ActorInfo : EntityInfo
     {
-        public List<ItemData> Equipment;
-        public List<SkillData> Skills;
-        public Sprite Sprite;
+        [BoxGroup("Inventories")] public List<ItemData> Equipment;
+        [BoxGroup("Actor")] public List<SkillData> Skills;
+        [BoxGroup("Actor")] public Sprite Sprite;
 
         [InlineProperty, HideLabel, BoxGroup("Might")] public ActorMight Might;
 

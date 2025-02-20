@@ -9,14 +9,28 @@ namespace Items
         {
             foreach (var add in adds)
             {
-                if (add.Info.Stack == 1)
-                    list.Add(add);
-                else
+                if (add.IsEmpty)
                 {
-                    var old = list.Where(item => item.Info == add.Info).FirstOrDefault();
-                    if (old == null) list.Add(add);
-                    else old.AddAmount(add.Amount);
+                    list.Add(new());
+                    continue;
                 }
+
+                if (add.IsNotEmptyAndNotStackable)
+                {
+                    list.Add(add);
+                    continue;
+                }
+
+                var old = list.Where(data => data.Info == add.Info).FirstOrDefault();
+                if (old != null && old.IsNotEmptyAndStackable)
+                {
+                    old.AddAmount(add.Amount);
+                    continue;
+                }
+
+                old = list.Where(data => data.IsEmpty).FirstOrDefault();
+                if (old != null) old.Copy(add);
+                else list.Add(add);
             }
         }
     }

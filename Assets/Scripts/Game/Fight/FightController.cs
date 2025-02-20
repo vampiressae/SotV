@@ -43,23 +43,23 @@ public class FightController : MonoBehaviour
 
         if (_allies == null) _allies = new();
         else _allies.ForEach(ally => Destroy(ally.gameObject));
-        SpawnActors(_alliesParent, new ActorInfo[] { _playerInfoValue.Player }, _allies, true);
+        SpawnActors(_alliesParent, new() { _playerInfoValue.Player }, _allies, true);
 
         if (_enemies == null) _enemies = new();
         else _enemies.ForEach(enemy => Destroy(enemy.gameObject));
-        SpawnActors(_enemyParent, _actorList.Actors.ToArray(), _enemies, false);
+        SpawnActors(_enemyParent, _actorList.PickActors(), _enemies, false);
 
         _playerInfoValue.SetHolder(_allies[0]);
         Player.Info.Might.Regen(true);
     }
 
-    private void SpawnActors(ActorHolderParent parent, ActorInfo[] infos, List<ActorHolder> holders, bool firstIsPlayer)
+    private void SpawnActors(ActorHolderParent parent, List<ActorInfo> infos, List<ActorHolder> holders, bool firstIsPlayer)
     {
         holders.Clear();
-        for (int i = 0; i < infos.Length; i++)
+        for (int i = 0; i < infos.Count; i++)
         {
             var holder = Instantiate(_actorPrefab, parent.GetParent(i));
-            var info = firstIsPlayer ? infos[i] : Instantiate(infos[i]);
+            var info = firstIsPlayer && i == 0 ? infos[i] : Instantiate(infos[i]);
             holder.Init(info);
             holders.Add(holder);
         }

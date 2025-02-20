@@ -16,6 +16,7 @@ MonoBehaviour:
   Name: Wolf
   Description: 
   _stats: []
+  _inventorList: {fileID: 11400000, guid: 40717642fd9af8545a9e18097d8c46aa, type: 2}
   Inventory:
   - _amount: 2
     _info: {fileID: 11400000, guid: 603064951630fa742bd68bc20ed2b376, type: 2}

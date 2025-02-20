@@ -1,9 +1,9 @@
+using System.Linq;
 using UnityEngine;
 using Sirenix.Utilities;
 using Items;
 using Entity;
 using Actor;
-using System.Linq;
 
 public abstract class ActionInfo : ScriptableWithNameAndSprite
 {

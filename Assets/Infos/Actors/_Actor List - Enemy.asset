@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3497a1acc8fff834bb122b18e7e3cea9, type: 3}
   m_Name: _Actor List - Enemy
   m_EditorClassIdentifier: 
-  _actors:
-  - {fileID: 11400000, guid: 93c0f5ebbc98e3847a60886f93ecfbbf, type: 2}
-  - {fileID: 11400000, guid: 93c0f5ebbc98e3847a60886f93ecfbbf, type: 2}
+  _list:
+  - Chance: 1
+    Item: {fileID: 11400000, guid: 93c0f5ebbc98e3847a60886f93ecfbbf, type: 2}
+    Range:
+      Min: 2
+      Max: 2
+  - Chance: 0.3
+    Item: {fileID: 11400000, guid: 93c0f5ebbc98e3847a60886f93ecfbbf, type: 2}
+    Range:
+      Min: 1
+      Max: 1
+  _range:
+    Min: 1
+    Max: 1

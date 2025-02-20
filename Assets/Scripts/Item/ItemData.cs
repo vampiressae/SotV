@@ -10,6 +10,10 @@ namespace Items
 
         public override bool IsEmpty => Info == null || Amount < 1;
         public override bool IsFull => Info && Amount >= Info.Stack;
+        public bool IsNotEmptyAndStackable => !IsEmpty && Info.Stack != 1;
+        public bool IsNotEmptyAndNotStackable => !IsEmpty && Info.Stack == 1;
+
+        public ItemData() { }
 
         public ItemData(ItemInfo info, int amount)
         {

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52ec508cd465bf4fa170a7d5af2cd29, type: 3}
   m_Name: Rounds Per Turn
   m_EditorClassIdentifier: 
-  _value: 3
-  _multiplier: 3
+  _value: 1
+  _multiplier: 2

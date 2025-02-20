@@ -5,8 +5,8 @@ using Sirenix.OdinInspector;
 [Serializable]
 public struct IntRange
 {
-    [HorizontalGroup(50), HideLabel] public int Min;
-    [HorizontalGroup(62), HideLabel, LabelWidth(10), LabelText("-")] public int Max;
+    [HorizontalGroup(50), OnValueChanged("OnValueChangedInInspector"), HideLabel] public int Min;
+    [HorizontalGroup(62), OnValueChanged("OnValueChangedInInspector"), LabelWidth(10), LabelText("-")] public int Max;
 
     public IntRange(int min, int max)
     {
@@ -50,4 +50,11 @@ public struct IntRange
     public override bool Equals(object obj) => obj is IntRange range && Min == range.Min && Max == range.Max;
     public override int GetHashCode() => HashCode.Combine(Min, Max);
     public override string ToString() => $"{Min}-{Max}";
+
+    public static IntRange Zero => new IntRange(0, 0);
+    public static IntRange One => new IntRange(1, 1);
+
+#if UNITY_EDITOR
+    private void OnValueChangedInInspector() { if (Min > Max) Max = Min; }
+#endif
 }

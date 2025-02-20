@@ -10,16 +10,16 @@ namespace Entity
     {
         [SerializeField, HideInPlayMode] private List<StatData> _stats;
 
-        [SerializeField, HideLabel] private ItemDataWithChanceList _inventorList;
-        public List<ItemData> Inventory;
+        [BoxGroup("Inventories"), SerializeField, HideLabel] private ItemDataWithChanceList _inventorList;
+        [BoxGroup("Inventories"), SerializeField, LabelText("Inventory")] public List<ItemData> _inventoryStart;
+        [ShowInInspector, HideInEditorMode] public List<StatData> Stats { get; private set; }
 
-        [ShowInInspector, HideInEditorMode]
-        public List<StatData> Stats { get; private set; }
+        private List<ItemData> _inventory;
+        public List<ItemData> Inventory => _inventory ??= InitInventory();
 
         public virtual void Init()
         {
             Stats = new(_stats);
-            InitRandomInventory();
         }
 
         private bool GetStatData(StatInfo info, out StatData data)
@@ -59,25 +59,11 @@ namespace Entity
             Stats.Remove(old);
         }
 
-        public void InitRandomInventory()
+        private List<ItemData> InitInventory()
         {
-            if (_inventorList == null) return;
-
-            var random = Random.value;
-            var list = new List<ItemData>();
-
-            foreach (var item in _inventorList.Items)
-            {
-                if (item.Chance > random) continue;
-                list.Add(new(item.Info, item.Amount.RandomUnity));
-            }
-
-            var rnd = new System.Random();
-            list.Sort((x, y) => rnd.Next(-1, 1));
-
-            var array = list.ToArray();
-            array = array[0.._inventorList.Max.RandomUnity];
-            Inventory.Add(array);
+            _inventory = new() { _inventoryStart };
+            if (_inventorList) _inventorList.PickWithChance(_inventory);
+            return _inventory;
         }
     }
 }

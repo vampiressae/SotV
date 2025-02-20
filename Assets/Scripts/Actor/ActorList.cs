@@ -4,10 +4,17 @@ using UnityEngine;
 namespace Actor
 {
     [CreateAssetMenu(menuName = "Entity/Actor List")]
-    public class ActorList : ScriptableObject
+    public class ActorList : ScriptableListWithIntRange<ActorInfoWithChance>
     {
-        [SerializeField] private ActorInfo[] _actors;
+        public List<ActorInfo> PickActors()
+        {
+            var result = new List<ActorInfo>();
 
-        public IReadOnlyList<ActorInfo> Actors => _actors;
+            foreach(var actor in Pick(true))
+                for (int i = 0; i < actor.RangeRandom; i++)
+                    result.Add(actor.Item);
+
+            return result;
+        }
     }
 }

@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e91393ad621e22a419d9ca5f462cfa45, type: 3}
   m_Name: Wolf
   m_EditorClassIdentifier: 
-  Max:
-    Min: 0
-    Max: 0
-  Items:
-  - Info: {fileID: 0}
-    Amount:
-      Min: 0
-      Max: 0
-    Chance: 0
-  - Info: {fileID: 0}
-    Amount:
-      Min: 0
-      Max: 0
-    Chance: 0
+  _list:
+  - Chance: 1
+    Item: {fileID: 11400000, guid: 603064951630fa742bd68bc20ed2b376, type: 2}
+    Range:
+      Min: 1
+      Max: 2
+  - Chance: 1
+    Item: {fileID: 11400000, guid: 3a8d71366111b9b46967c102aa872a2b, type: 2}
+    Range:
+      Min: 1
+      Max: 1
+  - Chance: 1
+    Item: {fileID: 11400000, guid: a08fb58ff59f51e41b790c601a875547, type: 2}
+    Range:
+      Min: 1
+      Max: 2
+  _range:
+    Min: 5
+    Max: 5
