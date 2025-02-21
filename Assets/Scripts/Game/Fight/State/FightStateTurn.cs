@@ -1,4 +1,4 @@
-using NUnit.Framework.Constraints;
+using Sirenix.Utilities;
 using System.Linq;
 using UnityEngine;
 using Vamporium.UI;
@@ -16,8 +16,8 @@ public abstract class FightStateTurn : FightState
     {
         base.Enter(machine);
 
-        FightController.Instance.Player.Info.Might.OnAnyValueChanged += OnAnyMightChanged;
-        FightController.Instance.Enemies[0].Info.Might.OnAnyValueChanged += OnAnyMightChanged;
+        FightController.Player.Info.Might.OnAnyValueChanged += OnAnyMightChanged;
+        FightController.Enemies.ForEach(enemy => enemy.Info.Might.OnAnyValueChanged += OnAnyMightChanged);
 
         if (UIManager.Show(_popupTag).TryGetComponent<UIPopupFightTurn>(out var ui))
             ui.Init(ActorName);
@@ -26,8 +26,8 @@ public abstract class FightStateTurn : FightState
     public override void Exit(StateMachine machine)
     {
         base.Exit(machine);
-        FightController.Instance.Player.Info.Might.OnAnyValueChanged -= OnAnyMightChanged;
-        FightController.Instance.Enemies[0].Info.Might.OnAnyValueChanged -= OnAnyMightChanged;
+        FightController.Player.Info.Might.OnAnyValueChanged -= OnAnyMightChanged;
+        FightController.Enemies.ForEach(enemy => enemy.Info.Might.OnAnyValueChanged -= OnAnyMightChanged);
     }
 
     private void OnAnyMightChanged()
@@ -41,8 +41,8 @@ public abstract class FightStateTurn : FightState
     }
 
     private EndMode EndInVictory()
-        => FightController.Instance.Enemies.Where(enemy => enemy.IsAlive).Count() > 0 ? EndMode.None : EndMode.Victory;
+        => FightController.Enemies.Where(enemy => enemy.IsAlive).Count() > 0 ? EndMode.None : EndMode.Victory;
 
     private EndMode EndInDefeat()
-        => FightController.Instance.Player.IsAlive ? EndMode.None : EndMode.GameOver;
+        => FightController.Player.IsAlive ? EndMode.None : EndMode.GameOver;
 }

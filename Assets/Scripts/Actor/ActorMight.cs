@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace Actor
 {
@@ -92,6 +93,17 @@ namespace Actor
             _missing = Mathf.Max(_missing - value, 0);
 
             OnMissingChanged?.Invoke(-value);
+            OnAnyValueChanged?.Invoke();
+        }
+
+        public void ResetMissingValue()
+        {
+            if (_missing == 0) return;
+
+            var missing = _missing;
+            _missing = 0;
+
+            OnMissingChanged?.Invoke(missing);
             OnAnyValueChanged?.Invoke();
         }
 

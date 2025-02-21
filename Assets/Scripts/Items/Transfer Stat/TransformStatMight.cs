@@ -8,7 +8,7 @@ public class TransformStatMight : TransformStatInfo
     public override bool Transfer(EntityHolder target, int value)
     {
         if (target is not ActorHolder actor) return false;
-        actor.Info.Might.AddMissingValue(value);
+        actor.Info.Hurt(value);
         return true;
     }
 }

@@ -6,6 +6,7 @@ public class FightStateStart : FightState
     {
         base.Enter(machine);
         _isPlayerTurn.Value = false;
+        FightController.Player.Info.Might.ResetMissingValue();
     }
 
     public override void Exit(StateMachine machine)

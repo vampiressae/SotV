@@ -20,13 +20,13 @@ public class FightStateEnd : State
     {
         UIManager.Hide(_victoryTag, 1);
 
-        var enemies = FightController.Instance.Enemies;
+        var enemies = FightController.Enemies;
         var popup = UIManager.Show(_containerTag);
-        var spoils = new List<ItemData>();
+        var loot = new List<ItemData>();
 
         foreach (var enemy in enemies)
-            spoils.Add(enemy.Info.Inventory);
+            loot.Add(enemy.Info.GetLoot());
 
-        popup.GetComponent<UIPopupContainer>().Init("Spoils", spoils);
+        popup.GetComponent<UIPopupContainer>().Init("Spoils", loot);
     }
 }

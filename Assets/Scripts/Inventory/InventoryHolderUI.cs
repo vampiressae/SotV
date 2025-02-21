@@ -30,8 +30,6 @@ namespace Inventory
                 _uis.Add(ui);
             }
 
-            _uis.ForEach(ui => ui.OnDataChanged());
-
             if (_shrinkToMin && _inventory.Slots < 10)
                 if (TryGetComponent<GridLayoutGroup>(out var layout))
                     layout.constraintCount = _inventory.Slots;

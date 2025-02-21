@@ -27,7 +27,7 @@ namespace Inventory
 
         protected override void Init(TooltipForString tooltip)
         {
-            var actor = FightController.Instance.Player;
+            var actor = FightController.Player;
             var summary = InventoryUI is not EquipmentHolderUI equipment || !equipment.Blocked;
             RawData.TooltipInit(actor, tooltip, summary);
         }

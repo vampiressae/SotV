@@ -22,14 +22,14 @@ public abstract class ActionInfo : ScriptableWithNameAndSprite
         {
             case ActionTarget.AllyAny:
             case ActionTarget.AllySelf:
-                return target == FightController.Instance.Player;
+                return target == FightController.Player;
 
             case ActionTarget.AllyOther: return false;
 
             case ActionTarget.EnemyAny:
             case ActionTarget.EnemyLand:
             case ActionTarget.EnemyAir:
-                return FightController.Instance.Enemies.Contains(target);
+                return FightController.Enemies.Contains(target);
 
             default: return true;
         }

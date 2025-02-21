@@ -52,14 +52,6 @@ namespace Items
         public override void InvokeOnItemDataChanging() => OnItemDataChanging?.Invoke(this);
         public override void InvokeOnItemDataChanged() => OnItemDataChanged?.Invoke(this);
 
-        public void Empty()
-        {
-            InvokeOnItemDataChanging();
-            Info = null;
-            _amount = 0;
-            InvokeOnItemDataChanged();
-        }
-
         public override void Swap(Item with)
         {
             InvokeOnItemDataChanging();

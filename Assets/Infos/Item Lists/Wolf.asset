@@ -26,8 +26,8 @@ MonoBehaviour:
   - Chance: 1
     Item: {fileID: 11400000, guid: a08fb58ff59f51e41b790c601a875547, type: 2}
     Range:
-      Min: 1
-      Max: 2
+      Min: 0
+      Max: 1
   _range:
     Min: 5
     Max: 5

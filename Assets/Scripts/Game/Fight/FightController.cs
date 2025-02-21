@@ -12,6 +12,9 @@ public class FightController : MonoBehaviour
     public static FightController Instance;
     public static FightControllerSettings Settings => Instance._settings;
 
+    public static ActorHolder Player => Instance._allies[0];
+    public static IReadOnlyList<ActorHolder> Enemies => Instance._enemies;
+
     [SerializeField] private ActorInfo _playerInfo;
     [Space]
     [SerializeField] private ActorList _actorList;
@@ -31,8 +34,6 @@ public class FightController : MonoBehaviour
     private StateMachine _stateMachine;
 
     public StateMachine StateMachine => _stateMachine;
-    public ActorHolder Player => _allies[0];
-    public IReadOnlyList<ActorHolder> Enemies => _enemies;
     public RoundsPerTurnValue RoundsPerTurn => _roundsPerTurn;
 
     private void Awake()

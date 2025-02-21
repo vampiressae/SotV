@@ -2,6 +2,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Actor;
+using static UnityEngine.Analytics.IAnalytic;
 
 public abstract class Item
 {
@@ -15,10 +16,23 @@ public abstract class Item
 
     public int Amount => _amount;
 
+    public void Add(int amount)
+    {
+        _amount += amount;
+        InvokeOnChanged();
+    }
+
     public void Copy(Item data)
     {
         _amount = data._amount;
         RawInfo = data.RawInfo;
+        InvokeOnChanged();
+    }
+
+    public void Empty()
+    {
+        _amount = 0;
+        RawInfo = null;
         InvokeOnChanged();
     }
 
@@ -28,7 +42,7 @@ public abstract class Item
     public abstract void InvokeOnItemDataChanged();
     public void InvokeOnChanged() => OnChanged?.Invoke();
 
-    public virtual void TooltipInit(ActorHolder actor, TooltipForString tooltip, bool actionSummary) 
+    public virtual void TooltipInit(ActorHolder actor, TooltipForString tooltip, bool actionSummary)
         => RawInfo.TooltipInit(actor, tooltip, actionSummary);
 }
 

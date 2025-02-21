@@ -214,8 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d70ab1e97b420946984edf563b1f731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _victoryUI: {fileID: 11400000, guid: b4d48cb01b783e048a497a28e6780e06, type: 2}
-  _containerUI: {fileID: 11400000, guid: b97183adef62a124f8914e0a1b55eccd, type: 2}
   _victoryText: {fileID: 5241993081797821416}
   _maxScale: 1.5
   _duration: 2

@@ -65,5 +65,7 @@ namespace Entity
             if (_inventorList) _inventorList.PickWithChance(_inventory);
             return _inventory;
         }
+
+        public virtual List<ItemData> GetLoot() => Inventory;
     }
 }

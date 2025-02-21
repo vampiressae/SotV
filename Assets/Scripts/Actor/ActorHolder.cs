@@ -24,6 +24,8 @@ namespace Actor
         public void Init(ActorInfo info)
         {
             _info = info;
+            _info.Init();
+
             _renderer.sprite = _info.Sprite;
             transform.localPosition += new Vector3(-1, 0);
             name = "Actor Holder - " + info.Name;

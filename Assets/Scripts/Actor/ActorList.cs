@@ -10,7 +10,9 @@ namespace Actor
         {
             var result = new List<ActorInfo>();
 
-            foreach(var actor in Pick(true))
+            var random = Random.value;
+            var actors = Pick(true, actor => random < actor.Chance);
+            foreach (var actor in actors)
                 for (int i = 0; i < actor.RangeRandom; i++)
                     result.Add(actor.Item);
 

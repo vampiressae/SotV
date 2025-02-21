@@ -38,12 +38,16 @@ namespace Actor
             return skill != null;
         }
 
-        protected override List<ItemData> InitInventory()
+        public override List<ItemData> GetLoot()
         {
-            var list = base.InitInventory();
-            if (FightController.Instance.Player.Info != this)
-                _inventory.Add(Equipment, item => !item.Info.Hidden);
+            var list = base.GetLoot();
+            list.Add(Equipment, item => !item.Info.Hidden);
             return list;
         }
+
+        public void Hurt(int amount) => Might.AddMissingValue(amount);
+        public void Heal(int amount) => Might.RemoveMissingValue(amount);
+        public void Kill() => Might.AddMissingValue(Might.Available);
+        public void FullHeal() => Might.ResetMissingValue();
     }
 }

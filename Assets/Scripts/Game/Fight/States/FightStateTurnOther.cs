@@ -30,8 +30,8 @@ public class FightStateTurnOther : FightStateTurn
     private IEnumerator Act()
     {
         var wait = new WaitForSeconds(1);
-        var player = FightController.Instance.Player;
-        var enemies = FightController.Instance.Enemies;
+        var player = FightController.Player;
+        var enemies = FightController.Enemies;
 
         yield return new WaitForSeconds(2);
 

@@ -49,10 +49,7 @@ namespace Inventory
             _mouseUpEvent.OnTrigger -= OnUpTrigger;
         }
 
-        private void OnDataChanged()
-        {
-            _fader = _ui.IsEmpty ? null : _ui.RawItemUI.GetComponent<CanvasGroup>();
-        }
+        private void OnDataChanged() => _fader = _ui.IsEmpty ? null : _ui.RawItemUI.GetComponent<CanvasGroup>();
 
         private void OnUpTrigger()
         {
@@ -61,12 +58,20 @@ namespace Inventory
             var transfer = _value.Value == null || InteractionBlocked(_value.Value._ui) ? DropResult.Return : Transfer;
             switch (transfer)
             {
-                case DropResult.Return: SetItemVisible(true); break;
+                case DropResult.Return:
+                    SetItemVisible(true);
+                    break;
 
                 case DropResult.Transfer:
                 case DropResult.Swap:
                     _tt.Init(_value.Value);
                     _ui.RawData.Swap(_value.Value._ui.RawData);
+                    break;
+
+                case DropResult.Stack:
+                    _tt.Init(_value.Value);
+                    _value.Value._ui.RawData.Add(_ui.RawData.Amount);
+                    _ui.RawData.Empty();
                     break;
             }
 
