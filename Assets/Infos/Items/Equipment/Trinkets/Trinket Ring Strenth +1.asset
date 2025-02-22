@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7470991037139996833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6b34256db06764281b79b61374773e, type: 3}
+  m_Name: __ Item FX Equip Stat
+  m_EditorClassIdentifier: 
+  _amount: 1
+  _info: {fileID: 11400000, guid: 1492911b1fc49c948a6c779b1a7eb0a6, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10,14 +24,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b5b99f241f4afc47a8a8f4a7acb97d0, type: 3}
-  m_Name: Armor Leather Studded
+  m_Name: Trinket Ring Strenth +1
   m_EditorClassIdentifier: 
-  Icon: {fileID: 492005, guid: d058e618f20d518408f130b159a04ab4, type: 3}
-  Name: Studded Leather Armor
+  Icon: {fileID: -1745419331, guid: d058e618f20d518408f130b159a04ab4, type: 3}
+  Name: Ring of Strentgh
   Description: 
   Stack: 1
   Might: 1
-  EquippedMight: -1
+  EquippedMight: 10
   Rank: {fileID: 11400000, guid: ae61b9db564002443bd94b042df9bc7d, type: 2}
   Hidden: 0
   Tags:
@@ -25,21 +39,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 29cfe64c96e496e4a845cf5b97c2ef11, type: 2}
   - {fileID: 11400000, guid: 224447368e34f3c4dbcf8e39577e05cd, type: 2}
   _effects:
-  - {fileID: 3031576011151503888}
+  - {fileID: -7470991037139996833}
   _canEquipOnlyOne: 1
   _canEquipKey: {fileID: 11400000, guid: 224447368e34f3c4dbcf8e39577e05cd, type: 2}
---- !u!114 &3031576011151503888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e49f639ba9407b42a013ea44f6148d3, type: 3}
-  m_Name: __ Item FX Equip Might
-  m_EditorClassIdentifier: 
-  _type: 2
-  _modifier: 1
-  _value: -10

@@ -3,6 +3,8 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using Inventory;
 using Actor;
+using System.Linq;
+using Sirenix.OdinInspector.Editor;
 
 namespace Items
 {
@@ -21,8 +23,10 @@ namespace Items
         public ItemTag[] Tags;
 
         [GUIColor(1, 0.8f, 1)]
-        [ListDrawerSettings(HideAddButton = true, CustomRemoveElementFunction = "RemoveItemEffect")]
+        [ListDrawerSettings(CustomRemoveElementFunction = "RemoveItemEffect", CustomAddFunction = nameof(AddEffect))]
         [SerializeField, InlineEditor] private List<ItemEffect> _effects = new();
+
+        private void AddEffect() => _effects.AddScriptableCopy(this);
 
         protected override void GetTooltip(ref List<string> list)
         {
@@ -51,7 +55,7 @@ namespace Items
             if (Rank) Rank.SetText(tooltip.Title);
         }
 
-        protected override void TooltipDescriptions(ActorHolder actor,  ref List<string> descriptions)
+        protected override void TooltipDescriptions(ActorHolder actor, ref List<string> descriptions)
         {
             base.TooltipDescriptions(actor, ref descriptions);
             foreach (var effect in _effects)

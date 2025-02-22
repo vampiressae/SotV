@@ -3,6 +3,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using Sirenix.Utilities;
+using Items;
+using Sirenix.OdinInspector.Editor;
+using System.Collections.Generic;
 
 public static class EditorUtils
 {
@@ -51,5 +54,43 @@ public static class EditorUtils
         var length = path.Length - (scriptable.name + ".asset").Length;
         return path.Substring(0, length);
     }
+
+    public static void AddScriptableCopy<T>(this List<T> list, ScriptableObject scriptable = null) where T : ScriptableObject
+    {
+        var prefix = "__ ";
+        var items = new List<T>();
+        var guids = AssetDatabase.FindAssets("t:" + typeof(T));
+        for (int i = 0; i < guids.Length; i++)
+        {
+            var path = AssetDatabase.GUIDToAssetPath(guids[i]);
+            items.Add(AssetDatabase.LoadAssetAtPath<T>(path));
+        }
+        items = items.Where(item => !item.name.StartsWith(prefix)).ToList();
+
+        if (items.Count == 0)
+        {
+            Debug.LogError($"No items found in the project with type {typeof(T)}.");
+            return;
+        }
+
+        var selector = new GenericSelector<T>("Select", false, selected => selected.name, items);
+        selector.EnableSingleClickToSelect();
+        selector.SelectionConfirmed += selection =>
+        {
+            var selected = selection.FirstOrDefault();
+            if (selected)
+            {
+                var item = Object.Instantiate(selected);
+                if (scriptable)
+                {
+                    item.name = prefix + selected.name;
+                    AssetDatabase.AddObjectToAsset(item, scriptable);
+                }
+                list.Add(item);
+            }
+        };
+        selector.ShowInPopup();
+    }
+
 }
 #endif
