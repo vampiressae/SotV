@@ -18,8 +18,8 @@ MonoBehaviour:
   _stats: []
   _inventorList: {fileID: 0}
   _inventoryStart:
-  - _amount: 0
-    _info: {fileID: 0}
+  - _amount: 1
+    _info: {fileID: 11400000, guid: 3255a73c4e95ae64a8053867142c9fa3, type: 2}
   - _amount: 0
     _info: {fileID: 0}
   - _amount: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
   - _amount: 0
     _info: {fileID: 0}
   Skills:
-  - _amount: 1
+  - _amount: 0
     _info: {fileID: 11400000, guid: ae5f0b7ada4f5bd469e21ac0804d5584, type: 2}
   - _amount: 2
     _info: {fileID: 11400000, guid: 0aad9117da527754689c143163367387, type: 2}

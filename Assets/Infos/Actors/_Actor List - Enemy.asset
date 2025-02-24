@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: _Actor List - Enemy
   m_EditorClassIdentifier: 
   _list:
-  - Chance: 0
+  - Chance: 1
     Item: {fileID: 11400000, guid: 93c0f5ebbc98e3847a60886f93ecfbbf, type: 2}
     Range:
       Min: 2
       Max: 2
-  - Chance: 1
+  - Chance: 0
     Item: {fileID: 11400000, guid: 2fe4fc54a65af0040bc3042243fc2ae2, type: 2}
     Range:
       Min: 1

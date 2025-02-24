@@ -19,6 +19,7 @@ MonoBehaviour:
   Might: 4
   EquippedMight: -1
   Rank: {fileID: 11400000, guid: ae61b9db564002443bd94b042df9bc7d, type: 2}
+  Hidden: 0
   Tags:
   - {fileID: 11400000, guid: 280fb10151e3b7a4a9fd79a45314e01b, type: 2}
   - {fileID: 11400000, guid: 055aef7b77a87184cac578b11cd80408, type: 2}
@@ -27,25 +28,35 @@ MonoBehaviour:
   _useSkill: {fileID: 11400000, guid: 0aad9117da527754689c143163367387, type: 2}
   _actionsUI: {fileID: 7238660739354989741, guid: be90d278e44cb4243acb1a5e386abb93, type: 3}
   _actions:
-  - Info: {fileID: 11400000, guid: d0b04737c09d40743be7425419a4d867, type: 2}
+  - Expertise: 0
+    Info: {fileID: 11400000, guid: d0b04737c09d40743be7425419a4d867, type: 2}
     _might: 5
     Value:
       Min: 5
       Max: 7
-  - Info: {fileID: 11400000, guid: 8414f067ff2f6ba4f9ed3a665200c080, type: 2}
+  - Expertise: 1
+    Info: {fileID: 11400000, guid: 8414f067ff2f6ba4f9ed3a665200c080, type: 2}
     _might: 10
     Value:
       Min: 10
       Max: 13
-  - Info: {fileID: 11400000, guid: f21e4edf258c2f94ba97fa8ffd26897e, type: 2}
+  - Expertise: 2
+    Info: {fileID: 11400000, guid: f21e4edf258c2f94ba97fa8ffd26897e, type: 2}
     _might: 25
     Value:
       Min: 15
       Max: 20
-  - Info: {fileID: 11400000, guid: 3604afe3e882bf647a08b19549e6d89d, type: 2}
+  - Expertise: 3
+    Info: {fileID: 11400000, guid: 3604afe3e882bf647a08b19549e6d89d, type: 2}
     _might: 15
     Value:
       Min: 15
       Max: 20
+  - Expertise: 4
+    Info: {fileID: 11400000, guid: d0b04737c09d40743be7425419a4d867, type: 2}
+    _might: 0
+    Value:
+      Min: 0
+      Max: 0
   _type: {fileID: 11400000, guid: 75c9656dadba88c47aa88fc9fc21cc69, type: 2}
   _canEquipOnlyOne: 0

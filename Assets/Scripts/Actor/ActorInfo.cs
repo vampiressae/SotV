@@ -32,11 +32,13 @@ namespace Actor
             Might.AddReservedValue(this, cost);
         }
 
-        public bool GetSkill(SkillInfo info, out SkillData skill)
+        private int GetSkillAmount(SkillInfo info)
         {
-            skill = Skills.Where(s => s.Info == info).FirstOrDefault();
-            return skill != null;
+            var skill = Skills.Where(s => s.Info == info).FirstOrDefault();
+            return skill == null ? 0 : skill.Experience;
         }
+
+        public SkillExpertise GetActionAmount(SkillInfo info) => info.GetExpertise(GetSkillAmount(info));
 
         public override List<ItemData> GetLoot()
         {

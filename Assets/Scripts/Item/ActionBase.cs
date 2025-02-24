@@ -19,6 +19,9 @@ namespace Items
     {
         public static event Action<ActorHolder, EntityHolder, Item, ActionBase> OnActed;
 
+        [PropertyOrder(1), ShowIf("ShowExpertise")]
+        [HorizontalGroup("1", 90), HideLabel] public SkillExpertise Expertise;
+
         public abstract Sprite Icon { get; }
         public abstract ItemRank Rank { get; }
         public abstract int Might { get; }
@@ -51,6 +54,7 @@ namespace Items
         public virtual void TooltipSummary(ActorHolder actor, ref List<string> descriptions) { }
 
 #if UNITY_EDITOR
+        protected virtual bool ShowExpertise => true;
         public virtual void OnValidate(ItemInfo item) { }
 #endif
     }

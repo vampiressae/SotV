@@ -2,13 +2,12 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Actor;
-using static UnityEngine.Analytics.IAnalytic;
 
 public abstract class Item
 {
     public event Action OnChanged;
 
-    [SerializeField, HideLabel, HorizontalGroup(50)] protected int _amount;
+    [SerializeField, HideLabel, HorizontalGroup(50), ShowIf("ShowAmount")] protected int _amount;
 
     public abstract bool IsEmpty { get; }
     public abstract bool IsFull { get; }
@@ -44,11 +43,15 @@ public abstract class Item
 
     public virtual void TooltipInit(ActorHolder actor, TooltipForString tooltip, bool actionSummary)
         => RawInfo.TooltipInit(actor, tooltip, actionSummary);
+
+#if UNITY_EDITOR
+    protected virtual bool ShowAmount => true;
+#endif
 }
 
 public abstract class Item<T> : Item where T : ScriptableWithNameAndSpriteAndTooltip
 {
-    [SerializeField, HideLabel, HorizontalGroup] protected T _info;
+    [SerializeField, HideLabel, HorizontalGroup, PropertyOrder(-1)] protected T _info;
     public T Info { get => _info; set => SetInfo(value); }
 
     public override ScriptableWithNameAndSpriteAndTooltip RawInfo { get => Info; set => _info = value as T; }
