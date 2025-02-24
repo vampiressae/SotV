@@ -1,5 +1,6 @@
-using System.Collections.Generic;
+using System;
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Items;
@@ -8,6 +9,8 @@ namespace Entity
 {
     public class EntityInfo : ScriptableWithNameAndSprite
     {
+        public event Func<FlyingText> OnFlyingText;
+
         [SerializeField, HideInPlayMode] private List<StatData> _stats;
 
         [BoxGroup("Inventories"), SerializeField, HideLabel] private ItemDataWithChanceList _inventorList;
@@ -67,5 +70,7 @@ namespace Entity
         }
 
         public virtual List<ItemData> GetLoot() => Inventory;
+
+        public FlyingText InvokeOnFlyingText() => OnFlyingText?.Invoke();
     }
 }

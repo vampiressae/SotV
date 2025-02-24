@@ -16,12 +16,14 @@ namespace Actor
 
         private void Start()
         {
+            _actor.Info.OnFlyingText += OnFlyingText;
             _actor.Info.Might.OnMissingChanged += OnMissingChanged;
             ActionBase.OnActed += OnItemActionActed;
         }
 
         private void OnDestroy()
         {
+            _actor.Info.OnFlyingText -= OnFlyingText;
             _actor.Info.Might.OnMissingChanged -= OnMissingChanged;
             ActionBase.OnActed -= OnItemActionActed;
         }
@@ -54,9 +56,8 @@ namespace Actor
             _renderer.DOColor(new(1, 0, 0, 0), 0.5f).SetDelay(0.3f).onComplete += DieComplete;
         }
 
-        private void DieComplete()
-        {
-            gameObject.SetActive(false);
-        }
+        private void DieComplete() => gameObject.SetActive(false);
+
+        private FlyingText OnFlyingText() => FlyingTextController.Show(_actor, string.Empty);
     }
 }

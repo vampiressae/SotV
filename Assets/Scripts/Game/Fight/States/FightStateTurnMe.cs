@@ -1,5 +1,4 @@
-﻿using System;
-using VamporiumState.GO;
+﻿using VamporiumState.GO;
 
 public class FightStateTurnMe : FightStateTurn
 {
@@ -9,5 +8,14 @@ public class FightStateTurnMe : FightStateTurn
     {
         base.Enter(machine);
         _isPlayerTurn.Value = true;
+
+        FightController.Player.Info.OnTurnStart();
+    }
+
+    public override void Exit(StateMachine machine)
+    {
+        base.Exit(machine);
+
+        FightController.Player.Info.OnTurnEnd();
     }
 }

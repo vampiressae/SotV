@@ -7,4 +7,9 @@ namespace Modifier
         OnTurnStarted,
         OnTurnEnded,
     }
+    public enum ModifierEventInt
+    {
+        OnDamageDeal,
+        OnDamageReceive,
+    }
 }

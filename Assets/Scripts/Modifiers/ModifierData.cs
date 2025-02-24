@@ -1,6 +1,5 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
 using Actor;
-using Sirenix.OdinInspector;
 
 namespace Modifier
 {
@@ -19,23 +18,24 @@ namespace Modifier
             Value = value;
         }
 
-        public ModifierData(ModifierInfo info, int value, int timer) : this(info, value) 
-            => _timer = _timerMax = timer;
+        public ModifierData(ModifierInfo info, int value, int timer) : this(info, value)
+            => _timer = _timerMax = info.HasTimer ? timer : 0;
 
         public bool OnModifierEvent(ModifierEvent e, ActorInfo actor)
-        {
-            Info.OnEvent(e, actor);
-            return Expire();
-        }
+        { if (Info.OnEvent(e, actor)) return true; return TryExpire(); }
 
-        private bool Expire()
+        public bool OnModifierEvent(ModifierEventInt e, ActorInfo actor, ref int value)
+        { if (Info.OnEvent(e, actor, ref value)) return true; return TryExpire(); }
+
+        private bool TryExpire()
         {
+            if (!Info.HasTimer) return false;
             if (_timerMax > 0) _timer--;
             return _timerMax > 0 && _timer < 1;
         }
 
 #if UNITY_EDITOR
-        [ShowInInspector, ReadOnly, HideLabel,  HorizontalGroup(50)]
+        [ShowInInspector, ReadOnly, HideLabel, HorizontalGroup(50)]
         private string _timerAndTimerMax => _timerMax > 0 ? $"{_timer}/{_timerMax}" : "--";
 #endif
     }

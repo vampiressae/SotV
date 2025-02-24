@@ -25,15 +25,6 @@ public class FlyingText : MonoBehaviour
         else if (value < 0) SetTextGradient(_negativeColor);
     }
 
-    public void SetTextGradient(TMP_ColorGradient gradient)
-    {
-        if (gradient == null) return;
-
-        _text.color = Color.white;
-        _text.enableVertexGradient = true;
-        _text.colorGradientPreset = gradient;
-    }
-
     public void Init(Sprite sprite, Color spriteColor, string text, Color textColor)
     {
         _renderer.sprite = sprite;
@@ -56,5 +47,14 @@ public class FlyingText : MonoBehaviour
         DOTween.Kill(transform);
         DOTween.Kill(_renderer);
         DOTween.Kill(_text);
+    }
+
+    public void SetTextGradient(TMP_ColorGradient gradient)
+    {
+        if (gradient == null) return;
+
+        _text.color = Color.white;
+        _text.enableVertexGradient = true;
+        _text.colorGradientPreset = gradient;
     }
 }

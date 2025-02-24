@@ -6,6 +6,8 @@ using Items;
 using Entity;
 using Skills;
 using Modifier;
+using UnityEngine.tvOS;
+using static Unity.Cinemachine.CinemachineFreeLookModifier;
 
 namespace Actor
 {
@@ -22,27 +24,43 @@ namespace Actor
 
         public void OnTurnStart()
         {
-            var removes = new List<ModifierData>();
-            foreach (var modifier in _modifiers)
-                if (modifier.OnModifierEvent(ModifierEvent.OnTurnStarted, this))
-                    removes.Add(modifier);
-
-            foreach (var remove in removes)
-            {
-                remove.OnModifierEvent(ModifierEvent.OnRemoved, this);
-                _modifiers.Remove(remove);
-            }
-
-            _modifiers.ForEach(modifier => modifier.OnModifierEvent(ModifierEvent.OnTurnEnded, this));
+            InvokeModifierEvent(ModifierEvent.OnTurnStarted);
             Might.Regen();
         }
 
-        public void OnTurnEnd() { }
+        public void OnTurnEnd() => InvokeModifierEvent(ModifierEvent.OnTurnEnded);
 
         public void AddModifier(ModifierData data)
         {
             _modifiers.Add(data);
             data.OnModifierEvent(ModifierEvent.OnAdded, this);
+        }
+
+        private void InvokeModifierEvent(ModifierEvent e)
+        {
+            var removes = new List<ModifierData>();
+            foreach (var modifier in _modifiers)
+                if (modifier.OnModifierEvent(e, this))
+                    removes.Add(modifier);
+            RemoveExpiredModifiers(removes);
+        }
+
+        private void InvokeModifierEvent(ModifierEventInt e, ref int value)
+        {
+            var removes = new List<ModifierData>();
+            foreach (var modifier in _modifiers)
+                if (modifier.OnModifierEvent(e, this, ref value))
+                    removes.Add(modifier);
+            RemoveExpiredModifiers(removes);
+        }
+
+        private void RemoveExpiredModifiers(List<ModifierData> list)
+        {
+            foreach (var data in list)
+            {
+                _modifiers.Remove(data);
+                data.OnModifierEvent(ModifierEvent.OnRemoved, this);
+            }
         }
 
         public void UpdateMightReserved()
@@ -66,7 +84,8 @@ namespace Actor
             return skill == null ? 0 : skill.Experience;
         }
 
-        public SkillExpertise GetActionAmount(SkillInfo info) => info.GetExpertise(GetSkillAmount(info));
+        public SkillExpertise GetActionAmount(SkillInfo info)
+            => info.GetExpertise(GetSkillAmount(info));
 
         public override List<ItemData> GetLoot()
         {
@@ -75,7 +94,12 @@ namespace Actor
             return list;
         }
 
-        public void Hurt(int amount) => Might.AddMissingValue(amount);
+        public void Hurt(int amount)
+        {
+            InvokeModifierEvent(ModifierEventInt.OnDamageReceive, ref amount);
+            Might.AddMissingValue(amount);
+        }
+
         public void Heal(int amount) => Might.RemoveMissingValue(amount);
         public void Kill() => Might.AddMissingValue(Might.Available);
         public void FullHeal() => Might.ResetMissingValue();
