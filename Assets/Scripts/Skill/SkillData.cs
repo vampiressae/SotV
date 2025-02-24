@@ -8,7 +8,8 @@ namespace Skills
         public int Experience => _amount;
 
         public override bool IsEmpty => false;
-        public override bool IsFull =>false;
+        public override bool IsFull => false;
+
 
         [ShowInInspector, ReadOnly, HorizontalGroup(90), HideLabel, ShowIf("ShowAmount")]
         public SkillExpertise Expertise => Info ? Info.GetExpertise(Experience) : SkillExpertise.Apprentice;
@@ -18,7 +19,9 @@ namespace Skills
         public override void Swap(Item with) {/* not important now */}
 
 #if UNITY_EDITOR
-        protected override bool ShowAmount => Info && Info.NeedsExpertise;
+        //[HideLabel, ReadOnly, ShowIf(nameof(_showTimeInInspector)), HorizontalGroup(50)] 
+        //[ShowInInspector] private string _timeInInspector => $"{_timer}/{_timerMax}";
+        //private bool _showTimeInInspector => _timerMax > 0;
 #endif
     }
 }
