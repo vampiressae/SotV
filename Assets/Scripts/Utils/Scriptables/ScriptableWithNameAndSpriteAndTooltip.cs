@@ -3,6 +3,18 @@ using Actor;
 
 public abstract class ScriptableWithNameAndSpriteAndTooltip : ScriptableWithNameAndSprite
 {
+    public string GetTooltip()
+    {
+        var list = new List<string>();
+        GetTooltip(ref list);
+        return string.Join("\n", list);
+    }
+
+    protected virtual void GetTooltip(ref List<string> list)
+    {
+        if (!string.IsNullOrEmpty(Description)) list.Add(Description);
+    }
+
     public virtual void TooltipInit(ActorHolder actor, TooltipForString tooltip, bool actionSummary)
     {
         var descriptions = new List<string>();

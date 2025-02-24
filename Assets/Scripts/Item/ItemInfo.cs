@@ -3,8 +3,6 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using Inventory;
 using Actor;
-using System.Linq;
-using Sirenix.OdinInspector.Editor;
 
 namespace Items
 {

@@ -1,5 +1,4 @@
 ﻿using System;
-using Inventory;
 
 public abstract class SlotUI : TooltipAgent<TooltipForString>, ITooltipString
 {

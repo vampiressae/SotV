@@ -6,8 +6,6 @@ using Items;
 using Entity;
 using Skills;
 using Modifier;
-using UnityEngine.tvOS;
-using static Unity.Cinemachine.CinemachineFreeLookModifier;
 
 namespace Actor
 {
@@ -103,5 +101,9 @@ namespace Actor
         public void Heal(int amount) => Might.RemoveMissingValue(amount);
         public void Kill() => Might.AddMissingValue(Might.Available);
         public void FullHeal() => Might.ResetMissingValue();
+
+#if UNITY_EDITOR
+        //[PropertySpace, Button] private void AddModifier(ModifierInfo info, int value, int time) => AddModifier(new(info, value, time));
+#endif
     }
 }

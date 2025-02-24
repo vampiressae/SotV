@@ -45,6 +45,4 @@ public static class UnityUtils
             polygonCollider2D.SetPath(i, simplifiedPoints);
         }
     }
-
-
 }
