@@ -25,5 +25,10 @@ namespace Skills
             for (int i = 0; i < Mathf.Min(_actions.Length, count + 1); i++)
                 _actions[i].TooltipSummary(actor, ref descriptions);
         }
+
+        public void Apply(ActionInfo actor)
+        {
+
+        }
     }
 }
