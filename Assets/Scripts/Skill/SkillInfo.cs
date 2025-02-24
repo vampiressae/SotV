@@ -26,7 +26,7 @@ namespace Skills
                 _actions[i].TooltipSummary(actor, ref descriptions);
         }
 
-        public void Apply(ActionInfo actor)
+        public void Apply(ActorInfo actor)
         {
 
         }

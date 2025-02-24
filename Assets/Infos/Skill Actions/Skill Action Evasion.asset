@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64ba5b76004fa654a9fdaf5d53ac457b, type: 3}
-  m_Name: Skill Action Evade
+  m_Name: Skill Action Evasion
   m_EditorClassIdentifier: 
   Icon: {fileID: 938699383, guid: d058e618f20d518408f130b159a04ab4, type: 3}
   Name: Evade
@@ -18,3 +18,10 @@ MonoBehaviour:
   EndTurn: 1
   Rank: {fileID: 11400000, guid: ae61b9db564002443bd94b042df9bc7d, type: 2}
   Target: 0
+  Properties: 0
+  InfluencingStats: []
+  _addSkills:
+  - Targetting: 0
+    Info: {fileID: 11400000, guid: 23d8d613ddeb1ff4ba3634bc26ca20c7, type: 2}
+    Amount: 3
+    Timer: 3

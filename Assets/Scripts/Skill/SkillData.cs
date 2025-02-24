@@ -7,32 +7,16 @@ namespace Skills
 
         public override bool IsEmpty => false;
         public override bool IsFull => false;
-        public bool HasTimer => _timerMax > 0;
 
-        private int _timerMax, _timer;
-
-        public SkillData(int time) => AddTimer(time);
-
-        public void AddTimer(int time)
-        {
-            _timerMax += time;
-            _timer += time;
-        }
-
-        public virtual void TurnStart(ActionInfo actor, int turn)
-        {
-            if (_timerMax > 0)
-            {
-                _timer--;
-                Info.Apply(actor);
-            }
-            if (_timerMax < 1 || _timer < 1) ResetTimer();
-        }
-
-        private void ResetTimer() => _timerMax = _timer = 0;
 
         public override void InvokeOnItemDataChanging() {/* not important now */}
         public override void InvokeOnItemDataChanged() {/* not important now */}
         public override void Swap(Item with) {/* not important now */}
+
+#if UNITY_EDITOR
+        //[HideLabel, ReadOnly, ShowIf(nameof(_showTimeInInspector)), HorizontalGroup(50)] 
+        //[ShowInInspector] private string _timeInInspector => $"{_timer}/{_timerMax}";
+        //private bool _showTimeInInspector => _timerMax > 0;
+#endif
     }
 }

@@ -91,11 +91,14 @@ public class FightController : MonoBehaviour
         _roundsPerTurn.Value = 0;
 
         if (_stateMachine.Current is FightStateTurnMe)
+        {
+            Player.Info.OnTurnEnd();
             _stateMachine.ChangeState<FightStateTurnOther>();
+        }
         else
         {
-            Player.Info.Might.Regen();
             _stateMachine.ChangeState<FightStateTurnMe>();
+            Player.Info.OnTurnStart();
         }
     }
 
