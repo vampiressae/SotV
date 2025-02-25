@@ -13,7 +13,7 @@ namespace Modifier
             else Debug.LogError("Parent scriptable not found!");
         }
 
-        private void RemoveCondition(ActorCondition item)
+        private void RemoveCondition(Condition item)
         {
             if (ParentScriptable) _conditions.RemoveScriptableCopy(item);
             else Debug.LogError("Parent scriptable not found!");

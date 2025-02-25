@@ -10,7 +10,7 @@ using Modifier;
 namespace Actor
 {
     [CreateAssetMenu(menuName = "Entity/Actor Info")]
-    public sealed class ActorInfo : EntityInfo
+    public sealed partial class ActorInfo : EntityInfo
     {
         [BoxGroup("Inventories")] public List<ItemData> Equipment;
         [BoxGroup("Actor")] public List<SkillData> Skills;
@@ -18,7 +18,7 @@ namespace Actor
 
         [InlineProperty, HideLabel, BoxGroup("Might")] public ActorMight Might;
 
-        [OnCollectionChanged("ChangedModifiers"), ListDrawerSettings(CustomRemoveElementFunction = "RemoveModifier")]
+        [ListDrawerSettings(CustomRemoveElementFunction = "RemoveModifier")]
         [SerializeField] private List<ModifierData> _modifiers = new();
 
         public void OnTurnStart()
@@ -28,39 +28,6 @@ namespace Actor
         }
 
         public void OnTurnEnd() => InvokeModifierEvent(ModifierEvent.OnTurnEnded);
-
-        public void AddModifier(ModifierData data)
-        {
-            _modifiers.Add(data);
-            data.OnModifierEvent(ModifierEvent.OnAdded, this);
-        }
-
-        private void InvokeModifierEvent(ModifierEvent e)
-        {
-            var removes = new List<ModifierData>();
-            foreach (var modifier in _modifiers)
-                if (modifier.OnModifierEvent(e, this))
-                    removes.Add(modifier);
-            RemoveExpiredModifiers(removes);
-        }
-
-        private void InvokeModifierEvent(ModifierEventInt e, ref int value)
-        {
-            var removes = new List<ModifierData>();
-            foreach (var modifier in _modifiers)
-                if (modifier.OnModifierEvent(e, this, ref value))
-                    removes.Add(modifier);
-            RemoveExpiredModifiers(removes);
-        }
-
-        private void RemoveExpiredModifiers(List<ModifierData> list)
-        {
-            foreach (var data in list)
-            {
-                _modifiers.Remove(data);
-                data.OnModifierEvent(ModifierEvent.OnRemoved, this);
-            }
-        }
 
         public void UpdateMightReserved()
         {
@@ -104,8 +71,17 @@ namespace Actor
         public void FullHeal() => Might.ResetMissingValue();
 
 #if UNITY_EDITOR
-        private void ChangedModifiers() => _modifiers.ForEach(modifier => modifier.OnValidate(this));
-        private void RemoveModifier(ModifierData modifier) { modifier.OnUnvalidate(this); _modifiers.Remove(modifier); }
+        private void RemoveModifier(ModifierData modifier)
+        {
+            modifier.OnUnvalidate(this); 
+            _modifiers.Remove(modifier);
+        }
+
+        protected override void OnValidate()
+        {
+            base.OnValidate();
+            _modifiers.ForEach(modifier => modifier.OnValidate(this));
+        }
 #endif
     }
 }

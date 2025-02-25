@@ -5,16 +5,12 @@ public enum ConditionResult { None, One, All }
 
 public abstract class Condition : ScriptableObject
 {
-}
-
-public abstract class Condition<T> : Condition
-{
-    public abstract bool Check(T target);
+    public abstract bool Check(object target);
 }
 
 public static class ConditionUtils
 {
-    public static ConditionResult Check<T>(this IEnumerable<Condition<T>> list, T target)
+    public static ConditionResult Check(this IEnumerable<Condition> list, object target)
     {
         var ok = 0;
 

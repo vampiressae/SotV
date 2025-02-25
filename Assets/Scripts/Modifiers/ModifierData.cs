@@ -14,7 +14,7 @@ namespace Modifier
         [SerializeField, SuffixLabel("$SuffixCondition")] private ConditionResult _condition;
         [HideIf(nameof(_condition), ConditionResult.None), GUIColor(0.8f, 1, 0.8f)]
         [ListDrawerSettings(CustomRemoveElementFunction = "RemoveCondition", CustomAddFunction = "AddCondition")]
-        [SerializeField, InlineEditor] private List<ActorCondition> _conditions;
+        [SerializeField, InlineEditor] private List<Condition> _conditions;
 
         private int _timerMax;
         private int _timer;
