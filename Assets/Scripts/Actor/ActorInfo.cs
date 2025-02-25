@@ -19,7 +19,7 @@ namespace Actor
         [InlineProperty, HideLabel, BoxGroup("Might")] public ActorMight Might;
 
         [OnCollectionChanged("ChangedModifiers"), ListDrawerSettings(CustomRemoveElementFunction = "RemoveModifier")]
-        [SerializeField, InlineProperty] private List<ModifierData> _modifiers;
+        [SerializeField] private List<ModifierData> _modifiers = new();
 
         public void OnTurnStart()
         {
