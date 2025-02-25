@@ -21,10 +21,8 @@ namespace Items
         public ItemTag[] Tags;
 
         [GUIColor(1, 0.8f, 1)]
-        [ListDrawerSettings(CustomRemoveElementFunction = "RemoveItemEffect", CustomAddFunction = nameof(AddEffect))]
+        [ListDrawerSettings(CustomRemoveElementFunction = "RemoveEffect", CustomAddFunction = "AddEffect")]
         [SerializeField, InlineEditor] private List<ItemEffect> _effects = new();
-
-        private void AddEffect() => _effects.AddScriptableCopy(this);
 
         protected override void GetTooltip(ref List<string> list)
         {
@@ -61,6 +59,9 @@ namespace Items
         }
 
 #if UNITY_EDITOR
+        private void AddEffect() => _effects.AddScriptableCopy(this);
+        private void RemoveEffect(ItemEffect item) => _effects.RemoveScriptableCopy(item);
+
         protected override void OnValidate()
         {
             base.OnValidate();

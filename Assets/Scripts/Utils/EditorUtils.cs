@@ -3,7 +3,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using Sirenix.Utilities;
-using Items;
 using Sirenix.OdinInspector.Editor;
 using System.Collections.Generic;
 
@@ -57,9 +56,10 @@ public static class EditorUtils
 
     public static void AddScriptableCopy<T>(this List<T> list, ScriptableObject scriptable = null) where T : ScriptableObject
     {
-        var prefix = "__ ";
+        var type = typeof(T).ToString().ToUpper();
+        var prefix = $"__{type} ";
         var items = new List<T>();
-        var guids = AssetDatabase.FindAssets("t:" + typeof(T));
+        var guids = AssetDatabase.FindAssets("t:" + type);
         for (int i = 0; i < guids.Length; i++)
         {
             var path = AssetDatabase.GUIDToAssetPath(guids[i]);
@@ -92,5 +92,19 @@ public static class EditorUtils
         selector.ShowInPopup();
     }
 
+    public static void RemoveScriptableCopy<T>(this List<T> list, T remove, bool clear = true) where T : ScriptableObject
+    {
+        if (clear) ClearScriptableCopies(list);
+        if (remove == null) return;
+        list.Remove(remove);
+        AssetDatabase.RemoveObjectFromAsset(remove);
+    }
+
+    public static void ClearScriptableCopies<T>(this List<T> list) where T : ScriptableObject
+    {
+        for (int i = list.Count - 1; i >= 0; i--)
+            if (list[i] == null)
+                list.RemoveAt(i);
+    }
 }
 #endif

@@ -26,6 +26,4 @@ MonoBehaviour:
   Might:
     _max: 30
     _regen: 10
-  _modifiers:
-  - Info: {fileID: 11400000, guid: 23d8d613ddeb1ff4ba3634bc26ca20c7, type: 2}
-    Value: 0
+  _modifiers: []

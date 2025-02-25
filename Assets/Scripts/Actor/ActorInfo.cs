@@ -18,7 +18,8 @@ namespace Actor
 
         [InlineProperty, HideLabel, BoxGroup("Might")] public ActorMight Might;
 
-        [SerializeField] private List<ModifierData> _modifiers;
+        [OnCollectionChanged("ChangedModifiers"), ListDrawerSettings(CustomRemoveElementFunction = "RemoveModifier")]
+        [SerializeField, InlineProperty] private List<ModifierData> _modifiers;
 
         public void OnTurnStart()
         {
@@ -103,7 +104,8 @@ namespace Actor
         public void FullHeal() => Might.ResetMissingValue();
 
 #if UNITY_EDITOR
-        //[PropertySpace, Button] private void AddModifier(ModifierInfo info, int value, int time) => AddModifier(new(info, value, time));
+        private void ChangedModifiers() => _modifiers.ForEach(modifier => modifier.OnValidate(this));
+        private void RemoveModifier(ModifierData modifier) { modifier.OnUnvalidate(this); _modifiers.Remove(modifier); }
 #endif
     }
 }
