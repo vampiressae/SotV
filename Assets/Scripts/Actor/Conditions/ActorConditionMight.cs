@@ -18,7 +18,16 @@ namespace Actor
         {
             var value = actor.Might.GetValueByType(_type);
             var mode = _percent ? actor.Might.Max * _value / 100 : _value;
-            return _compare.Compare(value, mode);
+            var ok = _compare.Compare(value, mode);
+            Debug.Log($"Condition Check for Actor <b>{actor.Name}</b>: {_compare.ToString(value, mode)} ({this})");
+            return ok;
+        }
+
+        public override string ToString()
+        {
+            if (_compare == CompareInt.None) return "Skipped!";
+            var compare = _compare == CompareInt.Equal ? "with" : "than";
+            return $"Might.{_type} is {_compare} {compare} {_value}{(_percent ? "%" : "")}";
         }
     }
 }
