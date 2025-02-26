@@ -6,6 +6,7 @@ using Items;
 using Entity;
 using Skills;
 using Modifier;
+using Affliction;
 
 namespace Actor
 {
@@ -21,13 +22,23 @@ namespace Actor
         [ListDrawerSettings(CustomRemoveElementFunction = "RemoveModifier")]
         [SerializeField] private List<ModifierData> _modifiers = new();
 
+        [ListDrawerSettings(CustomRemoveElementFunction = "RemoveEffect", CustomAddFunction = "AddEffect")]
+        [SerializeField, InlineEditor, GUIColor(1, 0.9f, 0.9f)] private List<AfflictionInfo> _afflictions;
+
         public void OnTurnStart()
         {
             InvokeModifierEvent(ModifierEvent.OnTurnStarted);
+            InvokAfflictions(AfflictionMoment.TurnStart);
+            InvokAfflictions(AfflictionMoment.RoundStart);
             Might.Regen();
         }
 
-        public void OnTurnEnd() => InvokeModifierEvent(ModifierEvent.OnTurnEnded);
+        public void OnTurnEnd()
+        {
+            InvokeModifierEvent(ModifierEvent.OnTurnEnded);
+            InvokAfflictions(AfflictionMoment.TurnEnd);
+            InvokAfflictions(AfflictionMoment.RoundEnd);
+        }
 
         public void UpdateMightReserved()
         {
@@ -82,6 +93,9 @@ namespace Actor
             base.OnValidate();
             _modifiers.ForEach(modifier => modifier.OnValidate(this));
         }
+
+        private void AddEffect() => _afflictions.AddScriptableCopy(this);
+        private void RemoveEffect(AfflictionInfo item) => _afflictions.RemoveScriptableCopy(item);
 #endif
     }
 }

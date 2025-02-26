@@ -27,3 +27,4 @@ MonoBehaviour:
     _max: 30
     _regen: 10
   _modifiers: []
+  _afflictions: []

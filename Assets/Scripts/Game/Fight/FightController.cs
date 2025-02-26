@@ -74,7 +74,15 @@ public class FightController : MonoBehaviour
 
     private void OnDestroy() => Instance = null;
 
-    public void EndRound() => _roundsPerTurn.Value++;
+    public void EndRound()
+    {
+        var isPlayer = _stateMachine.Current is FightStateTurnMe;
+        if (isPlayer) Player.Info.InvokAfflictions(Affliction.AfflictionMoment.RoundEnd);
+
+        _roundsPerTurn.Value++;
+
+        if (isPlayer) Player.Info.InvokAfflictions(Affliction.AfflictionMoment.RoundStart);
+    }
 
     public void EndTurnWithDelay()
     {

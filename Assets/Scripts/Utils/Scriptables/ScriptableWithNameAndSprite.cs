@@ -4,9 +4,11 @@ using Sirenix.OdinInspector;
 public abstract class ScriptableWithNameAndSprite : ScriptableObject
 {
     [PreviewField(Alignment = ObjectFieldAlignment.Left,Height = 65)]
-    [HorizontalGroup("main", 69), HideLabel] public Sprite Icon;
+    [HorizontalGroup("main", 69, VisibleIf = "ShowMainData"), HideLabel] public Sprite Icon;
     [VerticalGroup("main/v"), HideLabel, LabelWidth(40)] public string Name;
     [VerticalGroup("main/v"), HideLabel, TextArea(2, 2)] public string Description;
+
+    public bool ShowMainData { get; set; } = true;
 
 #if UNITY_EDITOR
     protected virtual void OnValidate() { }

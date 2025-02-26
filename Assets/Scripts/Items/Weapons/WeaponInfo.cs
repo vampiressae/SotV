@@ -1,4 +1,5 @@
 using UnityEngine;
+using Sirenix.Utilities;
 using Sirenix.OdinInspector;
 using Items;
 
@@ -12,4 +13,12 @@ public class WeaponInfo : ItemInfoWithAction<WeaponAction>, IEquipmentItem
     public bool CanEquipOnlyOne => _canEquipOnlyOne;
 
     public ScriptableObject CanEquipKey => _type;
+
+#if UNITY_EDITOR
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+        _actions.ForEach(action => action.OnValidate(this));
+    }
+#endif
 }

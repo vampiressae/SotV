@@ -1,4 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using Sirenix.Utilities;
+using Affliction;
 using Modifier;
 
 namespace Actor
@@ -36,6 +40,48 @@ namespace Actor
                 _modifiers.Remove(data);
                 data.OnModifierEvent(ModifierEvent.OnRemoved, this);
             }
+        }
+
+        public void AddAfflictions(IEnumerable<AfflictionInfo> infos) 
+            => infos.ForEach(info => AddAffliction(info));
+
+        public void AddAffliction(AfflictionInfo info)
+        {
+            _afflictions.Add(info);
+            InvokeOnFlyingText().Init(null, Color.clear, info.Name, Color.yellow);
+        }
+
+        public void RemoveAffliction(AfflictionInfo info)
+        {
+            foreach (var affliction in _afflictions)
+            {
+                if (affliction != info) continue;
+                _afflictions.Remove(affliction);
+                break;
+            }
+        }
+
+        public void RemoveAfflictions(IEnumerable<AfflictionInfo> infos) 
+            => infos.ForEach(affliction => RemoveAffliction(affliction));
+
+
+        public void RemoveAffliction(AfflictionInfo info, bool all)
+        {
+            var removes = _afflictions.Where(affliction => affliction.Name == info.Name);
+            foreach (var remove in removes)
+            {
+                _afflictions.Remove(remove);
+                if (!all) break;
+            }
+        }
+
+        public void InvokAfflictions(AfflictionMoment moment)
+        {
+            var removes = new List<AfflictionInfo>();
+            foreach (var modifier in _afflictions)
+                if (modifier.Afflict(moment, this))
+                    removes.Add(modifier);
+            RemoveAfflictions(removes);
         }
     }
 }
