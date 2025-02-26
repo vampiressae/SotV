@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13ea577e55ef8f8458df56eb7f5a7534, type: 3}
-  m_Name: Item Rank 2
+  m_Name: Item Rank 3
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
   Name: Rare
   Description: 
-  Color: {r: 0.72828054, g: 0.8014756, b: 0.8792453, a: 1}
-  Material: {fileID: 2100000, guid: d8eb1882f67f9e44eb062619d7e5f1e4, type: 2}
-  Gradient: {fileID: 11400000, guid: 5d4e3910c6820614caa5e5625a578e1e, type: 2}
+  Color: {r: 0.9622642, g: 0.88404685, b: 0.45571372, a: 1}
+  Material: {fileID: 2100000, guid: bdde17f05a8066c4bba2190ab16712e8, type: 2}
+  Gradient: {fileID: 11400000, guid: 6acb79cdfada369478b246dc0495c721, type: 2}

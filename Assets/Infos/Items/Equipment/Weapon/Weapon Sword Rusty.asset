@@ -53,7 +53,7 @@ MonoBehaviour:
       Min: 15
       Max: 20
   - Expertise: 4
-    Info: {fileID: 11400000, guid: d0b04737c09d40743be7425419a4d867, type: 2}
+    Info: {fileID: 11400000, guid: 00e0b03747199d14d930e1047c807b2e, type: 2}
     _might: 0
     Value:
       Min: 0

@@ -16,7 +16,8 @@ MonoBehaviour:
   Name: Overhead Slash
   Description: 
   EndTurn: 0
-  Rank: {fileID: 11400000, guid: 27e8dd064dd630842af48f139968a3fb, type: 2}
+  Rank: {fileID: 11400000, guid: 8b86d9364a177414db19c26e892576fb, type: 2}
   Target: 220
+  Properties: 0
   InfluencingStats:
   - {fileID: 11400000, guid: 1492911b1fc49c948a6c779b1a7eb0a6, type: 2}

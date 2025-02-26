@@ -18,5 +18,6 @@ MonoBehaviour:
   EndTurn: 0
   Rank: {fileID: 11400000, guid: ae61b9db564002443bd94b042df9bc7d, type: 2}
   Target: 220
+  Properties: 0
   InfluencingStats:
   - {fileID: 11400000, guid: 1492911b1fc49c948a6c779b1a7eb0a6, type: 2}
