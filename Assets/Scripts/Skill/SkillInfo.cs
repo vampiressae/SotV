@@ -24,8 +24,10 @@ namespace Skills
         [SerializeField] private ItemInfoWithActionsUI _actionsUI;
 
         public ItemInfoWithActionsUI ActionsUI => _actionsUI;
-        ActionBase[] IHasAction.Actions => _actions;
+        public ActionBase[] Actions => _actions;
         public bool NeedsExpertise => _expertise.Length > 1;
+
+        public SkillInfo UseSkill => this;
 
         public SkillExpertise GetExpertise (int experience)
         {
@@ -41,9 +43,12 @@ namespace Skills
         protected override void TooltipActionsSummary(ActorHolder actor, ref List<string> descriptions)
         {
             var count = _actions.Length;
+            var expertise = (int)SkillExpertise.Master;
 
+            if (UseSkill != null) expertise = (int)actor.Info.GetActionAmount(UseSkill);
             for (int i = 0; i < Mathf.Min(_actions.Length, count + 1); i++)
-                _actions[i].TooltipSummary(actor, ref descriptions);
+                if (expertise >= (int)_actions[i].Expertise)
+                    _actions[i].TooltipSummary(actor, ref descriptions);
         }
 
 #if UNITY_EDITOR

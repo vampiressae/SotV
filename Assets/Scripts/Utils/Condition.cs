@@ -14,8 +14,9 @@ public static class ConditionUtils
     {
         var ok = 0;
 
-        foreach (var condition in list)
-            if (condition.Check(target)) ok++;
+        if (list != null)
+            foreach (var condition in list)
+                if (condition.Check(target)) ok++;
 
         return
             ok == 0 ? ConditionResult.None :

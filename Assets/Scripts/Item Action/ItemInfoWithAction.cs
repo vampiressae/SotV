@@ -19,6 +19,7 @@ namespace Items
         protected override void TooltipActionsSummary(ActorHolder actor, ref List<string> descriptions)
         {
             var expertise = (int)SkillExpertise.Master;
+
             if (_useSkill != null) expertise = (int)actor.Info.GetActionAmount(_useSkill);
             for (int i = 0; i < ItemActionsRaw.Length; i++)
                 if (expertise >= (int)ItemActionsRaw[i].Expertise)

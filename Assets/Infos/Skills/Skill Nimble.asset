@@ -15,9 +15,19 @@ MonoBehaviour:
   Icon: {fileID: 2099008355, guid: d058e618f20d518408f130b159a04ab4, type: 3}
   Name: Nimble
   Description: Helps with moving around
-  _expertise: []
-  _actions:
+  _expertise:
   - Expertise: 0
+    Experience: 0
+  - Expertise: 1
+    Experience: 10
+  - Expertise: 2
+    Experience: 20
+  - Expertise: 3
+    Experience: 50
+  - Expertise: 4
+    Experience: 100
+  _actions:
+  - Expertise: 1
     Info: {fileID: 11400000, guid: 758e7175fb2f5584284854c6b4b4d92c, type: 2}
     _might: 10
   _actionsUI: {fileID: 7238660739354989741, guid: be90d278e44cb4243acb1a5e386abb93, type: 3}

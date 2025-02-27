@@ -21,10 +21,19 @@ namespace Items
             _infoWithAction = info;
             transform.Clear();
 
+            var actor = FightController.Player.Info;
+            var skill = _infoWithAction.UseSkill;
             var raws = _infoWithAction.Actions;
             _uis = new ItemInfoWithActionUI[raws.Length];
             for (int i = 0; i < raws.Length; i++)
             {
+                if (actor && skill)
+                {
+                    var ex = actor.GetActionAmount(skill);
+                    var expertise = (int)actor.GetActionAmount(skill);
+                    if ((int)raws[i].Expertise > expertise) continue;
+                }
+
                 _uis[i] = Instantiate(_prefab, transform);
                 _uis[i].Init(raws[i], ui);
             }

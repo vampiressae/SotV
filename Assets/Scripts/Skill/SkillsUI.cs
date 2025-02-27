@@ -13,9 +13,11 @@ namespace Skills
         public List<SkillData> Skills = new();
 
         [SerializeField] private SkillSlotUI _slotPrefab;
-        public virtual bool ShowActions => false;
 
         private readonly List<InventorySlotUI> _uis = new();
+
+        protected virtual bool ShowSkillsWithoutActions => true;
+        public virtual bool ShowActions => false;
 
         private void Awake() => Init(_playerInfoValue.Holder);
 
@@ -31,6 +33,9 @@ namespace Skills
 
             foreach (var skill in Skills)
             {
+                if (!ShowSkillsWithoutActions)
+                    if (skill.Info.Actions.Length == 0)
+                        continue;
                 var ui = Instantiate(_slotPrefab, transform);
                 ui.Init(this, skill, Actor);
             }

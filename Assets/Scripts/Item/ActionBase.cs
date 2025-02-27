@@ -4,6 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using Entity;
 using Actor;
+using Skills;
 
 namespace Items
 {
@@ -11,6 +12,7 @@ namespace Items
     {
         ActionBase[] Actions { get; }
         ItemInfoWithActionsUI ActionsUI { get; }
+        SkillInfo UseSkill { get; }
         void HandleExtendedUI(ItemUI itemUI);
     }
 

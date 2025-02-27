@@ -616,6 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInfoValue: {fileID: 11400000, guid: 5b30453a4238fc44a8bb8649128ca054, type: 2}
+  _showSkillsWithoutActions: 1
   Actor: {fileID: 0}
   Skills: []
   _slotPrefab: {fileID: 7942608284813180044, guid: 85de07328c8e50b4d8effab609c558a7, type: 3}
@@ -1421,7 +1422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4276741548825866517, guid: 61e2525462662b74188204659e78db84, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6506048602463349309, guid: 61e2525462662b74188204659e78db84, type: 3}
       propertyPath: m_Pivot.x
@@ -1449,11 +1450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6506048602463349309, guid: 61e2525462662b74188204659e78db84, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 665
       objectReference: {fileID: 0}
     - target: {fileID: 6506048602463349309, guid: 61e2525462662b74188204659e78db84, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 6506048602463349309, guid: 61e2525462662b74188204659e78db84, type: 3}
       propertyPath: m_LocalPosition.x
