@@ -5,13 +5,14 @@ using Items;
 using Inventory;
 using Actor;
 
+using static Actor.ActorMight;
+
 [CreateAssetMenu(menuName = "Items/Effects/Might")]
 public class ItemFXEquipMight : ItemFXEquip
 {
-    private enum MightType { None, Reserved, Missing, Recoverable, Regen, Max }
     private enum ModifierType { None, Multipler, Addition }
 
-    [SerializeField, HideLabel, HorizontalGroup] private MightType _type;
+    [SerializeField, HideLabel, HorizontalGroup] private MightTypeEffect _type;
     [SerializeField, HideLabel, HorizontalGroup] private ModifierType _modifier;
     [SerializeField, HideLabel, HorizontalGroup(50)] private int _value;
 
@@ -37,11 +38,11 @@ public class ItemFXEquipMight : ItemFXEquip
 
     private ActorMight.MightType TrueType => _type switch
     {
-        MightType.Reserved => ActorMight.MightType.Reserved,
-        MightType.Missing => ActorMight.MightType.Missing,
-        MightType.Recoverable => ActorMight.MightType.Recoverable,
-        MightType.Regen => ActorMight.MightType.Regen,
-        MightType.Max => ActorMight.MightType.Max,
+        MightTypeEffect.Reserved => ActorMight.MightType.Reserved,
+        MightTypeEffect.Missing => ActorMight.MightType.Missing,
+        MightTypeEffect.Recoverable => ActorMight.MightType.Recoverable,
+        MightTypeEffect.Regen => ActorMight.MightType.Regen,
+        MightTypeEffect.Max => ActorMight.MightType.Max,
         _ => ActorMight.MightType.None,
     };
 
@@ -53,11 +54,11 @@ public class ItemFXEquipMight : ItemFXEquip
 
     private string TooltipName => _type switch
     {
-        MightType.Reserved => "Reserved Might",
-        MightType.Missing => "Might Damage",
-        MightType.Recoverable => "Might Cost",
-        MightType.Regen => "Might Regeneration",
-        MightType.Max => "Maximum Might",
+        MightTypeEffect.Reserved => "Reserved Might",
+        MightTypeEffect.Missing => "Might Damage",
+        MightTypeEffect.Recoverable => "Might Cost",
+        MightTypeEffect.Regen => "Might Regeneration",
+        MightTypeEffect.Max => "Maximum Might",
         _ => "[NO TOOLTIP NAME DEFINED]",
     };
 }

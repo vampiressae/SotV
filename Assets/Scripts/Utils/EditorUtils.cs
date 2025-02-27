@@ -1,10 +1,10 @@
 #if UNITY_EDITOR
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using Sirenix.Utilities;
 using Sirenix.OdinInspector.Editor;
-using System.Collections.Generic;
 
 public static class EditorUtils
 {
@@ -57,9 +57,10 @@ public static class EditorUtils
     public static void AddScriptableCopy<T>(this List<T> list, ScriptableObject scriptable = null) where T : ScriptableObject
     {
         var type = typeof(T).ToString().ToUpper();
-        var prefix = $"__{type} ";
-        var items = new List<T>();
+        var prefix = $"__{type.Split('.').Last().Replace("INFO", "")} ";
         var guids = AssetDatabase.FindAssets("t:" + type);
+        var items = new List<T>();
+
         for (int i = 0; i < guids.Length; i++)
         {
             var path = AssetDatabase.GUIDToAssetPath(guids[i]);

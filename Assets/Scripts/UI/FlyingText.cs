@@ -18,6 +18,9 @@ public class FlyingText : MonoBehaviour
     public TMP_Text Text => _text;
     public SpriteRenderer Sprite => _renderer;
 
+    public void Init(int value, Color textColor) => Init(null, Color.clear, value, textColor);
+    public void Init(string value, Color textColor) => Init(null, Color.clear, value, textColor);
+
     public void Init(Sprite sprite, Color spriteColor, int value, Color textColor)
     {
         Init(sprite, spriteColor, value.ToString(), textColor);

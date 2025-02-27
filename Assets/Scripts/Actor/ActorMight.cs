@@ -2,13 +2,13 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace Actor
 {
     [Serializable]
     public class ActorMight
     {
+        public enum MightTypeEffect { None, Reserved, Missing, Recoverable, Regen, Max }
         public enum MightType { None, Reserved, Preview, Missing, Recoverable, Regen, Available, Max }
 
         public event Action OnAnyValueChanged;
