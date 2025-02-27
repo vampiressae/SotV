@@ -46,9 +46,6 @@ namespace Items
             return true;
         }
 
-        public bool Act(ActorHolder source, EntityHolder target, bool useMight = true)
-            => Act(null, source, target, useMight);
-
         protected abstract bool ActIt(Item item, ActorHolder source, EntityHolder target, bool useMight);
 
         public virtual void TooltipInit(ActorHolder actor, TooltipForString tooltip) { }

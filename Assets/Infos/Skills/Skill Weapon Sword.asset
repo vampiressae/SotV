@@ -15,6 +15,7 @@ MonoBehaviour:
   Icon: {fileID: 2099008355, guid: d058e618f20d518408f130b159a04ab4, type: 3}
   Name: Sword
   Description: 
+  _usageLearn: 1
   _expertise:
   - Expertise: 0
     Experience: 0

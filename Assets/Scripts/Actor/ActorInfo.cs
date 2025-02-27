@@ -61,6 +61,17 @@ namespace Actor
             return skill == null ? 0 : skill.Experience;
         }
 
+        public void AddSkillAmount(SkillInfo info, int amount = 1)
+        {
+            var skill = Skills.Where(s => s.Info == info).FirstOrDefault();
+            if (skill == null)
+            {
+                skill = new() { Info = info, Amount = 1 };
+                Skills.Add(skill);
+            }
+            else skill.Amount += amount;
+        }
+
         public SkillExpertise GetActionAmount(SkillInfo info)
             => info.GetExpertise(GetSkillAmount(info));
 

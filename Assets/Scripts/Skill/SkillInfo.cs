@@ -10,6 +10,8 @@ namespace Skills
     [CreateAssetMenu(menuName = "Skill/Info")]
     public class SkillInfo : ScriptableWithNameAndSpriteAndTooltip, IHasAction
     {
+        private enum UsageLearn { None, Limitless }
+
         [Serializable]
         private struct ExpertiseModule
         {
@@ -17,6 +19,7 @@ namespace Skills
             [HideLabel, HorizontalGroup(50)] public int Experience;
         }
 
+        [SerializeField] private UsageLearn _usageLearn;
         [OnValueChanged("OnExpertiseValueChanged", true)]
         [SerializeField] private ExpertiseModule[] _expertise;
         [SerializeField] private SkillAction[] _actions;
@@ -36,6 +39,16 @@ namespace Skills
                 if (experience < _expertise[i].Experience)
                     return _expertise[i - 1].Expertise;
             return SkillExpertise.Master;
+        }
+
+        public void OnUsedSkill(ActorInfo actor)
+        {
+            switch(_usageLearn)
+            {
+                case UsageLearn.Limitless:
+                    actor.AddSkillAmount(this, 1);
+                    break;
+            }
         }
 
         public void HandleExtendedUI(ItemUI itemUI) => this.HandleExtendedUI(itemUI, _actionsUI);

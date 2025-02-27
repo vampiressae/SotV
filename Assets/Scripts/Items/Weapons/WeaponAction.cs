@@ -24,6 +24,10 @@ public class WeaponAction : ActionWithInfoValueMight<WeaponAttackInfo>
 
         actor.Info.Hurt(InfluencedValueRange(source.Info).RandomUnity);
         actor.Info.AddAfflictions(_afflictions);
+
+        if (item.RawInfo is IHasAction has && has.UseSkill)
+            has.UseSkill.OnUsedSkill(source.Info);
+
         return true;
     }
 

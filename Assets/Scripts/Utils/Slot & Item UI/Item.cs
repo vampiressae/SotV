@@ -13,7 +13,7 @@ public abstract class Item
     public abstract bool IsFull { get; }
     public abstract ScriptableWithNameAndSpriteAndTooltip RawInfo { get; set; }
 
-    public int Amount => _amount;
+    public int Amount { get => _amount; set => _amount = value; }
 
     public void Add(int amount)
     {
