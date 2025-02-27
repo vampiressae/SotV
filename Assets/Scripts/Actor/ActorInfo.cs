@@ -23,7 +23,7 @@ namespace Actor
         [SerializeField] private List<ModifierData> _modifiers = new();
 
         [ListDrawerSettings(CustomRemoveElementFunction = "RemoveEffect", CustomAddFunction = "AddEffect")]
-        [SerializeField, InlineEditor, GUIColor(1, 0.8f, 0.8f)] private List<AfflictionInfo> _afflictions;
+        [SerializeField, InlineEditor, GUIColor(1, 0.7f, 0.7f)] private List<AfflictionInfo> _afflictions;
 
         public void OnTurnStart()
         {

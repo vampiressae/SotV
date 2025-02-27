@@ -10,8 +10,7 @@ public static class EditorUtils
 {
     public static T[] LoadAssets<T>(string search, bool distinct = true, string[] folders = null) where T : Object
     {
-        string[] guids = null;
-
+        string[] guids;
         if (folders.IsNullOrEmpty()) guids = AssetDatabase.FindAssets(search);
         else guids = AssetDatabase.FindAssets(search, folders);
 
@@ -56,8 +55,8 @@ public static class EditorUtils
 
     public static void AddScriptableCopy<T>(this List<T> list, ScriptableObject scriptable = null) where T : ScriptableObject
     {
-        var type = typeof(T).ToString().ToUpper();
-        var prefix = $"__{type.Split('.').Last().Replace("INFO", "")} ";
+        var type = typeof(T);
+        var prefix = $"__";
         var guids = AssetDatabase.FindAssets("t:" + type);
         var items = new List<T>();
 

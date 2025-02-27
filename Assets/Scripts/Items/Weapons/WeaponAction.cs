@@ -10,7 +10,7 @@ using Affliction;
 public class WeaponAction : ActionWithInfoValueMight<WeaponAttackInfo>
 {
     [ListDrawerSettings(CustomRemoveElementFunction = "RemoveEffect", CustomAddFunction = "AddEffect")]
-    [SerializeField, InlineEditor, GUIColor(1, 0.8f, 0.8f)] private List<AfflictionInfo> _afflictions;
+    [SerializeField, InlineEditor, GUIColor(1, 0.7f, 0.7f)] private List<AfflictionInfo> _afflictions;
 
     [ShowInInspector, ReadOnly, HideIf(nameof(ParentScriptable)), GUIColor("red")]
     public ScriptableObject ParentScriptable { get; private set; }
