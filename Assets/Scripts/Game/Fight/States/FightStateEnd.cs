@@ -12,6 +12,7 @@ public class FightStateEnd : State
 
     public void SetEnd(bool win)
     {
+        FightController.Player.Info.Might.Regen(true);
         UIManager.Show(win ? _victoryTag : _defeatTag, delay: 2);
         if (win) Invoke(nameof(ShowSpoils), 4);
     }
