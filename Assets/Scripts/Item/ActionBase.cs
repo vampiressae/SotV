@@ -24,6 +24,7 @@ namespace Items
         [PropertyOrder(1), ShowIf("ShowExpertise")]
         [HorizontalGroup("1", 90), HideLabel] public SkillExpertise Expertise;
 
+        public abstract string Name { get; }
         public abstract Sprite Icon { get; }
         public abstract ItemRank Rank { get; }
         public abstract int Might { get; }
@@ -61,6 +62,7 @@ namespace Items
     public abstract class ActionWithInfo : ActionBase
     {
         public abstract ActionInfo RawInfo { get; }
+        public override string Name => RawInfo ? RawInfo.Name : "[NO ACTION INFO WAS SET]";
 
         public override void TooltipSummary(ActorHolder actor, ref List<string> descriptions)
         {

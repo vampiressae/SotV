@@ -1,8 +1,13 @@
 using System.Collections.Generic;
+using UnityEngine;
+using Sirenix.OdinInspector;
 using Actor;
 
 public abstract class ScriptableWithNameAndSpriteAndTooltip : ScriptableWithNameAndSprite
 {
+    [SerializeField, HorizontalGroup("main/v/h", 50), HideLabel] private Color _tint = Color.white;
+    public override Color IconTint => _tint;
+
     public string GetTooltip()
     {
         var list = new List<string>();

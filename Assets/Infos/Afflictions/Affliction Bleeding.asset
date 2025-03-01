@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad52da9a4598234ab4ec266f1b3f60a, type: 3}
   m_Name: Affliction Bleeding
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
-  Name: 
+  Icon: {fileID: 4564899823668317575, guid: 4681f0c0593562e4d89e512df410263d, type: 3}
+  Name: Bleeding
   Description: 
-  _rounds: 0
+  _tint: {r: 0.78867924, g: 0.14393194, b: 0.117557764, a: 1}
+  _addMode: 0
+  _addChance: 1
+  _moment: 0
+  _applyChance: 1
+  _applies: 0
+  _might: 0
+  _value: 0

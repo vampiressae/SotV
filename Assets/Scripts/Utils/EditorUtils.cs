@@ -106,5 +106,38 @@ public static class EditorUtils
             if (list[i] == null)
                 list.RemoveAt(i);
     }
+
+    public static void DrawTintedSprite(Sprite sprite, Color color)
+    {
+        var padding = 10;
+        var rect = GUILayoutUtility.GetLastRect();
+        rect.x += padding;
+        rect.y += padding;
+        rect.width -= padding * 2 + 4;
+        rect.height -= padding * 2;
+
+        GUI.color = color;
+        DrawTextureGUI(rect, sprite);
+        GUI.color = Color.white;
+    }
+
+    public static void DrawTextureGUI(Rect position, Sprite sprite)
+         => DrawTextureGUI(position, sprite, new Vector2(position.width, position.height), Vector2.zero);
+
+    public static void DrawTextureGUI(Rect position, Sprite sprite, Vector2 size, Vector2 offset)
+    {
+        if (sprite == null) return;
+
+        var rect = sprite.rect;
+        var tex = sprite.texture;
+        var trueSize = size;
+
+        var spriteRect = new Rect(rect.x / tex.width, rect.y / tex.height, rect.width / tex.width, rect.height / tex.height);
+        trueSize.y *= (sprite.rect.height / sprite.rect.width);
+        position = new Rect(position.x + offset.x, position.y + offset.y + (size.y - trueSize.y) / 2, trueSize.x, trueSize.y);
+
+        GUI.DrawTextureWithTexCoords(position, tex, spriteRect);
+    }
+
 }
 #endif

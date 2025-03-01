@@ -13,6 +13,12 @@ namespace Actor
     [CreateAssetMenu(menuName = "Entity/Actor Info")]
     public sealed partial class ActorInfo : EntityInfo
     {
+        private class MightReserverInventory : IActorMightReserver { public string Name => "Inventory"; }
+        private class MightReserverEquipment : IActorMightReserver { public string Name => "Equipped"; }
+
+        private MightReserverInventory _mightReserverInventory = new();
+        private MightReserverEquipment _mightReserverEquipment = new();
+
         [BoxGroup("Inventories")] public List<ItemData> Equipment;
         [BoxGroup("Actor")] public List<SkillData> Skills;
         [BoxGroup("Actor")] public Sprite Sprite;
@@ -24,6 +30,7 @@ namespace Actor
 
         [ListDrawerSettings(CustomRemoveElementFunction = "RemoveEffect", CustomAddFunction = "AddEffect")]
         [SerializeField, InlineEditor, GUIColor(1, 0.7f, 0.7f)] private List<AfflictionInfo> _afflictions;
+
 
         public void OnTurnStart()
         {
@@ -43,16 +50,16 @@ namespace Actor
         public void UpdateMightReserved()
         {
             var cost = 0;
-
             foreach (var item in Inventory)
                 if (!item.IsEmpty)
                     cost += item.Info.Might * item.Amount;
+            Might.AddReservedValue(_mightReserverInventory, cost);
 
+            cost = 0;
             foreach (var item in Equipment)
                 if (!item.IsEmpty)
                     cost += (item.Info.EquippedMight < 0 ? item.Info.Might : item.Info.EquippedMight) * item.Amount;
-
-            Might.AddReservedValue(this, cost);
+            Might.AddReservedValue(_mightReserverEquipment, cost);
         }
 
         private int GetSkillAmount(SkillInfo info)
@@ -93,20 +100,18 @@ namespace Actor
         public void FullHeal() => Might.ResetMissingValue();
 
 #if UNITY_EDITOR
+        private void AddEffect() => _afflictions.AddScriptableCopy(this);
+        private void RemoveEffect(AfflictionInfo item) => _afflictions.RemoveScriptableCopy(item);
         private void RemoveModifier(ModifierData modifier)
         {
             modifier.OnUnvalidate(this); 
             _modifiers.Remove(modifier);
         }
-
         protected override void OnValidate()
         {
             base.OnValidate();
             _modifiers.ForEach(modifier => modifier.OnValidate(this));
         }
-
-        private void AddEffect() => _afflictions.AddScriptableCopy(this);
-        private void RemoveEffect(AfflictionInfo item) => _afflictions.RemoveScriptableCopy(item);
 #endif
     }
 }

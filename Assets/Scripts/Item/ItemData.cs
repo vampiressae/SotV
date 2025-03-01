@@ -1,9 +1,10 @@
+using Actor;
 using System;
 
 namespace Items
 {
     [Serializable]
-    public class ItemData : Item<ItemInfo>, IItemCanAdd
+    public class ItemData : Item<ItemInfo>, IItemCanAdd, IActorMightMultiplier, IActorMighAddition
     {
         public event Action<ItemData> OnItemDataChanging;
         public event Action<ItemData> OnItemDataChanged;
@@ -12,6 +13,8 @@ namespace Items
         public override bool IsFull => Info && Amount >= Info.Stack;
         public bool IsNotEmptyAndStackable => !IsEmpty && Info.Stack != 1;
         public bool IsNotEmptyAndNotStackable => !IsEmpty && Info.Stack == 1;
+
+        public string Name => Info ? Info.Name : "[NO ITEM INFO SET]";
 
         public ItemData() { }
 

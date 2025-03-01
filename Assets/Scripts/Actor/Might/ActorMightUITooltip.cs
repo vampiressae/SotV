@@ -16,6 +16,9 @@ namespace Actor
 
         [SerializeField] private LayoutElement _reservedHolder, _availableHolder, _recoverableHolder, _missingHolder;
         [SerializeField] private TMP_Text _reserved, _available, _recoverable, _missing;
+        [Space]
+        [SerializeField] private ActorMightUIReservedRow _rowPrefab;
+        [SerializeField] private Transform _rowParent;
 
         private ActorMightUI _ui;
         private ActorMight _might;
@@ -77,6 +80,11 @@ namespace Actor
             _reserved.gameObject.SetActive(_reservedHolder.preferredWidth > 1);
             _recoverable.gameObject.SetActive(_recoverableHolder.preferredWidth > 1);
             _missing.gameObject.SetActive(_missingHolder.preferredWidth > 1);
+
+            _rowParent.Clear(element => !element.name.StartsWith("_"));
+            foreach (var reserved in _might.AllReserved)
+                Instantiate(_rowPrefab, _rowParent)
+                     .Init(reserved.Key.Name, reserved.Value);
         }
 
         private void Kill() => DOTween.Kill(_fader);

@@ -6,9 +6,8 @@ using Actor;
 
 namespace Items
 {
-    public class ItemInfoWithActionUI : TooltipAgent<TooltipForString>
+    public class ItemInfoWithActionUI : TooltipAgent<TooltipForString>, IActorMightPreviewer
     {
-        //TooltipAgentForString
         [Space]
         [SerializeField] private Image _icon;
         [SerializeField] private Image _frame;
@@ -30,6 +29,7 @@ namespace Items
 
         private bool Targetless => _action is ActionWithInfo awi && awi.RawInfo.Target == ActionTarget.None;
         private int ScaledMight => _actor ? _rounds.GetMightValue(_actor, _action.Might) : _action.Might;
+        public string Name => _action != null ? _action.Name : "[NO ACTION FOUND]";
 
         private void OnDestroy() => Uninit();
 
