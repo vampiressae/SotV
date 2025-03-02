@@ -14,8 +14,7 @@ namespace Affliction
 
         protected override bool Afflict(ActorInfo actor)
         {
-            actor.Might.AddMissingValue(_value);
-            actor.InvokeOnFlyingText().Init(_value, Color.green);
+            actor.Might.AddMissingValue(_value, this);
             return Expire();
         }
     }

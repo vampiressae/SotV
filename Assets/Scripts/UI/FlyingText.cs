@@ -1,6 +1,6 @@
 using UnityEngine;
-using TMPro;
 using DG.Tweening;
+using TMPro;
 
 public class FlyingText : MonoBehaviour
 {
@@ -60,4 +60,8 @@ public class FlyingText : MonoBehaviour
         _text.enableVertexGradient = true;
         _text.colorGradientPreset = gradient;
     }
+
+    public void SetText(string text) => _text.text = text;
+    public void SetTextColor(Color color) => _text.color = color;
+    public void SetIcon(Sprite sprite) => _renderer.sprite = sprite;
 }

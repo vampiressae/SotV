@@ -28,15 +28,21 @@ MonoBehaviour:
   _useSkill: {fileID: 0}
   _actionsUI: {fileID: 0}
   _actions:
-  - Info: {fileID: 11400000, guid: 54b13c8b9d471be4d9a40d85ee8ab011, type: 2}
+  - Expertise: 0
+    Info: {fileID: 11400000, guid: 54b13c8b9d471be4d9a40d85ee8ab011, type: 2}
     _might: 5
     Value:
       Min: 6
       Max: 8
-  - Info: {fileID: 11400000, guid: 81d8d059f9304494cb570d9fb5fb036b, type: 2}
+    _afflictions:
+    - {fileID: 11400000, guid: 96eab7cb919718044b4a016ab1aee1cc, type: 2}
+  - Expertise: 0
+    Info: {fileID: 11400000, guid: 81d8d059f9304494cb570d9fb5fb036b, type: 2}
     _might: 10
     Value:
       Min: 10
       Max: 15
+    _afflictions:
+    - {fileID: 11400000, guid: 96eab7cb919718044b4a016ab1aee1cc, type: 2}
   _type: {fileID: 11400000, guid: 75c9656dadba88c47aa88fc9fc21cc69, type: 2}
   _canEquipOnlyOne: 0

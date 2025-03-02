@@ -6,13 +6,13 @@ namespace Actor
 {
     public class ActorMightUI : MonoBehaviour
     {
-        [SerializeField] private Image _reserved, _missing, _preview, _recoverable;
+        [SerializeField] private Image _reserved, _missing, _preview, _consumed;
         [SerializeField] private float _duration = 0.2f;
 
         public Image Reserved => _reserved;
         public Image Missing => _missing;
         public Image Preview => _preview;
-        public Image Rerecoverable => _recoverable;
+        public Image Consumed => _consumed;
         public ActorMight Might => _might;
 
         private ActorMight _might;
@@ -20,7 +20,7 @@ namespace Actor
 
         protected virtual void Awake()
         {
-            _images = new Image[] { _reserved, _missing, _preview, _recoverable };
+            _images = new Image[] { _reserved, _missing, _preview, _consumed };
             for (int i = 0; i < _images.Length; i++)
                 _images[i].gameObject.SetActive(true);
         }
@@ -45,12 +45,12 @@ namespace Actor
             Kill();
             var max = (float)_might.Max; //to divide with float
             var missing = Mathf.Clamp(_might.Missing / max, 0, 1);
-            var recover = Mathf.Clamp(_might.Recoverable / max, 0, 1);
+            var recover = Mathf.Clamp(_might.Consumed / max, 0, 1);
             var preview = Mathf.Clamp(1 - missing - recover - _might.Preview / max, 0, 1);
 
             _reserved.rectTransform.DOAnchorMax(new(_might.Reserved / max, 1), _duration).SetEase(Ease.OutSine);
             _missing.rectTransform.DOAnchorMin(new(1 - missing, 0), _duration).SetEase(Ease.OutSine);
-            _recoverable.rectTransform.DOAnchorMin(new(1 - missing - recover, 0), _duration).SetEase(Ease.OutSine);
+            _consumed.rectTransform.DOAnchorMin(new(1 - missing - recover, 0), _duration).SetEase(Ease.OutSine);
             _preview.rectTransform.DOAnchorMin(new(preview, 0), _duration).SetEase(Ease.OutSine);
         }
 

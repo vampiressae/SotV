@@ -16,24 +16,29 @@ namespace Actor
 
         private void Start()
         {
-            _actor.Info.OnFlyingText += OnFlyingText;
             _actor.Info.Might.OnMissingChanged += OnMissingChanged;
+            _actor.Info.OnFlyingText += OnFlyingText;
             ActionBase.OnActed += OnItemActionActed;
         }
 
         private void OnDestroy()
         {
-            _actor.Info.OnFlyingText -= OnFlyingText;
             _actor.Info.Might.OnMissingChanged -= OnMissingChanged;
+            _actor.Info.OnFlyingText -= OnFlyingText;
             ActionBase.OnActed -= OnItemActionActed;
         }
 
-        private void OnMissingChanged(int delta)
+        private void OnMissingChanged(int delta, IActorMightMissing iMissing)
         {
             transform.localScale = Vector3.one * 1.08f;
             transform.DOScale(1, 0.1f);
 
-            FlyingTextController.Show(_actor, -delta);
+            var flying = FlyingTextController.Show(_actor, (-delta).ToStringWithSign(true));
+
+            if (iMissing != null)
+            {
+                flying.SetIcon(iMissing.Icon);
+            } 
 
             if (_actor.IsDead) Die();
         }

@@ -15,7 +15,8 @@ MonoBehaviour:
   Icon: {fileID: 4564899823668317575, guid: 4681f0c0593562e4d89e512df410263d, type: 3}
   Name: Poisoned
   Description: 
-  _tint: {r: 0.5357188, g: 1, b: 0, a: 1}
+  _color: {r: 0.13654523, g: 0.4867924, b: 0, a: 1}
+  _gradient: {fileID: 0}
   _addMode: 0
   _addChance: 1
   _moment: 0

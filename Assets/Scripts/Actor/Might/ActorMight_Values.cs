@@ -36,7 +36,7 @@ namespace Actor
             OnAnyValueChanged?.Invoke();
         }
 
-        public void AddMissingValue(int value)
+        public void AddMissingValue(int value, IActorMightMissing iMissing = null)
         {
             if (value == 0) return;
             value = GetModifiedValue(MightType.Missing, value);
@@ -44,15 +44,15 @@ namespace Actor
             if (value < 1) value = 0;
             _missing += value;
 
-            OnMissingChanged?.Invoke(value);
+            OnMissingChanged?.Invoke(value, iMissing);
             OnAnyValueChanged?.Invoke();
         }
 
-        public void RemoveMissingValue(int value)
+        public void RemoveMissingValue(int value, IActorMightMissing iMissing = null)
         {
             _missing = Mathf.Max(_missing - value, 0);
 
-            OnMissingChanged?.Invoke(-value);
+            OnMissingChanged?.Invoke(-value, iMissing);
             OnAnyValueChanged?.Invoke();
         }
 
@@ -63,25 +63,25 @@ namespace Actor
             var missing = _missing;
             _missing = 0;
 
-            OnMissingChanged?.Invoke(missing);
+            OnMissingChanged?.Invoke(missing, null);
             OnAnyValueChanged?.Invoke();
         }
 
-        public void AddRecoverableValue(int value)
+        public void AddConsumedValue(int value)
         {
-            value = GetModifiedValue(MightType.Recoverable, value);
-            _recoverable += value;
+            value = GetModifiedValue(MightType.Consumed, value);
+            _consumed += value;
 
-            OnRecoverableChanged?.Invoke(value);
+            OnConsumedChanged?.Invoke(value);
             OnAnyValueChanged?.Invoke();
         }
 
-        public void RemoveRecoverableValue(int value)
+        public void RemoveConsumedValue(int value)
         {
             value = GetModifiedValue(MightType.Regen, value);
-            _recoverable = Mathf.Max(_recoverable - value, 0);
+            _consumed = Mathf.Max(_consumed - value, 0);
 
-            OnRecoverableChanged?.Invoke(value);
+            OnConsumedChanged?.Invoke(value);
             OnAnyValueChanged?.Invoke();
         }
     }

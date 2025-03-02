@@ -51,7 +51,7 @@ public class FightController : MonoBehaviour
         SpawnActors(_enemyParent, _actorList.PickActors(), _enemies, false);
 
         _playerInfoValue.SetHolder(_allies[0]);
-        Player.Info.Might.Regen(true);
+        Player.Info.Might.RegenerateConsumed(true);
     }
 
     private void SpawnActors(ActorHolderParent parent, List<ActorInfo> infos, List<ActorHolder> holders, bool firstIsPlayer)

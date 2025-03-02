@@ -1,5 +1,5 @@
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public interface IFlyingText
 {
@@ -31,6 +31,7 @@ public class FlyingTextController : MonoBehaviour
 
     private FlyingText ShowIt(IFlyingText source, Sprite sprite, Color spriteColor, string text, Color textColor)
     {
+        Debug.Log("FLYING STR");
         var txt = Instantiate(_prefab, source.Position + Random.insideUnitCircle * source.Radius, default, transform);
         txt.Init(sprite, spriteColor, text, textColor);
         return txt;
@@ -38,6 +39,7 @@ public class FlyingTextController : MonoBehaviour
 
     private FlyingText ShowIt(IFlyingText source, Sprite sprite, Color spriteColor, int value, Color textColor)
     {
+        Debug.Log("FLYING INT");
         var txt = Instantiate(_prefab, source.Position + Random.insideUnitCircle * source.Radius, default, transform);
         txt.Init(sprite, spriteColor, value, textColor);
         return txt;

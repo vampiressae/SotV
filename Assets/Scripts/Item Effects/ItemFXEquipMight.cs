@@ -40,7 +40,7 @@ public class ItemFXEquipMight : ItemFXEquip
     {
         MightTypeEffect.Reserved => ActorMight.MightType.Reserved,
         MightTypeEffect.Missing => ActorMight.MightType.Missing,
-        MightTypeEffect.Recoverable => ActorMight.MightType.Recoverable,
+        MightTypeEffect.Recoverable => ActorMight.MightType.Consumed,
         MightTypeEffect.Regen => ActorMight.MightType.Regen,
         MightTypeEffect.Max => ActorMight.MightType.Max,
         _ => ActorMight.MightType.None,

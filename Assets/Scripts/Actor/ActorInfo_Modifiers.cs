@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Sirenix.Utilities;
 using Affliction;
 using Modifier;
@@ -42,13 +41,24 @@ namespace Actor
             }
         }
 
-        public void AddAfflictions(IEnumerable<AfflictionInfo> infos) 
+        public void AddAfflictions(IEnumerable<AfflictionInfo> infos)
             => infos.ForEach(info => AddAffliction(info));
 
         public void AddAffliction(AfflictionInfo info)
         {
-            _afflictions.Add(info);
-            InvokeOnFlyingText().Init(null, Color.clear, info.Name, Color.yellow);
+            switch (info.GetAddMode())
+            {
+                case AfflictionInfo.AddMode.Unique:
+                    _afflictions.Add(Instantiate(info));
+                    break;
+
+                case AfflictionInfo.AddMode.Stack:
+                    var found = _afflictions.Where(affliction => affliction.Name == info.Name).FirstOrDefault();
+                    if (found) found.AddApplies(info.Applies);
+                    else _afflictions.Add(Instantiate(info));
+                    break;
+            }
+            InvokeOnFlyingText().Init(info.Name, info.Color);
         }
 
         public void RemoveAffliction(AfflictionInfo info)
@@ -61,7 +71,7 @@ namespace Actor
             }
         }
 
-        public void RemoveAfflictions(IEnumerable<AfflictionInfo> infos) 
+        public void RemoveAfflictions(IEnumerable<AfflictionInfo> infos)
             => infos.ForEach(affliction => RemoveAffliction(affliction));
 
 

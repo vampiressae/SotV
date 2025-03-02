@@ -37,7 +37,7 @@ namespace Actor
             InvokeModifierEvent(ModifierEvent.OnTurnStarted);
             InvokAfflictions(AfflictionMoment.TurnStart);
             InvokAfflictions(AfflictionMoment.RoundStart);
-            Might.Regen();
+            Might.RegenerateConsumed();
         }
 
         public void OnTurnEnd()

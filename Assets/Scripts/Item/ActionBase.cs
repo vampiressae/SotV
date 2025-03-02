@@ -119,7 +119,7 @@ namespace Items
             if (useMight)
             {
                 var value = FightController.Instance.RoundsPerTurn.GetMightValue(source, _might);
-                source.Info.Might.AddRecoverableValue(value);
+                source.Info.Might.AddConsumedValue(value);
             }
             return true;
         }

@@ -42,5 +42,6 @@ public static class MathUtils
         return text;
     }
 
-    public static string ToStringWithSign(this int value) => (value < 0 ? string.Empty : "+") + value;
+    public static string ToStringWithSign(this int value, bool zeroIsNegative = false)
+        => (value == 0 && zeroIsNegative ? "-" : value < 0 ? string.Empty : "+") + value;
 }
