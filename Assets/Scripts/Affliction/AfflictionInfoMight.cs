@@ -12,10 +12,10 @@ namespace Affliction
         [SerializeField, HorizontalGroup("might"), LabelWidth(50)] private MightTypeEffect _might;
         [SerializeField, HorizontalGroup("might", 40), HideLabel] private int _value;
 
-        protected override bool Afflict(ActorInfo actor)
+        protected override bool Afflict(ActorInfo actor, AfflictionData data)
         {
             actor.Might.AddMissingValue(_value, this);
-            return Expire();
+            return true;
         }
     }
 }

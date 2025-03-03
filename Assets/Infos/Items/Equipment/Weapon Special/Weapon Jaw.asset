@@ -35,7 +35,12 @@ MonoBehaviour:
       Min: 6
       Max: 8
     _afflictions:
-    - {fileID: 11400000, guid: 96eab7cb919718044b4a016ab1aee1cc, type: 2}
+    - Info: {fileID: 11400000, guid: 96eab7cb919718044b4a016ab1aee1cc, type: 2}
+      _addMode: 2
+      _addChance: 1
+      _moment: 0
+      _applyChance: 1
+      _applies: 2
   - Expertise: 0
     Info: {fileID: 11400000, guid: 81d8d059f9304494cb570d9fb5fb036b, type: 2}
     _might: 10
@@ -43,6 +48,11 @@ MonoBehaviour:
       Min: 10
       Max: 15
     _afflictions:
-    - {fileID: 11400000, guid: 96eab7cb919718044b4a016ab1aee1cc, type: 2}
+    - Info: {fileID: 11400000, guid: 96eab7cb919718044b4a016ab1aee1cc, type: 2}
+      _addMode: 2
+      _addChance: 1
+      _moment: 0
+      _applyChance: 1
+      _applies: 2
   _type: {fileID: 11400000, guid: 75c9656dadba88c47aa88fc9fc21cc69, type: 2}
   _canEquipOnlyOne: 0

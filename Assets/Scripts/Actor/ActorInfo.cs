@@ -28,9 +28,7 @@ namespace Actor
         [ListDrawerSettings(CustomRemoveElementFunction = "RemoveModifier")]
         [SerializeField] private List<ModifierData> _modifiers = new();
 
-        [ListDrawerSettings(CustomRemoveElementFunction = "RemoveEffect", CustomAddFunction = "AddEffect")]
-        [SerializeField, InlineEditor, GUIColor(1, 0.7f, 0.7f)] private List<AfflictionInfo> _afflictions;
-
+        [SerializeField, GUIColor(1, 0.7f, 0.7f)] private List<AfflictionData> _afflictions;
 
         public void OnTurnStart()
         {
@@ -100,8 +98,6 @@ namespace Actor
         public void FullHeal() => Might.ResetMissingValue();
 
 #if UNITY_EDITOR
-        private void AddEffect() => _afflictions.AddScriptableCopy(this);
-        private void RemoveEffect(AfflictionInfo item) => _afflictions.RemoveScriptableCopy(item);
         private void RemoveModifier(ModifierData modifier)
         {
             modifier.OnUnvalidate(this); 

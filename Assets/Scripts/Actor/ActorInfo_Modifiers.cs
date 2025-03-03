@@ -41,43 +41,42 @@ namespace Actor
             }
         }
 
-        public void AddAfflictions(IEnumerable<AfflictionInfo> infos)
-            => infos.ForEach(info => AddAffliction(info));
+        public void AddAfflictions(IEnumerable<AfflictionData> datas)
+            => datas.ForEach(info => AddAffliction(info));
 
-        public void AddAffliction(AfflictionInfo info)
+        public void AddAffliction(AfflictionData data)
         {
-            switch (info.GetAddMode())
+            switch (data.GetAddMode())
             {
                 case AfflictionInfo.AddMode.Unique:
-                    _afflictions.Add(Instantiate(info));
+                    _afflictions.Add(data.Clone());
                     break;
 
                 case AfflictionInfo.AddMode.Stack:
-                    var found = _afflictions.Where(affliction => affliction.Name == info.Name).FirstOrDefault();
-                    if (found) found.AddApplies(info.Applies);
-                    else _afflictions.Add(Instantiate(info));
+                    var found = _afflictions.Where(affliction => affliction.Info.Name == data.Info.Name).FirstOrDefault();
+                    if (found != null) found.AddApplies(data.Applies);
+                    else _afflictions.Add(data.Clone());
                     break;
             }
-            InvokeOnFlyingText().Init(info.Name, info.Color);
+            InvokeOnFlyingText().Init(data.Info.Name, data.Info.Color);
         }
 
-        public void RemoveAffliction(AfflictionInfo info)
+        public void RemoveAffliction(AfflictionData data)
         {
             foreach (var affliction in _afflictions)
             {
-                if (affliction != info) continue;
+                if (affliction != data) continue;
                 _afflictions.Remove(affliction);
                 break;
             }
         }
 
-        public void RemoveAfflictions(IEnumerable<AfflictionInfo> infos)
-            => infos.ForEach(affliction => RemoveAffliction(affliction));
+        public void RemoveAfflictions(IEnumerable<AfflictionData> datas)
+            => datas.ForEach(affliction => RemoveAffliction(affliction));
 
-
-        public void RemoveAffliction(AfflictionInfo info, bool all)
+        public void RemoveAffliction(AfflictionData data, bool all)
         {
-            var removes = _afflictions.Where(affliction => affliction.Name == info.Name);
+            var removes = _afflictions.Where(affliction => affliction.Info.Name == data.Info.Name);
             foreach (var remove in removes)
             {
                 _afflictions.Remove(remove);
@@ -87,10 +86,10 @@ namespace Actor
 
         public void InvokAfflictions(AfflictionMoment moment)
         {
-            var removes = new List<AfflictionInfo>();
-            foreach (var modifier in _afflictions)
-                if (modifier.Afflict(moment, this))
-                    removes.Add(modifier);
+            var removes = new List<AfflictionData>();
+            foreach (var data in _afflictions)
+                if (data.Afflict(moment, this))
+                    removes.Add(data);
             RemoveAfflictions(removes);
         }
     }

@@ -9,11 +9,7 @@ using Affliction;
 [System.Serializable]
 public class WeaponAction : ActionWithInfoValueMight<WeaponAttackInfo>
 {
-    [ListDrawerSettings(CustomRemoveElementFunction = "RemoveEffect", CustomAddFunction = "AddEffect")]
-    [SerializeField, InlineEditor, GUIColor(1, 0.7f, 0.7f)] private List<AfflictionInfo> _afflictions;
-
-    [ShowInInspector, ReadOnly, HideIf(nameof(ParentScriptable)), GUIColor("red")]
-    public ScriptableObject ParentScriptable { get; private set; }
+    [SerializeField, GUIColor(1, 0.7f, 0.7f)] private List<AfflictionData> _afflictions;
 
     protected override string ValueName => "Damage";
 
@@ -33,14 +29,4 @@ public class WeaponAction : ActionWithInfoValueMight<WeaponAttackInfo>
 
     public override string TooltipSummaryDetails(ActorHolder actor, string tooltip) 
         => $"{base.TooltipSummaryDetails(actor, tooltip)} - {(actor ? InfluencedValueRange(actor.Info) : 0)} : {Might}";
-
-#if UNITY_EDITOR
-    private void AddEffect() => _afflictions.AddScriptableCopy(ParentScriptable);
-    private void RemoveEffect(AfflictionInfo item) => _afflictions.RemoveScriptableCopy(item);
-    public override void OnValidate(ItemInfo item)
-    {
-        ParentScriptable = item;
-        _afflictions.ForEach(affliction => affliction.ShowMainData = false);
-    }
-#endif
 }
