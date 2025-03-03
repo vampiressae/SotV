@@ -14,13 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 4564899823668317575, guid: 4681f0c0593562e4d89e512df410263d, type: 3}
   Name: Poisoned
-  Description: 
+  Description: Reserves might until it goes away or healed.
   _color: {r: 0.13654523, g: 0.4867924, b: 0, a: 1}
   _gradient: {fileID: 0}
-  _addMode: 0
-  _addChance: 1
-  _moment: 0
-  _applyChance: 1
-  _applies: 0
-  _might: 0
-  _value: 0
+  AddMode: 2
+  Moment: 1
+  _might: 1
+  _value: 20

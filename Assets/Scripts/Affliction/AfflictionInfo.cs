@@ -8,10 +8,11 @@ namespace Affliction
     [GUIColor("white")]
     public abstract class AfflictionInfo : ScriptableWithNameAndSpriteAndTooltip, IActorMightMissing
     {
-        public enum AddMode { None, Unique, Stack }
+        [SerializeField, HorizontalGroup("color", 150), ColorUsage(false), LabelWidth(69)] private Color _color;
+        [SerializeField, HorizontalGroup("color"), HideLabel] private TMP_ColorGradient _gradient;
 
-        [SerializeField, HorizontalGroup("color", 150), ColorUsage(false)] private Color _color;
-        [SerializeField, HorizontalGroup ("color"), HideLabel] private TMP_ColorGradient _gradient;
+        [SerializeField, HorizontalGroup("options"), LabelText("Options"), LabelWidth(69)] public AfflictionAddMode AddMode;
+        [SerializeField, HorizontalGroup("options"), LabelText("On"), LabelWidth(20)] public AfflictionMoment Moment;
 
         string IActorMightDictionaryKey.Name => Name;
         Sprite IActorMightDictionaryKeyPlus.Icon => Icon;
@@ -20,15 +21,16 @@ namespace Affliction
 
         public bool Afflict(AfflictionMoment moment, ActorInfo actor, AfflictionData data)
         {
-            if (!data.TryApply()) return false;
+            if (data.Info.Moment != moment) return false;
 
-            switch (moment)
-            {
-                case AfflictionMoment.Added: return AfflictOnAdded(actor, data);
-                case AfflictionMoment.Removed: return AfflictOnRemoved(actor, data);
-            }
-            if (data.Moment != moment) return false;
-            return Afflict(actor, data) && data.Expire();
+            if (data.ApplyChance > Random.value)
+                switch (moment)
+                {
+                    case AfflictionMoment.Added: AfflictOnAdded(actor, data); break;
+                    case AfflictionMoment.Removed: AfflictOnRemoved(actor, data); break;
+                    default: Afflict(actor, data); break;
+                }
+            return data.Expire();
         }
 
         protected virtual bool AfflictOnAdded(ActorInfo actor, AfflictionData data) => data.Expire();

@@ -48,11 +48,11 @@ namespace Actor
         {
             switch (data.GetAddMode())
             {
-                case AfflictionInfo.AddMode.Unique:
+                case AfflictionAddMode.Unique:
                     _afflictions.Add(data.Clone());
                     break;
 
-                case AfflictionInfo.AddMode.Stack:
+                case AfflictionAddMode.Stack:
                     var found = _afflictions.Where(affliction => affliction.Info.Name == data.Info.Name).FirstOrDefault();
                     if (found != null) found.AddApplies(data.Applies);
                     else _afflictions.Add(data.Clone());

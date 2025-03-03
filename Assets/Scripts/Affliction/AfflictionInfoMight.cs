@@ -9,7 +9,7 @@ namespace Affliction
     [CreateAssetMenu(menuName = "Afflictions/Might")]
     public class AfflictionInfoMight : AfflictionInfo
     {
-        [SerializeField, HorizontalGroup("might"), LabelWidth(50)] private MightTypeEffect _might;
+        [SerializeField, HorizontalGroup("might"), LabelWidth(69)] private MightTypeEffect _might;
         [SerializeField, HorizontalGroup("might", 40), HideLabel] private int _value;
 
         protected override bool Afflict(ActorInfo actor, AfflictionData data)

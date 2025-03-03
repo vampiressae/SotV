@@ -14,13 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 4564899823668317575, guid: 4681f0c0593562e4d89e512df410263d, type: 3}
   Name: Bleeding
-  Description: 
+  Description: Bleeds might at the start of the character's turn.
   _color: {r: 0.5849056, g: 0, b: 0, a: 1}
   _gradient: {fileID: 11400000, guid: 866ce70f6ff3748469ee2e2d0e03f7ad, type: 2}
-  _addMode: 2
-  _addChance: 1
-  _moment: 5
-  _applyChance: 1
-  _applies: 3
+  AddMode: 2
+  Moment: 5
   _might: 2
   _value: 5

@@ -2,42 +2,33 @@ using Actor;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-using static Affliction.AfflictionInfo;
-
 namespace Affliction
 {
     [System.Serializable]
     public class AfflictionData
     {
         [HideLabel] public AfflictionInfo Info;
-        [SerializeField, HorizontalGroup("add", 150), LabelWidth(50), LabelText("Add")] private AddMode _addMode;
-        [SerializeField, HorizontalGroup("add"), HideLabel, Range(0, 1)] private float _addChance = 1;
-        [SerializeField, HorizontalGroup("apply", 150), LabelWidth(50)] private AfflictionMoment _moment;
-        [SerializeField, HorizontalGroup("apply"), HideLabel, Range(0, 1)] private float _applyChance = 1;
-        [SerializeField, LabelWidth(50)] private int _applies;
+        [SerializeField, HorizontalGroup("add"), Range(0, 1)] private float _add = 1;
+        [SerializeField, HorizontalGroup("apply"), Range(0, 1)] private float _apply = 1;
+        [SerializeField] private int _applies;
 
-        public AfflictionMoment Moment => _moment;
+        public float ApplyChance => _apply;
         public int Applies => _applies;
 
         public AfflictionData() { }
         public AfflictionData(AfflictionInfo info) => Info = info;
 
-        public AddMode GetAddMode()
+        public AfflictionAddMode GetAddMode()
         {
-            if (_addMode == AddMode.None) return AddMode.None;
+            if (Info.AddMode == AfflictionAddMode.None) return AfflictionAddMode.None;
             var random = Random.value;
-            if (_addChance < random) return AddMode.None;
-            return _addMode;
-        }
-
-        public bool TryApply()
-        {
-            Expire();
-            return _applyChance > Random.value;
+            if (_add < random) return AfflictionAddMode.None;
+            return Info.AddMode;
         }
 
         public bool Expire()
         {
+            Debug.Log("EXPIRE");
             _applies--;
             return _applies < 1;
         }
