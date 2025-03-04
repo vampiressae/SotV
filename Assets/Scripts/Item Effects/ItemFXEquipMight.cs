@@ -31,19 +31,19 @@ public class ItemFXEquipMight : ItemFXEquip
         if (equipment.Actor == null) return;
         switch (_modifier)
         {
-            case ModifierType.Multipler: equipment.Actor.Info.Might.RemoveMultiplier(TrueType, item); break;
-            case ModifierType.Addition: equipment.Actor.Info.Might.RemoveAddition(TrueType, item); break;
+            case ModifierType.Multipler: equipment.Actor.Info.Might.RemoveMultiplier(TrueType, item, _value); break;
+            case ModifierType.Addition: equipment.Actor.Info.Might.RemoveAddition(TrueType, item, _value); break;
         }
     }
 
-    private ActorMight.MightType TrueType => _type switch
+    private MightType TrueType => _type switch
     {
-        MightTypeEffect.Reserved => ActorMight.MightType.Reserved,
-        MightTypeEffect.Missing => ActorMight.MightType.Missing,
-        MightTypeEffect.Recoverable => ActorMight.MightType.Consumed,
-        MightTypeEffect.Regen => ActorMight.MightType.Regen,
-        MightTypeEffect.Max => ActorMight.MightType.Max,
-        _ => ActorMight.MightType.None,
+        MightTypeEffect.Reserved => MightType.Reserved,
+        MightTypeEffect.Missing => MightType.Missing,
+        MightTypeEffect.Recoverable => MightType.Consumed,
+        MightTypeEffect.Regen => MightType.Regen,
+        MightTypeEffect.Max => MightType.Max,
+        _ => MightType.None,
     };
 
     public override void GetTooltip(ref List<string> list)

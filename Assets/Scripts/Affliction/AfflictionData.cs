@@ -10,10 +10,11 @@ namespace Affliction
         [HideLabel] public AfflictionInfo Info;
         [SerializeField, HorizontalGroup("add"), Range(0, 1)] private float _add = 1;
         [SerializeField, HorizontalGroup("apply"), Range(0, 1)] private float _apply = 1;
-        [SerializeField] private int _applies;
+        [SerializeField] private int _applies, _value;
 
         public float ApplyChance => _apply;
         public int Applies => _applies;
+        public int Value => _value;
 
         public AfflictionData() { }
         public AfflictionData(AfflictionInfo info) => Info = info;

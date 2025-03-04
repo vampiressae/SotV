@@ -39,11 +39,8 @@ namespace Actor
 
         [ReadOnlyInPlayMode] public int Available => Max - Reserved - Missing - Consumed;
 
-        [ReadOnlyInPlayMode] private readonly Dictionary<MightType, Dictionary<IActorMightMultiplier, int>> _multipliers = new();
-        [ReadOnlyInPlayMode] private readonly Dictionary<MightType, Dictionary<IActorMighAddition, int>> _additions = new();
-
-        public IReadOnlyDictionary<MightType, Dictionary<IActorMightMultiplier, int>> Multipliers => _multipliers;
-        public IReadOnlyDictionary<MightType, Dictionary<IActorMighAddition, int>> Additions => _additions;
+        [ReadOnlyInPlayMode] private readonly List<MightModifier> _multipliers = new();
+        [ReadOnlyInPlayMode] private readonly List<MightModifier> _additions = new();
 
         public int GetValueByType(MightType type) => type switch
         {

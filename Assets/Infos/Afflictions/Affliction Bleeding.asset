@@ -12,6 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad52da9a4598234ab4ec266f1b3f60a, type: 3}
   m_Name: Affliction Bleeding
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _key
+      Entry: 10
+      Data: 0
   Icon: {fileID: 4564899823668317575, guid: 4681f0c0593562e4d89e512df410263d, type: 3}
   Name: Bleeding
   Description: Bleeds might at the start of the character's turn.
@@ -20,4 +33,4 @@ MonoBehaviour:
   AddMode: 2
   Moment: 5
   _might: 2
-  _value: 5
+  _damageKey: 2

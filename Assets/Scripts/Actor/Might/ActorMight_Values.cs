@@ -36,10 +36,10 @@ namespace Actor
             OnAnyValueChanged?.Invoke();
         }
 
-        public void AddMissingValue(int value, IActorMightMissing iMissing = null)
+        public void AddMissingValue(int value, IActorMightMissing iMissing = null, IActorMightDictionaryKey key = null)
         {
             if (value == 0) return;
-            value = GetModifiedValue(MightType.Missing, value);
+            value = GetModifiedValue(MightType.Missing, value, key);
 
             if (value < 1) value = 0;
             _missing += value;
@@ -65,7 +65,7 @@ namespace Actor
 
             OnMissingChanged?.Invoke(missing, null);
             OnAnyValueChanged?.Invoke();
-        }
+        }   
 
         public void AddConsumedValue(int value)
         {

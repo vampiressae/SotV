@@ -39,7 +39,7 @@ namespace Items
 
     public abstract class ItemInfoWithAction<T> : ItemInfoWithAction, IHasAction where T : ActionBase
     {
-        [GUIColor(1, 0.9f, 0.8f)]
+        [Space, GUIColor(1, 0.9f, 0.8f)]
         [SerializeField] protected T[] _actions;
 
         public ActionBase[] Actions => _actions;

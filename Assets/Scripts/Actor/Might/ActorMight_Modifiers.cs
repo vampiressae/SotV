@@ -1,51 +1,103 @@
-using System.Collections.Generic;
+using System;
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace Actor
 {
     public partial class ActorMight
     {
-        public void AddMultiplier(MightType type, IActorMightMultiplier source, int value) => AddToDictionary(_multipliers, type, source, value);
-        public void RemoveMultiplier(MightType type, IActorMightMultiplier source) => RemoveFromDictionary(_multipliers, type, source);
-        public void AddAddition(MightType type, IActorMighAddition source, int value) => AddToDictionary(_additions, type, source, value);
-        public void RemoveAddition(MightType type, IActorMighAddition source) => RemoveFromDictionary(_additions, type, source);
-
-        private int GetModifiedValue(MightType type, int value)
+        [Serializable]
+        private class MightModifierValue
         {
-            var multiplier = _multipliers.TryGetValue(type, out var multipliers) ? multipliers.Values.Sum() : 0;
-            var addition = _additions.TryGetValue(type, out var additions) ? additions.Values.Sum() : 0;
+            [HideLabel, HorizontalGroup] public IActorMightDictionaryKey Source;
+            [HideLabel, HorizontalGroup(50)] public int Value;
+        }
+
+        private class MightModifierModule
+        {
+            [HideLabel] public IActorMightDictionaryKey Key;
+            public List<MightModifierValue> Values = new();
+            public int Sum() => Values?.Sum(value => value.Value) ?? 0;
+        }
+
+        private class MightModifier
+        {
+            [HideLabel] public MightType Type;
+            public List<MightModifierModule> Modules = new();
+            public int Sum(IActorMightDictionaryKey key) => Modules?.Sum(value => value.Key == key ? value.Sum() : 0) ?? 0;
+        }
+
+        public void AddMultiplier(MightType type, IActorMightMultiplier source, int value) => AddMultiplier(type, source, null, value);
+        public void AddMultiplier(MightType type, IActorMightMultiplier source, IActorMightDictionaryKey key, int value)
+            => AddToDictionary(_multipliers, type, source, key, value);
+
+        public void RemoveMultiplier(MightType type, IActorMightMultiplier source, int value) => RemoveMultiplier(type, source, null, value);
+        public void RemoveMultiplier(MightType type, IActorMightMultiplier source, IActorMightDictionaryKey key, int value)
+            => RemoveFromDictionary(_multipliers, type, source, key, value);
+
+        public void AddAddition(MightType type, IActorMighAddition source, int value) => AddAddition(type, source, null, value);
+        public void AddAddition(MightType type, IActorMighAddition source, IActorMightDictionaryKey key, int value)
+              => AddToDictionary(_additions, type, source, key, value);
+
+        public void RemoveAddition(MightType type, IActorMighAddition source, int value) => RemoveAddition(type, source, null, value);
+        public void RemoveAddition(MightType type, IActorMighAddition source, IActorMightDictionaryKey key, int value)
+                => RemoveFromDictionary(_additions, type, source, key, value);
+
+        private int GetModifiedValue(MightType type, int value, IActorMightDictionaryKey key = null)
+        {
+            var multiplier = GetModifiedValue(_multipliers, type, key);
+            var addition = GetModifiedValue(_additions, type, key);
             return Mathf.RoundToInt(value + (value * multiplier * 0.01f) + addition);
         }
 
-        private void AddToDictionary<T>(Dictionary<MightType, Dictionary<T, int>> dictionary, MightType type, T source, int value) where T : IActorMightDictionaryKey
+        private int GetModifiedValue(List<MightModifier> list, MightType type, IActorMightDictionaryKey key)
         {
-            if (!dictionary.TryGetValue(type, out var list))
+            var modifier = list.Where(module => module.Type == type).FirstOrDefault();
+            if (modifier == null) return 0;
+
+            var module = modifier.Modules.Where(module => module.Key == key).FirstOrDefault();
+            return module == null ? 0 : module.Sum();
+        }
+
+        private void AddToDictionary<T>(List<MightModifier> list, MightType type, T source, T key, int value) where T : IActorMightDictionaryKey
+        {
+            var modifier = GetElementAndAddIfMissing(list, m => m.Type == type, m => m.Type = type);
+            var module = GetElementAndAddIfMissing(modifier.Modules, m => CompareDictionaryKeys(m.Key, key), m => m.Key = key);
+            var result = GetElementAndAddIfMissing(module.Values, v => CompareDictionaryKeys(v.Source, source), v => v.Source = source);
+
+            result.Value += value;
+            OnAnyValueChanged?.Invoke();
+        }
+
+        private void RemoveFromDictionary<T>(List<MightModifier> list, MightType type, T source, T key, int value) where T : IActorMightDictionaryKey
+        {
+            var modifier = GetElementAndAddIfMissing(list, m => m.Type == type);
+            if (modifier == null) return;
+
+            var module = GetElementAndAddIfMissing(modifier.Modules, m => CompareDictionaryKeys(m.Key, key));
+            if (module == null) return;
+
+            var result = GetElementAndAddIfMissing(module.Values, v => CompareDictionaryKeys(v.Source, source));
+            if (result == null || result.Value < value) return;
+
+            result.Value -= value;
+            OnAnyValueChanged?.Invoke();
+        }
+
+        private bool CompareDictionaryKeys(IActorMightDictionaryKey a, IActorMightDictionaryKey b) => a == b;
+
+        private T GetElementAndAddIfMissing<T>(List<T> list, Func<T, bool> findElement, Action<T> setElement = null) where T : new()
+        {
+            var element = list.Where(module => findElement(module)).FirstOrDefault();
+            if (element == null && setElement != null)
             {
-                list = new();
-                dictionary.Add(type, list);
+                element = new();
+                setElement(element);
+                list.Add(element);
             }
-
-            dictionary[type][source] = value;
-            OnAnyValueChanged?.Invoke();
-        }
-
-        private void RemoveFromDictionary<T>(Dictionary<MightType, Dictionary<T, int>> dictionary, MightType type, T source) where T : IActorMightDictionaryKey
-        {
-            if (type == MightType.None) return;
-            if (!dictionary.ContainsKey(type)) return;
-            if (!dictionary[type].ContainsKey(source)) return;
-
-            dictionary[type].Remove(source);
-            OnAnyValueChanged?.Invoke();
-
-            ClearNullDictionaryEntries(dictionary);
-        }
-
-        private void ClearNullDictionaryEntries<T>(Dictionary<MightType, Dictionary<T, int>> dictionary) where T : IActorMightDictionaryKey
-        {
-            var empties = dictionary.Where(pair => pair.Value.Count == 0).Select(pair => pair.Key).ToList();
-            if (empties.Count() > 0) foreach (var empty in empties) dictionary.Remove(empty);
+            return element;
         }
     }
 }
