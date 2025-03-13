@@ -51,6 +51,7 @@ namespace Actor
             _reserved.rectTransform.DOAnchorMax(new(_might.Reserved / max, 1), _duration).SetEase(Ease.OutSine);
             _missing.rectTransform.DOAnchorMin(new(1 - missing, 0), _duration).SetEase(Ease.OutSine);
             _consumed.rectTransform.DOAnchorMin(new(1 - missing - recover, 0), _duration).SetEase(Ease.OutSine);
+            _preview.rectTransform.DOAnchorMax(new(1 - missing - recover, 1), _duration).SetEase(Ease.OutSine);
             _preview.rectTransform.DOAnchorMin(new(preview, 0), _duration).SetEase(Ease.OutSine);
         }
 

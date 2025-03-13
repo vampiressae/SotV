@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 1d70b565a26079844b55d828967cc945
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3084938258790238464
+    second: Fill Watercolor_0
+  - first:
+      213: -7749280298550445591
+    second: Fill Watercolor_1
+  - first:
+      213: -6353108284539948308
+    second: Fill Watercolor_2
+  - first:
+      213: 2795533863175792841
+    second: Fill Watercolor_3
+  - first:
+      213: -2438723173916890969
+    second: Fill Watercolor_4
+  - first:
+      213: -2023583504041662250
+    second: Fill Watercolor_5
+  - first:
+      213: 2213126949135120506
+    second: Fill Watercolor_6
+  - first:
+      213: -526448718536528696
+    second: Fill Watercolor_7
+  - first:
+      213: -707811091734520104
+    second: Fill Watercolor_8
+  - first:
+      213: -7708740637004173574
+    second: Fill Watercolor_9
+  - first:
+      213: -5864747448031357239
+    second: Fill Watercolor_10
+  - first:
+      213: 552581456307186892
+    second: Fill Watercolor_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Fill Watercolor_0
+      rect:
+        serializedVersion: 2
+        x: 1615
+        y: 3039
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 007bbc29ff81035d0800000000000000
+      internalID: -3084938258790238464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fill Watercolor_1
+      rect:
+        serializedVersion: 2
+        x: 3535
+        y: 3007
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e9b7fb30a6057490800000000000000
+      internalID: -7749280298550445591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fill Watercolor_2
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 2655
+        width: 127
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce2b768eca935d7a0800000000000000
+      internalID: -6353108284539948308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fill Watercolor_3
+      rect:
+        serializedVersion: 2
+        x: 1335
+        y: 2879
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c82b28bc3bbbc620800000000000000
+      internalID: 2795533863175792841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fill Watercolor_4
+      rect:
+        serializedVersion: 2
+        x: 2111
+        y: 2861
+        width: 74
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a8ab29b13ae72ed0800000000000000
+      internalID: -2438723173916890969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fill Watercolor_5
+      rect:
+        serializedVersion: 2
+        x: 2319
+        y: 2911
+        width: 42
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d8a1444689cae3e0800000000000000
+      internalID: -2023583504041662250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fill Watercolor_6
+      rect:
+        serializedVersion: 2
+        x: 3863
+        y: 2871
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a78fa0e0c3b96be10800000000000000
+      internalID: 2213126949135120506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fill Watercolor_7
+      rect:
+        serializedVersion: 2
+        x: 3991
+        y: 2868
+        width: 50
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ccab230eada1b8f0800000000000000
+      internalID: -526448718536528696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fill Watercolor_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2207
+        width: 49
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8de151def895d26f0800000000000000
+      internalID: -707811091734520104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fill Watercolor_9
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 0
+        width: 4628
+        height: 2905
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afe6fb9bb3d050590800000000000000
+      internalID: -7708740637004173574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fill Watercolor_10
+      rect:
+        serializedVersion: 2
+        x: 4561
+        y: 1853
+        width: 151
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c656bec44b3c9ea0800000000000000
+      internalID: -5864747448031357239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fill Watercolor_11
+      rect:
+        serializedVersion: 2
+        x: 4671
+        y: 903
+        width: 34
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccc68a428e92ba700800000000000000
+      internalID: 552581456307186892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Fill Watercolor_0: -3084938258790238464
+      Fill Watercolor_1: -7749280298550445591
+      Fill Watercolor_10: -5864747448031357239
+      Fill Watercolor_11: 552581456307186892
+      Fill Watercolor_2: -6353108284539948308
+      Fill Watercolor_3: 2795533863175792841
+      Fill Watercolor_4: -2438723173916890969
+      Fill Watercolor_5: -2023583504041662250
+      Fill Watercolor_6: 2213126949135120506
+      Fill Watercolor_7: -526448718536528696
+      Fill Watercolor_8: -707811091734520104
+      Fill Watercolor_9: -7708740637004173574
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
