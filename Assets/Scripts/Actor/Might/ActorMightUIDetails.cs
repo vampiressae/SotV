@@ -9,9 +9,10 @@ using static Actor.ActorMight;
 namespace Actor
 {
     [DefaultExecutionOrder(10)]
-    public class ActorMightUITooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class ActorMightUIDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private CanvasGroup _fader;
+        [SerializeField] private LayoutElement _sizeElement;
         [SerializeField] private RectTransform _rtForWidth;
 
         [SerializeField] private LayoutElement _reservedHolder, _availableHolder, _consumedHolder, _missingHolder;
@@ -20,6 +21,7 @@ namespace Actor
         [SerializeField] private ActorMightUIReservedRow _rowPrefab;
         [SerializeField] private Transform _rowParent;
         [SerializeField] private float _minHeight = 20;
+        [SerializeField] private Color _labelColor = new(0, 0, 0, 0.4f), _valueColor = Color.black;
 
         private ActorMightUI _ui;
         private ActorMight _might;
@@ -27,8 +29,7 @@ namespace Actor
         private TMP_Text[] _texts;
         private string[] _labels;
         private MightType[] _values;
-        private RectTransform _faderRT;
-        private Vector2 _faderSize;
+        private Vector2 _originSize;
 
         private void Awake() => _fader.alpha = 0;
 
@@ -39,8 +40,8 @@ namespace Actor
             _might = _ui.Might;
             _might.OnAnyValueChanged += Refresh;
 
-            _faderRT = _fader.transform as RectTransform;
-            _faderSize = _faderRT.sizeDelta;
+            _originSize = new(_sizeElement.preferredWidth, _sizeElement.preferredHeight);
+            _sizeElement.preferredHeight = 0;
 
             _texts = new TMP_Text[] { _reserved, _available, _consumed, _missing };
             _labels = new string[] { "Reserved", "Available", "Consumed", "Missing" };
@@ -56,7 +57,7 @@ namespace Actor
         public void OnPointerEnter(PointerEventData _)
         {
             Kill();
-            _faderRT.DOSizeDelta(_faderSize, 0.3f).SetEase(Ease.OutQuart);
+            _sizeElement.DOPreferredSize(_originSize, 0.3f).SetEase(Ease.OutQuart);
             _fader.DOFade(1, 0.3f);
             _fader.gameObject.SetActive(true);
             Refresh();
@@ -65,7 +66,7 @@ namespace Actor
         public void OnPointerExit(PointerEventData _)
         {
             Kill();
-            _faderRT.DOSizeDelta(new(_faderSize.x, _minHeight), 0.3f).SetEase(Ease.OutQuart);
+            _sizeElement.DOPreferredSize(new(_originSize.x, 0), 0.3f).SetEase(Ease.OutQuart);
             _fader.DOFade(0, 0.3f).onComplete += () => _fader.gameObject.SetActive(false);
         }
 
@@ -74,7 +75,10 @@ namespace Actor
             for (int i = 0; i < _texts.Length; i++)
             {
                 var value = _might.GetValueByType(_values[i]);
-                _texts[i].text = $"{(value > 8 ? _labels[i] + ": " : "")}<color=white>{value}</color>";
+                var lcolor = ColorUtility.ToHtmlStringRGBA(_labelColor);
+                var vcolor = ColorUtility.ToHtmlStringRGBA(_valueColor);
+                var label = value > 8 ? _labels[i] + ": " : "";
+                _texts[i].text = $"<color=#{lcolor}>{label}<color=#{vcolor}>{value}</color></color>";
             }
 
             var width = _rtForWidth.rect.width;
