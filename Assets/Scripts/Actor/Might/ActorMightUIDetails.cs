@@ -22,6 +22,8 @@ namespace Actor
         [SerializeField] private Transform _rowParent;
         [SerializeField] private float _minHeight = 20;
         [SerializeField] private Color _labelColor = new(0, 0, 0, 0.4f), _valueColor = Color.black;
+        [SerializeField] private RectTransform _shadowRT;
+        [SerializeField] private float _shadowOn = 10;
 
         private ActorMightUI _ui;
         private ActorMight _might;
@@ -30,6 +32,7 @@ namespace Actor
         private string[] _labels;
         private MightType[] _values;
         private Vector2 _originSize;
+        private float _shadowOff;
 
         private void Awake() => _fader.alpha = 0;
 
@@ -46,6 +49,8 @@ namespace Actor
             _texts = new TMP_Text[] { _reserved, _available, _consumed, _missing };
             _labels = new string[] { "Reserved", "Available", "Consumed", "Missing" };
             _values = new MightType[] { MightType.Reserved, MightType.Available, MightType.Consumed, MightType.Missing };
+
+            _shadowOff = _shadowRT ? _shadowRT.anchoredPosition.y : 0;
         }
 
         private void OnDestroy()
@@ -58,6 +63,7 @@ namespace Actor
         {
             Kill();
             _sizeElement.DOPreferredSize(_originSize, 0.3f).SetEase(Ease.OutQuart);
+            if (_shadowRT) _shadowRT.DOAnchorPos3DY(_shadowOff + _shadowOn, 0.3f);
             _fader.DOFade(1, 0.3f);
             _fader.gameObject.SetActive(true);
             Refresh();
@@ -67,6 +73,7 @@ namespace Actor
         {
             Kill();
             _sizeElement.DOPreferredSize(new(_originSize.x, 0), 0.3f).SetEase(Ease.OutQuart);
+            if (_shadowRT) _shadowRT.DOAnchorPos3DY(_shadowOff, 0.3f);
             _fader.DOFade(0, 0.3f).onComplete += () => _fader.gameObject.SetActive(false);
         }
 
@@ -90,9 +97,9 @@ namespace Actor
             _consumedHolder.preferredWidth = recover * width;
             _missingHolder.preferredWidth = missing * width;
 
-            _reserved.gameObject.SetActive(_reservedHolder.preferredWidth > 1);
-            _consumed.gameObject.SetActive(_consumedHolder.preferredWidth > 1);
-            _missing.gameObject.SetActive(_missingHolder.preferredWidth > 1);
+            _reservedHolder.gameObject.SetActive(_reservedHolder.preferredWidth > 1);
+            _consumedHolder.gameObject.SetActive(_consumedHolder.preferredWidth > 1);
+            _missingHolder.gameObject.SetActive(_missingHolder.preferredWidth > 1);
 
             _rowParent.Clear(element => !element.name.StartsWith("_"));
             foreach (var reserved in _might.AllReserved)

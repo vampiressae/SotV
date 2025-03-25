@@ -24,6 +24,8 @@ namespace Inventory
         {
             for (int i = 0; i < _inventory.Slots; i++)
             {
+                if (Blocked && _inventory.Items[i].IsEmpty) continue;
+
                 var ui = Instantiate(_slotPrefab, _slotParent);
                 ui.Init(this, _inventory.Items[i]);
                 ui.name = $"{name} SLOT #{i}";

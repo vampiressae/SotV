@@ -11,6 +11,9 @@ public class MoveUIWithMouse : MonoBehaviour
     [Space]
     [SerializeField] private Vector2 _offset;
     [SerializeField] private Canvas _canvas;
+    [Space]
+    [SerializeField] private bool _freezeX;
+    [SerializeField] private bool _freezeY;
 
     private bool _inited;
     private Vector2 _pointInRect;
@@ -53,6 +56,7 @@ public class MoveUIWithMouse : MonoBehaviour
         Init();
         if (_canvas == null) return;
 
+        var origin = transform.position;
         var offset = _offset;
         var position = MousePosition + offset - _grabOffset;
 
@@ -71,7 +75,11 @@ public class MoveUIWithMouse : MonoBehaviour
         }
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasRT, position, _canvas.worldCamera, out _pointInRect);
-        transform.position = _canvasRT.TransformPoint(_pointInRect);
+
+        var point = _canvasRT.TransformPoint(_pointInRect);
+        if (_freezeX) point.x = origin.x;
+        if (_freezeY) point.y = origin.y;
+        transform.position = point;
     }
 
     public void SetGrabOffset()

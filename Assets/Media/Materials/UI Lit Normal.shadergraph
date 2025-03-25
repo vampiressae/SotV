@@ -11,24 +11,6 @@
         },
         {
             "m_Id": "283ac05202e94213a9d680bbc19f004e"
-        },
-        {
-            "m_Id": "89319528fe7d4a5088f2313bcc19cc0a"
-        },
-        {
-            "m_Id": "fcd3f2896b884a4bb33830e3db7debdc"
-        },
-        {
-            "m_Id": "312210dbcb334c99a64c837c2851a2ab"
-        },
-        {
-            "m_Id": "4aa01cce88744195bb09c48a8db68db8"
-        },
-        {
-            "m_Id": "f61d3792edc84993b0f67fbcadb96b4b"
-        },
-        {
-            "m_Id": "375d255c6b7c4d99af18c1c8fefa4a55"
         }
     ],
     "m_Keywords": [],
@@ -618,34 +600,6 @@
 }
 
 {
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty",
-    "m_ObjectId": "312210dbcb334c99a64c837c2851a2ab",
-    "m_Guid": {
-        "m_GuidSerialized": "92068c0f-d77d-4d2a-8b1c-32081c15294e"
-    },
-    "m_Name": "Dissolve Speed 2",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Dissolve Speed 2",
-    "m_DefaultReferenceName": "_Dissolve_Speed_2",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "x": -0.15000000596046449,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    }
-}
-
-{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.NormalStrengthNode",
     "m_ObjectId": "32eb03822e0f48e5b4f2e5dcd9a2b1f3",
@@ -717,36 +671,6 @@
 }
 
 {
-    "m_SGVersion": 3,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
-    "m_ObjectId": "375d255c6b7c4d99af18c1c8fefa4a55",
-    "m_Guid": {
-        "m_GuidSerialized": "b4886beb-2cd9-4244-ac86-ec6898762159"
-    },
-    "m_Name": "Dissolve Edge Color",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Dissolve Edge Color",
-    "m_DefaultReferenceName": "_Dissolve_Edge_Color",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "r": 1.0,
-        "g": 0.0,
-        "b": 0.0,
-        "a": 1.0
-    },
-    "isMainColor": false,
-    "m_ColorMode": 0
-}
-
-{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "3862875030b44e5cb28d2d9d6e977861",
@@ -787,34 +711,6 @@
     "m_ShaderOutputName": "Out",
     "m_StageCapability": 3,
     "m_BareResource": false
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty",
-    "m_ObjectId": "4aa01cce88744195bb09c48a8db68db8",
-    "m_Guid": {
-        "m_GuidSerialized": "364bbf7e-efc3-48ed-8634-8348ff769318"
-    },
-    "m_Name": "Dissolve Speed 1",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Dissolve Speed 1",
-    "m_DefaultReferenceName": "_Dissolve_Speed_1",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "x": 0.20000000298023225,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    }
 }
 
 {
@@ -1031,24 +927,6 @@
         },
         {
             "m_Id": "283ac05202e94213a9d680bbc19f004e"
-        },
-        {
-            "m_Id": "89319528fe7d4a5088f2313bcc19cc0a"
-        },
-        {
-            "m_Id": "fcd3f2896b884a4bb33830e3db7debdc"
-        },
-        {
-            "m_Id": "4aa01cce88744195bb09c48a8db68db8"
-        },
-        {
-            "m_Id": "312210dbcb334c99a64c837c2851a2ab"
-        },
-        {
-            "m_Id": "f61d3792edc84993b0f67fbcadb96b4b"
-        },
-        {
-            "m_Id": "375d255c6b7c4d99af18c1c8fefa4a55"
         }
     ]
 }
@@ -1282,34 +1160,6 @@
     },
     "m_Property": {
         "m_Id": "5d8fd0749600420a8d0848ee6fd2aee0"
-    }
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "89319528fe7d4a5088f2313bcc19cc0a",
-    "m_Guid": {
-        "m_GuidSerialized": "80378b66-1568-49ce-be25-06229a601863"
-    },
-    "m_Name": "Dissolve Strength",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Dissolve Strength",
-    "m_DefaultReferenceName": "_Dissolve_Strength",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 0.20000000298023225,
-    "m_FloatType": 1,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
     }
 }
 
@@ -1940,34 +1790,6 @@
 }
 
 {
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "f61d3792edc84993b0f67fbcadb96b4b",
-    "m_Guid": {
-        "m_GuidSerialized": "1697e7e3-f5d6-4b52-b810-b30836e4c74a"
-    },
-    "m_Name": "Dissolve Edge",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Dissolve Edge",
-    "m_DefaultReferenceName": "_Dissolve_Edge",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": -0.009999999776482582,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
-}
-
-{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.TangentMaterialSlot",
     "m_ObjectId": "f6a9c14f1de74d2e8368ddbd62efe5b5",
@@ -1989,33 +1811,5 @@
     },
     "m_Labels": [],
     "m_Space": 0
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "fcd3f2896b884a4bb33830e3db7debdc",
-    "m_Guid": {
-        "m_GuidSerialized": "62a6482e-6223-457d-8504-0de163f89f65"
-    },
-    "m_Name": "Dissolve Density",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Dissolve Density",
-    "m_DefaultReferenceName": "_Dissolve_Density",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 20.0,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
 }
 

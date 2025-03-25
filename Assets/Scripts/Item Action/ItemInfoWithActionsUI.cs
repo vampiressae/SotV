@@ -13,13 +13,13 @@ namespace Items
         private IEnumerator Start()
         {
             yield return null;
-            transform.SetParent(transform.parent.parent.parent);
+            transform.SetParent(transform.parent.parent);
         }
 
         public void Init(IHasAction info, ItemUI ui)
         {
             _infoWithAction = info;
-            transform.Clear();
+            transform.Clear(t => !t.name.StartsWith("_"));
 
             var actor = FightController.Player.Info;
             var skill = _infoWithAction.UseSkill;
@@ -29,7 +29,6 @@ namespace Items
             {
                 if (actor && skill)
                 {
-                    var ex = actor.GetActionAmount(skill);
                     var expertise = (int)actor.GetActionAmount(skill);
                     if ((int)raws[i].Expertise > expertise) continue;
                 }

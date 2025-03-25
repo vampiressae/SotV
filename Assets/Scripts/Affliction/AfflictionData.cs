@@ -27,13 +27,7 @@ namespace Affliction
             return Info.AddMode;
         }
 
-        public bool Expire()
-        {
-            Debug.Log("EXPIRE");
-            _applies--;
-            return _applies < 1;
-        }
-
+        public bool Expire() => --_applies < 1;
         public void AddApplies(int add) => _applies += add;
 
         public bool Afflict(AfflictionMoment moment, ActorInfo actor)
